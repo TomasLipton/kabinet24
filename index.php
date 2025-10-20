@@ -230,19 +230,22 @@
                     <!-- Photo Placeholder -->
                     <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center relative">
                         <span class="absolute top-3 right-3 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-semibold">VIP</span>
-                        <svg class="w-16 h-16 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
+<!--                        <svg class="w-16 h-16 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
+<!--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>-->
+<!--                        </svg>-->
+                        <img src="assets/cabinet-37/img.png" />
                     </div>
                     <div class="p-5">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Кабинет 37</h3>
-                        <div class="flex items-center gap-3 mb-3">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-bold text-gray-800">Кабинет 37</h3>
                             <span class="inline-flex items-center px-3 py-1 bg-slate-100 rounded-full text-sm text-slate-700">
                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path>
                                 </svg>
                                 32 м²
                             </span>
+                        </div>
+                        <div class="mb-3">
                             <span class="text-sm text-gray-600 group-capacity">до 15 чел.</span>
                         </div>
 
@@ -281,14 +284,16 @@
                         </svg>
                     </div>
                     <div class="p-5">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Кабинет 28</h3>
-                        <div class="flex items-center gap-3 mb-3">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-bold text-gray-800">Кабинет 28</h3>
                             <span class="inline-flex items-center px-3 py-1 bg-slate-100 rounded-full text-sm text-slate-700">
                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path>
                                 </svg>
                                 21 м²
                             </span>
+                        </div>
+                        <div class="mb-3">
                             <span class="text-sm text-gray-600 group-capacity">до 8 чел.</span>
                         </div>
 
@@ -328,14 +333,16 @@
                         </svg>
                     </div>
                     <div class="p-5">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Кабинет 27</h3>
-                        <div class="flex items-center gap-3 mb-3">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-bold text-gray-800">Кабинет 27</h3>
                             <span class="inline-flex items-center px-3 py-1 bg-slate-100 rounded-full text-sm text-slate-700">
                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path>
                                 </svg>
                                 21 м²
                             </span>
+                        </div>
+                        <div class="mb-3">
                             <span class="text-sm text-gray-600 group-capacity">до 10 чел.</span>
                         </div>
 
@@ -387,14 +394,16 @@
                         </svg>
                     </div>
                     <div class="p-5">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Кабинет 23</h3>
-                        <div class="flex items-center gap-3 mb-3">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-bold text-gray-800">Кабинет 23</h3>
                             <span class="inline-flex items-center px-3 py-1 bg-slate-100 rounded-full text-sm text-slate-700">
                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path>
                                 </svg>
                                 21 м²
                             </span>
+                        </div>
+                        <div class="mb-3">
                             <span class="text-sm text-gray-600 group-capacity">до 8 чел.</span>
                         </div>
 
@@ -446,14 +455,16 @@
                         </svg>
                     </div>
                     <div class="p-5">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Кабинет 9</h3>
-                        <div class="flex items-center gap-3 mb-3">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-bold text-gray-800">Кабинет 9</h3>
                             <span class="inline-flex items-center px-3 py-1 bg-slate-100 rounded-full text-sm text-slate-700">
                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path>
                                 </svg>
                                 21 м²
                             </span>
+                        </div>
+                        <div class="mb-3">
                             <span class="text-sm text-gray-600 group-capacity">до 8 чел.</span>
                         </div>
 
@@ -505,14 +516,16 @@
                         </svg>
                     </div>
                     <div class="p-5">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Кабинет 38.1</h3>
-                        <div class="flex items-center gap-3 mb-3">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-bold text-gray-800">Кабинет 38.1</h3>
                             <span class="inline-flex items-center px-3 py-1 bg-slate-100 rounded-full text-sm text-slate-700">
                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path>
                                 </svg>
                                 13.5 м²
                             </span>
+                        </div>
+                        <div class="mb-3">
                             <span class="text-sm text-gray-600 group-capacity">компактный</span>
                         </div>
 
@@ -558,20 +571,23 @@
 
                 <!-- Кабинет 51 -->
                 <div class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition">
-                    <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
+                    <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center relative">
+                        <span class="absolute top-3 right-3 bg-emerald-500 text-white px-3 py-1 rounded-full text-xs font-semibold">Большой Зал</span>
                         <svg class="w-16 h-16 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
                     </div>
                     <div class="p-5">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Кабинет 51</h3>
-                        <div class="flex items-center gap-3 mb-3">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-bold text-gray-800">Кабинет 51</h3>
                             <span class="inline-flex items-center px-3 py-1 bg-slate-100 rounded-full text-sm text-slate-700">
                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path>
                                 </svg>
                                 50 м²
                             </span>
+                        </div>
+                        <div class="mb-3">
                             <span class="text-sm text-gray-600 group-capacity">до 25 чел.</span>
                         </div>
 
@@ -617,20 +633,23 @@
 
                 <!-- Кабинет 38 -->
                 <div class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition">
-                    <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
+                    <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center relative">
+                        <span class="absolute top-3 right-3 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-semibold">Зал</span>
                         <svg class="w-16 h-16 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
                     </div>
                     <div class="p-5">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Кабинет 38</h3>
-                        <div class="flex items-center gap-3 mb-3">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-bold text-gray-800">Кабинет 38</h3>
                             <span class="inline-flex items-center px-3 py-1 bg-slate-100 rounded-full text-sm text-slate-700">
                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path>
                                 </svg>
                                 35 м²
                             </span>
+                        </div>
+                        <div class="mb-3">
                             <span class="text-sm text-gray-600 group-capacity">до 20 чел.</span>
                         </div>
 
