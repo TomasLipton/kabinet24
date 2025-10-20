@@ -1,0 +1,4 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/psychoan/domains/kabinet24.by/public_html/
+    - /bin/cp index.php $DEPLOYPATH
