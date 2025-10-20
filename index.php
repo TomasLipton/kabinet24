@@ -879,44 +879,44 @@
                     </div>
                 </div>
 
-                <div>
-                    <form class="space-y-4" method="POST" action="">
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Ваше имя *</label>
-                            <input type="text" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Телефон *</label>
-                            <input type="tel" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="+375 (29) 123-45-67">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Какой кабинет интересует?</label>
-                            <select name="cabinet" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
-                                <option value="">Выберите кабинет</option>
-                                <option value="37">VIP-1 Кабинет 37 (32 м²)</option>
-                                <option value="28">VIP-2 Кабинет 28 (21 м²)</option>
-                                <option value="27">Кабинет 27 (21 м²)</option>
-                                <option value="23">Кабинет 23 (21 м²)</option>
-                                <option value="9">Кабинет 9 (21 м²)</option>
-                                <option value="38.1">Кабинет 38.1 (13.5 м²)</option>
-                                <option value="51">Кабинет 51 - Большой зал (50 м²)</option>
-                                <option value="38">Кабинет 38 - Зал (35 м²)</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Желаемая дата и время</label>
-                            <input type="datetime-local" name="datetime" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Комментарий</label>
-                            <textarea name="message" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="Укажите количество человек, длительность аренды"></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
-                            Отправить заявку
-                        </button>
-                        <p class="text-sm text-gray-600 text-center">Мы свяжемся с вами в течение 30 минут</p>
-                    </form>
-                </div>
+<!--                <div>-->
+<!--                    <form class="space-y-4" method="POST" action="">-->
+<!--                        <div>-->
+<!--                            <label class="block text-gray-700 font-medium mb-2">Ваше имя *</label>-->
+<!--                            <input type="text" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <label class="block text-gray-700 font-medium mb-2">Телефон *</label>-->
+<!--                            <input type="tel" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="+375 (29) 123-45-67">-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <label class="block text-gray-700 font-medium mb-2">Какой кабинет интересует?</label>-->
+<!--                            <select name="cabinet" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">-->
+<!--                                <option value="">Выберите кабинет</option>-->
+<!--                                <option value="37">VIP-1 Кабинет 37 (32 м²)</option>-->
+<!--                                <option value="28">VIP-2 Кабинет 28 (21 м²)</option>-->
+<!--                                <option value="27">Кабинет 27 (21 м²)</option>-->
+<!--                                <option value="23">Кабинет 23 (21 м²)</option>-->
+<!--                                <option value="9">Кабинет 9 (21 м²)</option>-->
+<!--                                <option value="38.1">Кабинет 38.1 (13.5 м²)</option>-->
+<!--                                <option value="51">Кабинет 51 - Большой зал (50 м²)</option>-->
+<!--                                <option value="38">Кабинет 38 - Зал (35 м²)</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <label class="block text-gray-700 font-medium mb-2">Желаемая дата и время</label>-->
+<!--                            <input type="datetime-local" name="datetime" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <label class="block text-gray-700 font-medium mb-2">Комментарий</label>-->
+<!--                            <textarea name="message" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="Укажите количество человек, длительность аренды"></textarea>-->
+<!--                        </div>-->
+<!--                        <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">-->
+<!--                            Отправить заявку-->
+<!--                        </button>-->
+<!--                        <p class="text-sm text-gray-600 text-center">Мы свяжемся с вами в течение 30 минут</p>-->
+<!--                    </form>-->
+<!--                </div>-->
             </div>
         </div>
     </section>
