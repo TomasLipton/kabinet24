@@ -55,8 +55,10 @@
         "description": "Почасовая аренда помещений в Минске для проведения консультаций, семинаров, тренингов, лекций. Рядом с метро Академия наук. Бесплатный Wi-Fi, чай, кофе, парковка.",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Минск, рядом с метро Академия наук",
+            "streetAddress": "ул. Якуба Коласа 37",
             "addressLocality": "Минск",
+            "addressRegion": "Минская область",
+            "postalCode": "220140",
             "addressCountry": "BY"
         },
         "priceRange": "$$",
