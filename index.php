@@ -766,7 +766,7 @@
 
     <script>
         function switchPricing(type) {
-            const groupPricing = document.querySelectorAll('.mb-3 pricing-group');
+            const groupPricing = document.querySelectorAll('.pricing-group');
             const individualPricing = document.querySelectorAll('.pricing-individual');
             const groupCapacity = document.querySelectorAll('.group-capacity');
             const tabGroup = document.getElementById('tab-group');
