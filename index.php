@@ -319,7 +319,7 @@
                         </div>
 
                         <!-- Group Pricing -->
-                        <div class="pricing-group">
+                        <div class="mb-3 pricing-group">
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
@@ -364,7 +364,7 @@
                             <span class="text-sm text-gray-600 group-capacity">до 8 чел.</span>
                         </div>
 
-                        <div class="pricing-group">
+                        <div class="mb-3 pricing-group">
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
@@ -414,7 +414,7 @@
                             <span class="text-sm text-gray-600 group-capacity">до 10 чел.</span>
                         </div>
 
-                        <div class="pricing-group">
+                        <div class="mb-3 pricing-group">
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
@@ -475,7 +475,7 @@
                             <span class="text-sm text-gray-600 group-capacity">до 8 чел.</span>
                         </div>
 
-                        <div class="pricing-group">
+                        <div class="mb-3 pricing-group">
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
@@ -534,7 +534,7 @@
                             <span class="text-sm text-gray-600 group-capacity">до 8 чел.</span>
                         </div>
 
-                        <div class="pricing-group">
+                        <div class="mb-3 pricing-group">
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
@@ -593,7 +593,7 @@
                             <span class="text-sm text-gray-600 group-capacity">компактный</span>
                         </div>
 
-                        <div class="pricing-group">
+                        <div class="mb-3 pricing-group">
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
@@ -655,7 +655,7 @@
                             <span class="text-sm text-gray-600 group-capacity">до 25 чел.</span>
                         </div>
 
-                        <div class="pricing-group">
+                        <div class="mb-3 pricing-group">
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
@@ -716,7 +716,7 @@
                             <span class="text-sm text-gray-600 group-capacity">до 20 чел.</span>
                         </div>
 
-                        <div class="pricing-group">
+                        <div class="mb-3 pricing-group">
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
@@ -766,7 +766,7 @@
 
     <script>
         function switchPricing(type) {
-            const groupPricing = document.querySelectorAll('.pricing-group');
+            const groupPricing = document.querySelectorAll('.mb-3 pricing-group');
             const individualPricing = document.querySelectorAll('.pricing-individual');
             const groupCapacity = document.querySelectorAll('.group-capacity');
             const tabGroup = document.getElementById('tab-group');
