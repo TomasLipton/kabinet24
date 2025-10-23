@@ -42,6 +42,10 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
+        /* Hover only for inactive tab buttons */
+        .pricing-tab:not(.bg-slate-800):hover {
+            background-color: rgb(243 244 246);
+        }
     </style>
 
     <!-- JSON-LD Structured Data -->
@@ -281,10 +285,10 @@
             <!-- Tabs -->
             <div class="flex justify-center mb-12">
                 <div class="inline-flex bg-white rounded-lg shadow-md p-1">
-                    <button onclick="switchPricing('group')" id="tab-group" class="px-8 py-3 rounded-lg font-semibold transition bg-slate-800 text-white">
+                    <button onclick="switchPricing('group')" id="tab-group" class="pricing-tab px-8 py-3 rounded-lg font-semibold transition-all bg-slate-800 text-white">
                         Групповая аренда
                     </button>
-                    <button onclick="switchPricing('individual')" id="tab-individual" class="px-8 py-3 rounded-lg font-semibold transition text-gray-600 hover:text-gray-800">
+                    <button onclick="switchPricing('individual')" id="tab-individual" class="pricing-tab px-8 py-3 rounded-lg font-semibold transition-all text-gray-600">
                         Индивидуальная аренда
                     </button>
                 </div>
