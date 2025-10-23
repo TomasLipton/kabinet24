@@ -99,10 +99,10 @@
             <div class="flex justify-between items-center">
                 <div class="text-2xl font-bold text-blue-600">Кабинет24</div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition">О нас</a>
-                    <a href="#offices" class="text-gray-700 hover:text-blue-600 transition">Кабинеты</a>
-                    <a href="#amenities" class="text-gray-700 hover:text-blue-600 transition">Удобства</a>
-                    <a href="#contact" class="text-gray-700 hover:text-blue-600 transition">Контакты</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 transition">О нас</a>
+                    <a href="#offices" class="nav-link text-gray-700 hover:text-blue-600 transition">Кабинеты</a>
+                    <a href="#amenities" class="nav-link text-gray-700 hover:text-blue-600 transition">Удобства</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 transition">Контакты</a>
                 </div>
                 <a href="#contact" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
                     Забронировать
@@ -792,6 +792,39 @@
                 tabGroup.classList.add('text-gray-600');
             }
         }
+
+        // Highlight active menu item on scroll
+        function highlightActiveSection() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            let current = '';
+            const scrollPosition = window.scrollY + 100; // Offset for header
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-blue-600', 'font-semibold');
+                link.classList.add('text-gray-700');
+
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.remove('text-gray-700');
+                    link.classList.add('text-blue-600', 'font-semibold');
+                }
+            });
+        }
+
+        // Add scroll event listener
+        window.addEventListener('scroll', highlightActiveSection);
+        // Run on page load
+        window.addEventListener('load', highlightActiveSection);
     </script>
 
     <!-- Amenities Section -->
