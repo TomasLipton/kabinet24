@@ -1,53 +1,9 @@
-<!--Vova-->
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кабинет24 - Почасовая аренда уютных и современных кабинетов и залов в центре Минска</title>
-    <link rel="icon" type="image/png" href="/assets/logo.png">
-    <meta name="description" content="Почасовая аренда помещений в Минске для проведения консультаций, семинаров, тренингов, лекций. Рядом с метро Академия наук. Бесплатный Wi-Fi, чай, кофе, парковка.">
-    <meta name="keywords" content="аренда кабинета Минск, аренда помещений Минск, почасовая аренда, коворкинг Минск, аренда залов Минск, кабинет для консультаций, аренда офиса почасово, помещение для семинара, тренинг зал аренда, метро Академия наук">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="Кабинет24">
-    <meta name="theme-color" content="#2563eb">
-    <link rel="canonical" href="https://kabinet24.by/">
+<?php
+// Include head component
+include $_SERVER['DOCUMENT_ROOT'] . '/components/head.php';
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://kabinet24.by/">
-    <meta property="og:title" content="Кабинет24 - Почасовая аренда уютных и современных кабинетов и залов в центре Минска">
-    <meta property="og:description" content="Почасовая аренда помещений в Минске для проведения консультаций, семинаров, тренингов, лекций. Рядом с метро Академия наук. Бесплатный Wi-Fi, чай, кофе, парковка.">
-    <meta property="og:image" content="https://kabinet24.by/assets/logo.png">
-    <meta property="og:site_name" content="Кабинет24">
-    <meta property="og:locale" content="ru_RU">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://kabinet24.by/">
-    <meta name="twitter:title" content="Кабинет24 - Почасовая аренда уютных и современных кабинетов и залов в центре Минска">
-    <meta name="twitter:description" content="Почасовая аренда помещений в Минске для проведения консультаций, семинаров, тренингов, лекций. Рядом с метро Академия наук. Бесплатный Wi-Fi, чай, кофе, парковка.">
-    <meta name="twitter:image" content="https://kabinet24.by/assets/logo.png">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .office-card {
-            transition: all 0.3s ease;
-        }
-        .office-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        /* Hover only for inactive tab buttons */
-        .pricing-tab:not(.bg-slate-800):hover {
-            background-color: rgb(243 244 246);
-        }
-    </style>
-
+// JSON-LD Structured Data for homepage
+?>
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
@@ -91,25 +47,8 @@
         }
     }
     </script>
-</head>
-<body class="bg-gray-50">
-    <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <div class="text-2xl font-bold text-blue-600">Кабинет24</div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 transition">О нас</a>
-                    <a href="#offices" class="nav-link text-gray-700 hover:text-blue-600 transition">Кабинеты</a>
-                    <a href="#amenities" class="nav-link text-gray-700 hover:text-blue-600 transition">Удобства</a>
-                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 transition">Контакты</a>
-                </div>
-                <a href="#contact" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
-                    Забронировать
-                </a>
-            </div>
-        </nav>
-    </header>
+
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/components/header.php'; ?>
 
     <!-- Hero Section -->
     <section class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-24 overflow-hidden">
@@ -298,7 +237,7 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
 
                 <!-- Кабинет 37 VIP-1 -->
-                <div class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
+                <a href="/pages/cabinets/cabinet-37.php" class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
                     <!-- Photo Placeholder -->
                     <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 relative overflow-hidden">
                         <span class="absolute top-3 right-3 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-semibold z-10">VIP</span>
@@ -338,14 +277,14 @@
                             </div>
                         </div>
 
-                        <button class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold">
-                            Забронировать
-                        </button>
+                        <div class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold text-center">
+                            Подробнее
+                        </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Кабинет 28 VIP-2 -->
-                <div class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
+                <a href="/pages/cabinets/cabinet-28.php" class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
                     <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center relative">
                         <span class="absolute top-3 right-3 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-semibold">VIP</span>
                         <img src="assets/cabinet-28/img_1.png" alt="Кабинет 28" class="w-full h-full object-cover" />
@@ -386,14 +325,14 @@
                             </div>
                         </div>
 
-                        <button class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold ">
-                            Забронировать
-                        </button>
+                        <div class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold text-center">
+                            Подробнее
+                        </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Кабинет 27 -->
-                <div class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
+                <a href="/pages/cabinets/cabinet-27.php" class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
                     <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
                         <svg class="w-16 h-16 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
@@ -448,14 +387,14 @@
                             </div>
                         </div>
 
-                        <button class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold">
-                            Забронировать
-                        </button>
+                        <div class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold text-center">
+                            Подробнее
+                        </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Кабинет 23 -->
-                <div class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
+                <a href="/pages/cabinets/cabinet-23.php" class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
                     <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
 
                         <img src="assets/cabinet-23/img.png" alt="Кабинет 23" class="w-full h-full object-cover" />
@@ -509,14 +448,14 @@
                             </div>
                         </div>
 
-                        <button class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold">
-                            Забронировать
-                        </button>
+                        <div class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold text-center">
+                            Подробнее
+                        </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Кабинет 9 -->
-                <div class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
+                <a href="/pages/cabinets/cabinet-9.php" class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
                     <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
                         <img src="assets/cabinet-9/img.png" alt="Кабинет 9" class="w-full h-full object-cover" />
                     </div>
@@ -568,14 +507,14 @@
                             </div>
                         </div>
 
-                        <button class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold">
-                            Забронировать
-                        </button>
+                        <div class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold text-center">
+                            Подробнее
+                        </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Кабинет 38.1 -->
-                <div class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
+                <a href="/pages/cabinets/cabinet-38-1.php" class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
                     <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
                         <img src="assets/cabinet-38-1/img.png" alt="Кабинет 38.1" class="w-full h-full object-cover" />
                     </div>
@@ -627,14 +566,14 @@
                             </div>
                         </div>
 
-                        <button class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold">
-                            Забронировать
-                        </button>
+                        <div class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold text-center">
+                            Подробнее
+                        </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Кабинет 51 -->
-                <div class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
+                <a href="/pages/cabinets/cabinet-51.php" class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
                     <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center relative">
                         <span class="absolute top-3 right-3 bg-emerald-500 text-white px-3 py-1 rounded-full text-xs font-semibold">Большой Зал</span>
 
@@ -689,14 +628,14 @@
                             </div>
                         </div>
 
-                        <button class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold">
-                            Забронировать
-                        </button>
+                        <div class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold text-center">
+                            Подробнее
+                        </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Кабинет 38 -->
-                <div class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
+                <a href="/pages/cabinets/cabinet-38.php" class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
                     <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center relative">
                         <span class="absolute top-3 right-3 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-semibold">Зал</span>
                         <img src="assets/cabinet-38/img.png" alt="Кабинет 38" class="w-full h-full object-cover" />
@@ -750,11 +689,11 @@
                             </div>
                         </div>
 
-                        <button class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold">
-                            Забронировать
-                        </button>
+                        <div class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold text-center">
+                            Подробнее
+                        </div>
                     </div>
-                </div>
+                </a>
 
             </div>
 
@@ -1025,39 +964,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-3 gap-8">
-                <div>
-                    <h3 class="text-2xl font-bold mb-4">Кабинет24</h3>
-                    <p class="text-gray-400">Почасовая аренда уютных кабинетов и залов в центре Минска</p>
-                    <p class="text-gray-400 mt-2">Рядом с метро Академия наук</p>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Быстрые ссылки</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition">О нас</a></li>
-                        <li><a href="#offices" class="text-gray-400 hover:text-white transition">Кабинеты</a></li>
-                        <li><a href="#amenities" class="text-gray-400 hover:text-white transition">Удобства</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Контакты</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Контакты</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li>📞 +375 (29) 191-63-11</li>
-                        <li>📱 Viber / Telegram</li>
-                        <li>📍 ул. Я. Коласа 37, МЦ "Айсберг"</li>
-                        <li>🚇 м. Академия наук</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; <?php echo date('Y'); ?> Кабинет24. Все права защищены.</p>
-            </div>
-        </div>
-    </footer>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/components/footer.php'; ?>
 
     <script>
         // Smooth scrolling for anchor links
