@@ -159,7 +159,7 @@
                     <div class="text-sm text-blue-600 mt-1">от 13.5 до 50 м²</div>
                 </div>
                 <div class="text-center p-8 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
-                    <div class="text-5xl font-bold text-slate-900 mb-2">от 14₽</div>
+                    <div class="text-5xl font-bold text-slate-900 mb-2">от 14 Br</div>
                     <div class="text-slate-700 font-semibold">Стоимость аренды</div>
                     <div class="text-sm text-slate-600 mt-1">за час</div>
                 </div>
@@ -237,7 +237,7 @@
                         </svg>
                     </div>
                     <h3 class="text-lg font-semibold mb-2 text-gray-800">Доп. оборудование</h3>
-                    <p class="text-sm text-gray-600 mb-2">За 2 руб/час:</p>
+                    <p class="text-sm text-gray-600 mb-2">За 2 Br/час:</p>
                     <ul class="text-sm text-gray-600 space-y-1">
                         <li>• Проектор</li>
                         <li>• Песочница</li>
@@ -332,7 +332,7 @@
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">35₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">35 Br/ч</span>
                                 </div>
                             </div>
                         </div>
@@ -342,7 +342,7 @@
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">Стандарт</span>
-                                    <span class="text-lg font-bold text-slate-800">25₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">25 Br/ч</span>
                                 </div>
                             </div>
                         </div>
@@ -377,7 +377,7 @@
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">25₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">25 Br/ч</span>
                                 </div>
                             </div>
                         </div>
@@ -386,11 +386,11 @@
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">Стандарт</span>
-                                    <span class="text-lg font-bold text-slate-800">20₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">20 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">18:00-20:00</span>
-                                    <span class="text-lg font-bold text-slate-800">22₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">22 Br/ч</span>
                                 </div>
                             </div>
                         </div>
@@ -427,11 +427,11 @@
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">22₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">22 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">20₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">20 Br/ч</span>
                                 </div>
                             </div>
                         </div>
@@ -440,19 +440,19 @@
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">18₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">18 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">16₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">16 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">11:00-16:00</span>
-                                    <span class="text-lg font-bold text-emerald-600">14₽/ч</span>
+                                    <span class="text-lg font-bold text-emerald-600">14 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">18:00-20:00</span>
-                                    <span class="text-lg font-bold text-slate-800">20₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">20 Br/ч</span>
                                 </div>
                             </div>
                         </div>
@@ -488,11 +488,11 @@
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">22₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">22 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">20₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">20 Br/ч</span>
                                 </div>
                             </div>
                         </div>
@@ -501,19 +501,19 @@
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">18₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">18 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">16₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">16 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">11:00-16:00</span>
-                                    <span class="text-lg font-bold text-emerald-600">14₽/ч</span>
+                                    <span class="text-lg font-bold text-emerald-600">14 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">18:00-20:00</span>
-                                    <span class="text-lg font-bold text-slate-800">20₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">20 Br/ч</span>
                                 </div>
                             </div>
                         </div>
@@ -547,11 +547,11 @@
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">22₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">22 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">20₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">20 Br/ч</span>
                                 </div>
                             </div>
                         </div>
@@ -560,19 +560,19 @@
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">18₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">18 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">16₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">16 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">11:00-16:00</span>
-                                    <span class="text-lg font-bold text-emerald-600">14₽/ч</span>
+                                    <span class="text-lg font-bold text-emerald-600">14 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">18:00-20:00</span>
-                                    <span class="text-lg font-bold text-slate-800">20₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">20 Br/ч</span>
                                 </div>
                             </div>
                         </div>
@@ -606,11 +606,11 @@
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">22₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">22 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">20₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">20 Br/ч</span>
                                 </div>
                             </div>
                         </div>
@@ -619,19 +619,19 @@
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">18₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">18 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">16₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">16 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">11:00-16:00</span>
-                                    <span class="text-lg font-bold text-emerald-600">14₽/ч</span>
+                                    <span class="text-lg font-bold text-emerald-600">14 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">18:00-20:00</span>
-                                    <span class="text-lg font-bold text-slate-800">20₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">20 Br/ч</span>
                                 </div>
                             </div>
                         </div>
@@ -668,11 +668,11 @@
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">27₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">27 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">25₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">25 Br/ч</span>
                                 </div>
                             </div>
                         </div>
@@ -681,19 +681,19 @@
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">18₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">18 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">16₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">16 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">11:00-16:00</span>
-                                    <span class="text-lg font-bold text-emerald-600">14₽/ч</span>
+                                    <span class="text-lg font-bold text-emerald-600">14 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">18:00-20:00</span>
-                                    <span class="text-lg font-bold text-slate-800">20₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">20 Br/ч</span>
                                 </div>
                             </div>
                         </div>
@@ -729,11 +729,11 @@
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">24₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">24 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">22₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">22 Br/ч</span>
                                 </div>
                             </div>
                         </div>
@@ -742,19 +742,19 @@
                             <div class="space-y-2">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">18₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">18 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">16₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">16 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">11:00-16:00</span>
-                                    <span class="text-lg font-bold text-emerald-600">14₽/ч</span>
+                                    <span class="text-lg font-bold text-emerald-600">14 Br/ч</span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs text-gray-600">18:00-20:00</span>
-                                    <span class="text-lg font-bold text-slate-800">20₽/ч</span>
+                                    <span class="text-lg font-bold text-slate-800">20 Br/ч</span>
                                 </div>
                             </div>
                         </div>
@@ -768,7 +768,7 @@
             </div>
 
             <div class="mt-12 bg-blue-50 border-l-4 border-blue-400 p-6 max-w-4xl mx-auto">
-                <p class="text-sm text-gray-700"><strong>Обратите внимание:</strong> Скидки не суммируются. Специальные условия для VIP-кабинетов 28 и 37. Дополнительное оборудование (проектор, песочница, кушетка) - 2 руб/час.</p>
+                <p class="text-sm text-gray-700"><strong>Обратите внимание:</strong> Скидки не суммируются. Специальные условия для VIP-кабинетов 28 и 37. Дополнительное оборудование (проектор, песочница, кушетка) - 2 Br/час.</p>
             </div>
         </div>
     </section>
@@ -928,7 +928,7 @@
             </div>
 
             <div class="mt-12 max-w-4xl mx-auto bg-blue-50 p-6 rounded-lg">
-                <h3 class="font-semibold text-gray-800 mb-4 text-lg">Дополнительное оборудование за 2 руб/час:</h3>
+                <h3 class="font-semibold text-gray-800 mb-4 text-lg">Дополнительное оборудование за 2 Br/час:</h3>
                 <ul class="grid md:grid-cols-3 gap-4 text-gray-700">
                     <li class="flex items-center">
                         <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
