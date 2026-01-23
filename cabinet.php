@@ -258,24 +258,7 @@ $pageDescription = htmlspecialchars($cabinet['name']) . ' - ' . ($cabinet['type'
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 mt-16">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <div>
-                    <h3 class="text-xl font-bold">Кабинет24</h3>
-                    <p class="text-gray-400 text-sm">Почасовая аренда кабинетов в центре Минска</p>
-                </div>
-                <div class="flex items-center gap-6 text-gray-400">
-                    <a href="tel:+375291916311" class="hover:text-white transition">+375 (29) 191-63-11</a>
-                    <a href="https://t.me/psychoanalitik_by" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400 text-sm">
-                <p>&copy; <?= date('Y') ?> Кабинет24. Все права защищены.</p>
-            </div>
-        </div>
-    </footer>
+    <?php include __DIR__ . '/templates/footer.php'; ?>
 
     <!-- GLightbox JS -->
     <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>

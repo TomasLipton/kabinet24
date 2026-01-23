@@ -6,3 +6,5 @@ deployment:
     - /bin/cp .htaccess $DEPLOYPATH
     - /bin/mkdir -p $DEPLOYPATH/data/cabinets
     - /bin/cp -r data/cabinets/*.json $DEPLOYPATH/data/cabinets/
+    - /bin/mkdir -p $DEPLOYPATH/templates
+    - /bin/cp -r templates/*.php $DEPLOYPATH/templates/
