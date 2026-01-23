@@ -1,0 +1,29 @@
+{
+  "order": 9,
+  "slug": "kabinet-24-1-vip",
+  "number": "24.1",
+  "name": "Кабинет 24.1",
+  "type": "VIP",
+  "size": 19.7,
+  "capacity": "до 8 чел.",
+  "description": "VIP-кабинет для индивидуальных консультаций и небольших групповых занятий. Комфортная обстановка и современный интерьер.",
+  "images": {
+    "main": "assets/cabinet-24-1/img-1.jpg",
+    "gallery": [
+      "assets/cabinet-24-1/img-1.jpg",
+      "assets/cabinet-24-1/img-2.jpg",
+      "assets/cabinet-24-1/img-3.jpg",
+      "assets/cabinet-24-1/img-4.jpg"
+    ]
+  },
+  "pricing": {
+    "group": [
+      {"label": "Стандарт", "price": 25}
+    ],
+    "individual": [
+      {"label": "Стандарт", "price": 20},
+      {"label": "18:00-20:00", "price": 22}
+    ]
+  },
+  "amenities": ["Wi-Fi", "Кондиционер", "Флипчарт", "Чай, кофе", "Парковка"]
+}

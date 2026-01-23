@@ -1,0 +1,32 @@
+{
+  "order": 11,
+  "slug": "kabinet-24-3",
+  "number": "24.3",
+  "name": "Кабинет 24.3",
+  "type": null,
+  "size": 16.7,
+  "capacity": "до 10 чел.",
+  "description": "Уютный кабинет для индивидуальных консультаций и небольших групповых занятий. Спокойная атмосфера для продуктивной работы.",
+  "images": {
+    "main": "assets/cabinet-24-3/img-1.jpg",
+    "gallery": [
+      "assets/cabinet-24-3/img-1.jpg",
+      "assets/cabinet-24-3/img-2.jpg",
+      "assets/cabinet-24-3/img-3.jpg",
+      "assets/cabinet-24-3/img-4.jpg"
+    ]
+  },
+  "pricing": {
+    "group": [
+      {"label": "до 10 ч/нед", "price": 22},
+      {"label": "более 10 ч/нед", "price": 20}
+    ],
+    "individual": [
+      {"label": "до 10 ч/нед", "price": 18},
+      {"label": "более 10 ч/нед", "price": 16},
+      {"label": "11:00-16:00", "price": 14, "highlight": true},
+      {"label": "18:00-20:00", "price": 20}
+    ]
+  },
+  "amenities": ["Wi-Fi", "Кондиционер", "Флипчарт", "Чай, кофе", "Парковка"]
+}
