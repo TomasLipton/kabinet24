@@ -1,0 +1,291 @@
+<?php
+// Получаем slug из URL
+$slug = $_GET['slug'] ?? '';
+$slug = preg_replace('/[^a-z0-9-]/', '', $slug);
+
+if (empty($slug)) {
+    header('Location: /#offices');
+    exit;
+}
+
+// Ищем JSON файл по slug
+$cabinet = null;
+$cabinetsDir = __DIR__ . '/data/cabinets/';
+$files = glob($cabinetsDir . '*.json');
+
+foreach ($files as $file) {
+    $data = json_decode(file_get_contents($file), true);
+    if ($data && isset($data['slug']) && $data['slug'] === $slug) {
+        $cabinet = $data;
+        break;
+    }
+}
+
+// 404 если кабинет не найден
+if (!$cabinet) {
+    http_response_code(404);
+    ?>
+    <!DOCTYPE html>
+    <html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Кабинет не найден - Кабинет24</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-50 min-h-screen flex items-center justify-center">
+        <div class="text-center">
+            <h1 class="text-6xl font-bold text-gray-300 mb-4">404</h1>
+            <p class="text-xl text-gray-600 mb-8">Кабинет не найден</p>
+            <a href="/#offices" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+                Смотреть все кабинеты
+            </a>
+        </div>
+    </body>
+    </html>
+    <?php
+    exit;
+}
+
+// Функция для получения badge цвета по типу
+function getBadgeColor($type) {
+    switch ($type) {
+        case 'VIP':
+            return 'bg-amber-500';
+        case 'Большой Зал':
+            return 'bg-emerald-500';
+        case 'Зал':
+            return 'bg-blue-500';
+        default:
+            return 'bg-slate-500';
+    }
+}
+
+$badgeColor = getBadgeColor($cabinet['type'] ?? null);
+$pageTitle = htmlspecialchars($cabinet['name']) . ' - Кабинет24';
+$pageDescription = htmlspecialchars($cabinet['name']) . ' - ' . ($cabinet['type'] ? $cabinet['type'] . ' кабинет' : 'кабинет') . ' для аренды в центре Минска. ' . $cabinet['size'] . ' м², ' . $cabinet['capacity'] . '.';
+?>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $pageTitle ?></title>
+    <link rel="icon" type="image/png" href="/assets/logo.png">
+    <meta name="description" content="<?= $pageDescription ?>">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- GLightbox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .thumbnail {
+            transition: all 0.2s ease;
+        }
+        .thumbnail:hover {
+            opacity: 0.8;
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold text-blue-600">Кабинет24</a>
+                <a href="/" class="text-gray-600 hover:text-blue-600 transition flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    Все кабинеты
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Breadcrumb -->
+        <nav class="mb-6 text-sm">
+            <ol class="flex items-center space-x-2 text-gray-500">
+                <li><a href="/" class="hover:text-blue-600">Главная</a></li>
+                <li><span>/</span></li>
+                <li><a href="/#offices" class="hover:text-blue-600">Кабинеты</a></li>
+                <li><span>/</span></li>
+                <li class="text-gray-900 font-medium"><?= htmlspecialchars($cabinet['name']) ?></li>
+            </ol>
+        </nav>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+            <!-- Photo Gallery -->
+            <div class="space-y-4">
+                <!-- Main Photo -->
+                <a href="/<?= htmlspecialchars($cabinet['images']['main']) ?>" class="glightbox block" data-gallery="cabinet-gallery">
+                    <div class="aspect-[4/3] rounded-xl overflow-hidden bg-gray-200 cursor-zoom-in">
+                        <img
+                            id="main-photo"
+                            src="/<?= htmlspecialchars($cabinet['images']['main']) ?>"
+                            alt="<?= htmlspecialchars($cabinet['name']) ?> - главное фото"
+                            class="w-full h-full object-cover hover:scale-105 transition duration-300"
+                        >
+                    </div>
+                </a>
+
+                <!-- Thumbnails -->
+                <?php if (!empty($cabinet['images']['gallery']) && count($cabinet['images']['gallery']) > 1): ?>
+                <div class="grid grid-cols-4 gap-3">
+                    <?php foreach ($cabinet['images']['gallery'] as $index => $image): ?>
+                    <a href="/<?= htmlspecialchars($image) ?>" class="glightbox thumbnail aspect-square rounded-lg overflow-hidden bg-gray-200 cursor-pointer" data-gallery="cabinet-gallery">
+                        <img src="/<?= htmlspecialchars($image) ?>" alt="Фото <?= $index + 1 ?>" class="w-full h-full object-cover">
+                    </a>
+                    <?php endforeach; ?>
+                </div>
+                <?php endif; ?>
+            </div>
+
+            <!-- Cabinet Info -->
+            <div class="space-y-6">
+                <!-- Title & Badge -->
+                <div>
+                    <?php if ($cabinet['type']): ?>
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="<?= $badgeColor ?> text-white px-3 py-1 rounded-full text-xs font-semibold"><?= htmlspecialchars($cabinet['type']) ?></span>
+                        <span class="text-gray-500 text-sm">Кабинет для групповой и индивидуальной работы</span>
+                    </div>
+                    <?php endif; ?>
+                    <h1 class="text-3xl md:text-4xl font-bold text-gray-900"><?= htmlspecialchars($cabinet['name']) ?></h1>
+                </div>
+
+                <!-- Key Stats -->
+                <div class="flex flex-wrap gap-4">
+                    <div class="flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-lg">
+                        <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path>
+                        </svg>
+                        <span class="font-semibold text-slate-800"><?= htmlspecialchars($cabinet['size']) ?> м²</span>
+                    </div>
+                    <div class="flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-lg">
+                        <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <span class="font-semibold text-slate-800"><?= htmlspecialchars($cabinet['capacity']) ?></span>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="prose prose-gray">
+                    <p class="text-gray-600 leading-relaxed">
+                        <?= htmlspecialchars($cabinet['description']) ?>
+                    </p>
+                </div>
+
+                <!-- Pricing -->
+                <div class="bg-white border border-gray-200 rounded-xl p-6 space-y-4">
+                    <h3 class="font-semibold text-lg text-gray-900">Стоимость аренды</h3>
+
+                    <div class="space-y-3">
+                        <!-- Group Pricing -->
+                        <?php if (!empty($cabinet['pricing']['group'])): ?>
+                        <div class="pb-3 border-b border-gray-100">
+                            <p class="font-medium text-gray-900 mb-2">Групповая аренда</p>
+                            <?php foreach ($cabinet['pricing']['group'] as $price): ?>
+                            <div class="flex justify-between items-center <?= isset($price['highlight']) && $price['highlight'] ? 'text-emerald-600' : '' ?>">
+                                <span class="text-sm text-gray-500"><?= htmlspecialchars($price['label']) ?></span>
+                                <span class="text-lg font-bold <?= isset($price['highlight']) && $price['highlight'] ? 'text-emerald-600' : 'text-slate-800' ?>"><?= $price['price'] ?>₽<span class="text-base font-normal text-gray-500">/час</span></span>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <?php endif; ?>
+
+                        <!-- Individual Pricing -->
+                        <?php if (!empty($cabinet['pricing']['individual'])): ?>
+                        <div class="pb-3">
+                            <p class="font-medium text-gray-900 mb-2">Индивидуальная аренда</p>
+                            <?php foreach ($cabinet['pricing']['individual'] as $price): ?>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-500"><?= htmlspecialchars($price['label']) ?></span>
+                                <span class="text-lg font-bold <?= isset($price['highlight']) && $price['highlight'] ? 'text-emerald-600' : 'text-slate-800' ?>"><?= $price['price'] ?>₽<span class="text-base font-normal text-gray-500">/час</span></span>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+
+                    <p class="text-sm text-gray-500">
+                        * Скидка 10% при аренде более 10 ч/неделю
+                    </p>
+                </div>
+
+                <!-- Amenities -->
+                <?php if (!empty($cabinet['amenities'])): ?>
+                <div class="space-y-3">
+                    <h3 class="font-semibold text-lg text-gray-900">Удобства</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <?php foreach ($cabinet['amenities'] as $amenity): ?>
+                        <span class="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-sm">
+                            <?= htmlspecialchars($amenity) ?>
+                        </span>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+                <!-- CTA -->
+                <div class="flex flex-col sm:flex-row gap-3 pt-4">
+                    <a href="tel:+375291916311" class="flex-1 bg-slate-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-700 transition text-center">
+                        📞 Позвонить
+                    </a>
+                    <a href="https://t.me/psychoanalitik_by" target="_blank" rel="noopener" class="flex-1 bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition text-center">
+                        Написать в Telegram
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to all -->
+        <div class="mt-12 pt-8 border-t border-gray-200">
+            <a href="/#offices" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Смотреть все кабинеты
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>
+                    <h3 class="text-xl font-bold">Кабинет24</h3>
+                    <p class="text-gray-400 text-sm">Почасовая аренда кабинетов в центре Минска</p>
+                </div>
+                <div class="flex items-center gap-6 text-gray-400">
+                    <a href="tel:+375291916311" class="hover:text-white transition">+375 (29) 191-63-11</a>
+                    <a href="https://t.me/psychoanalitik_by" target="_blank" rel="noopener" class="hover:text-white transition">Telegram</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400 text-sm">
+                <p>&copy; <?= date('Y') ?> Кабинет24. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GLightbox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+    <script>
+        const lightbox = GLightbox({
+            touchNavigation: true,
+            loop: true,
+            openEffect: 'zoom',
+            closeEffect: 'fade'
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "slug": "kabinet-38-1",
+  "number": "38.1",
+  "name": "Кабинет 38.1",
+  "type": null,
+  "size": 13.5,
+  "capacity": "компактный",
+  "description": "Компактный кабинет для индивидуальной работы. Идеально подходит для консультаций один на один.",
+  "images": {
+    "main": "assets/cabinet-38-1/img.png",
+    "gallery": [
+      "assets/cabinet-38-1/img.png"
+    ]
+  },
+  "pricing": {
+    "group": [
+      {"label": "до 10 ч/нед", "price": 22},
+      {"label": "более 10 ч/нед", "price": 20}
+    ],
+    "individual": [
+      {"label": "до 10 ч/нед", "price": 18},
+      {"label": "более 10 ч/нед", "price": 16},
+      {"label": "11:00-16:00", "price": 14, "highlight": true},
+      {"label": "18:00-20:00", "price": 20}
+    ]
+  },
+  "amenities": ["Wi-Fi", "Кондиционер", "Флипчарт", "Чай, кофе", "Парковка"]
+}

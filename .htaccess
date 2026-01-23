@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /
+
+# Если файл или папка существует - не трогаем
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# /cabinet/slug -> cabinet.php?slug=slug
+RewriteRule ^cabinet/([a-z0-9-]+)/?$ cabinet.php?slug=$1 [L,QSA]

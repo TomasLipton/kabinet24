@@ -1,0 +1,25 @@
+{
+  "slug": "kabinet-28-vip",
+  "number": "28",
+  "name": "Кабинет 28",
+  "type": "VIP",
+  "size": 21,
+  "capacity": "до 8 чел.",
+  "description": "Уютный VIP-кабинет для индивидуальных консультаций и небольших групповых занятий. Современный интерьер и комфортная атмосфера.",
+  "images": {
+    "main": "assets/cabinet-28/img_1.png",
+    "gallery": [
+      "assets/cabinet-28/img_1.png"
+    ]
+  },
+  "pricing": {
+    "group": [
+      {"label": "до 10 ч/нед", "price": 25}
+    ],
+    "individual": [
+      {"label": "Стандарт", "price": 20},
+      {"label": "18:00-20:00", "price": 22}
+    ]
+  },
+  "amenities": ["Wi-Fi", "Кондиционер", "Флипчарт", "Чай, кофе", "Парковка"]
+}

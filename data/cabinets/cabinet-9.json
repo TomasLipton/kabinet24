@@ -1,0 +1,28 @@
+{
+  "slug": "kabinet-9",
+  "number": "9",
+  "name": "Кабинет 9",
+  "type": null,
+  "size": 21,
+  "capacity": "до 8 чел.",
+  "description": "Функциональный кабинет для индивидуальных консультаций и небольших групповых занятий. Удобное расположение и комфортная обстановка.",
+  "images": {
+    "main": "assets/cabinet-9/img.png",
+    "gallery": [
+      "assets/cabinet-9/img.png"
+    ]
+  },
+  "pricing": {
+    "group": [
+      {"label": "до 10 ч/нед", "price": 22},
+      {"label": "более 10 ч/нед", "price": 20}
+    ],
+    "individual": [
+      {"label": "до 10 ч/нед", "price": 18},
+      {"label": "более 10 ч/нед", "price": 16},
+      {"label": "11:00-16:00", "price": 14, "highlight": true},
+      {"label": "18:00-20:00", "price": 20}
+    ]
+  },
+  "amenities": ["Wi-Fi", "Кондиционер", "Флипчарт", "Чай, кофе", "Парковка"]
+}

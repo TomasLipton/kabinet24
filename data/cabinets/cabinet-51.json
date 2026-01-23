@@ -1,0 +1,28 @@
+{
+  "slug": "kabinet-51-bolshoy-zal",
+  "number": "51",
+  "name": "Кабинет 51",
+  "type": "Большой Зал",
+  "size": 50,
+  "capacity": "до 25 чел.",
+  "description": "Просторный зал для проведения тренингов, семинаров, лекций и групповых мероприятий. Самое большое помещение с отличной вместимостью.",
+  "images": {
+    "main": "assets/cabinet-51/img.png",
+    "gallery": [
+      "assets/cabinet-51/img.png"
+    ]
+  },
+  "pricing": {
+    "group": [
+      {"label": "до 10 ч/нед", "price": 27},
+      {"label": "более 10 ч/нед", "price": 25}
+    ],
+    "individual": [
+      {"label": "до 10 ч/нед", "price": 18},
+      {"label": "более 10 ч/нед", "price": 16},
+      {"label": "11:00-16:00", "price": 14, "highlight": true},
+      {"label": "18:00-20:00", "price": 20}
+    ]
+  },
+  "amenities": ["Wi-Fi", "Кондиционер", "Флипчарт", "Чай, кофе", "Парковка"]
+}
