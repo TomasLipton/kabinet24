@@ -41,3 +41,7 @@ The page sections (in order):
 ## Language
 
 All user-facing content is in Russian. Maintain Russian language for any text additions or modifications.
+
+##Other
+
+Use BYN for currency 

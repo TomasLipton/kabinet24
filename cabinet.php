@@ -196,7 +196,7 @@ $pageDescription = htmlspecialchars($cabinet['name']) . ' - ' . ($cabinet['type'
                             <?php foreach ($cabinet['pricing']['group'] as $price): ?>
                             <div class="flex justify-between items-center <?= isset($price['highlight']) && $price['highlight'] ? 'text-emerald-600' : '' ?>">
                                 <span class="text-sm text-gray-500"><?= htmlspecialchars($price['label']) ?></span>
-                                <span class="text-lg font-bold <?= isset($price['highlight']) && $price['highlight'] ? 'text-emerald-600' : 'text-slate-800' ?>"><?= $price['price'] ?>₽<span class="text-base font-normal text-gray-500">/час</span></span>
+                                <span class="text-lg font-bold <?= isset($price['highlight']) && $price['highlight'] ? 'text-emerald-600' : 'text-slate-800' ?>"><?= $price['price'] ?>BYN<span class="text-base font-normal text-gray-500">/час</span></span>
                             </div>
                             <?php endforeach; ?>
                         </div>
@@ -209,7 +209,7 @@ $pageDescription = htmlspecialchars($cabinet['name']) . ' - ' . ($cabinet['type'
                             <?php foreach ($cabinet['pricing']['individual'] as $price): ?>
                             <div class="flex justify-between items-center">
                                 <span class="text-sm text-gray-500"><?= htmlspecialchars($price['label']) ?></span>
-                                <span class="text-lg font-bold <?= isset($price['highlight']) && $price['highlight'] ? 'text-emerald-600' : 'text-slate-800' ?>"><?= $price['price'] ?>₽<span class="text-base font-normal text-gray-500">/час</span></span>
+                                <span class="text-lg font-bold <?= isset($price['highlight']) && $price['highlight'] ? 'text-emerald-600' : 'text-slate-800' ?>"><?= $price['price'] ?>BYN<span class="text-base font-normal text-gray-500">/час</span></span>
                             </div>
                             <?php endforeach; ?>
                         </div>
