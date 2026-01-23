@@ -304,467 +304,82 @@
             </div>
 
             <!-- Offices Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            <?php
+            // Load all cabinet JSON files
+            $cabinetsDir = __DIR__ . '/data/cabinets/';
+            $cabinets = [];
+            foreach (glob($cabinetsDir . '*.json') as $file) {
+                $data = json_decode(file_get_contents($file), true);
+                if ($data) {
+                    $cabinets[] = $data;
+                }
+            }
+            // Sort by order
+            usort($cabinets, fn($a, $b) => ($a['order'] ?? 99) - ($b['order'] ?? 99));
 
-                <!-- Кабинет 37 VIP-1 -->
-                <div class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
-                    <!-- Photo Placeholder -->
+            // Badge colors by type
+            function getBadgeColorIndex($type) {
+                return match($type) {
+                    'VIP' => 'bg-amber-500',
+                    'Большой Зал' => 'bg-emerald-500',
+                    'Зал' => 'bg-blue-500',
+                    default => 'bg-slate-500'
+                };
+            }
+            ?>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                <?php foreach ($cabinets as $cab): ?>
+                <a href="/cabinet/<?= htmlspecialchars($cab['slug']) ?>" class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col group">
                     <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 relative overflow-hidden">
-                        <span class="absolute top-3 right-3 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-semibold z-10">VIP</span>
-                        <img src="assets/cabinet-37/img.png" alt="Кабинет 37" class="w-full h-full object-cover" />
+                        <?php if ($cab['type']): ?>
+                        <span class="absolute top-3 right-3 <?= getBadgeColorIndex($cab['type']) ?> text-white px-3 py-1 rounded-full text-xs font-semibold z-10"><?= htmlspecialchars($cab['type']) ?></span>
+                        <?php endif; ?>
+                        <img src="<?= htmlspecialchars($cab['images']['main']) ?>" alt="<?= htmlspecialchars($cab['name']) ?>" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
                     </div>
                     <div class="p-5 flex flex-col flex-1">
                         <div class="flex items-center justify-between mb-3">
-                            <h3 class="text-xl font-bold text-gray-800">Кабинет 37</h3>
+                            <h3 class="text-xl font-bold text-gray-800"><?= htmlspecialchars($cab['name']) ?></h3>
                             <span class="inline-flex items-center px-3 py-1 bg-slate-100 rounded-full text-sm text-slate-700">
                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path>
                                 </svg>
-                                32 м²
+                                <?= htmlspecialchars($cab['size']) ?> м²
                             </span>
                         </div>
                         <div class="mb-3">
-                            <span class="text-sm text-gray-600 group-capacity">до 15 чел.</span>
+                            <span class="text-sm text-gray-600 group-capacity"><?= htmlspecialchars($cab['capacity']) ?></span>
                         </div>
 
                         <!-- Group Pricing -->
                         <div class="mb-3 pricing-group">
                             <div class="space-y-2">
+                                <?php foreach ($cab['pricing']['group'] as $price): ?>
                                 <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">35BYN/ч</span>
+                                    <span class="text-xs text-gray-600"><?= htmlspecialchars($price['label']) ?></span>
+                                    <span class="text-lg font-bold <?= isset($price['highlight']) && $price['highlight'] ? 'text-emerald-600' : 'text-slate-800' ?>"><?= $price['price'] ?>BYN/ч</span>
                                 </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
 
                         <!-- Individual Pricing -->
                         <div class="pricing-individual hidden">
                             <div class="space-y-2">
+                                <?php foreach ($cab['pricing']['individual'] as $price): ?>
                                 <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">Стандарт</span>
-                                    <span class="text-lg font-bold text-slate-800">25BYN/ч</span>
+                                    <span class="text-xs text-gray-600"><?= htmlspecialchars($price['label']) ?></span>
+                                    <span class="text-lg font-bold <?= isset($price['highlight']) && $price['highlight'] ? 'text-emerald-600' : 'text-slate-800' ?>"><?= $price['price'] ?>BYN/ч</span>
                                 </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
 
-                        <button class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold">
-                            Забронировать
-                        </button>
+                        <span class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg group-hover:bg-slate-700 transition text-sm font-semibold text-center">
+                            Подробнее
+                        </span>
                     </div>
-                </div>
-
-                <!-- Кабинет 28 VIP-2 -->
-                <div class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
-                    <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center relative">
-                        <span class="absolute top-3 right-3 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-semibold">VIP</span>
-                        <img src="assets/cabinet-28/img_1.png" alt="Кабинет 28" class="w-full h-full object-cover" />
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <div class="flex items-center justify-between mb-3">
-                            <h3 class="text-xl font-bold text-gray-800">Кабинет 28</h3>
-                            <span class="inline-flex items-center px-3 py-1 bg-slate-100 rounded-full text-sm text-slate-700">
-                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path>
-                                </svg>
-                                21 м²
-                            </span>
-                        </div>
-                        <div class="mb-3">
-                            <span class="text-sm text-gray-600 group-capacity">до 8 чел.</span>
-                        </div>
-
-                        <div class="mb-3 pricing-group">
-                            <div class="space-y-2">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">25BYN/ч</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="pricing-individual hidden">
-                            <div class="space-y-2">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">Стандарт</span>
-                                    <span class="text-lg font-bold text-slate-800">20BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">18:00-20:00</span>
-                                    <span class="text-lg font-bold text-slate-800">22BYN/ч</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold ">
-                            Забронировать
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Кабинет 27 -->
-                <div class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
-                    <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
-                        <svg class="w-16 h-16 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                        <img src="assets/cabinet-27/img.png" alt="Кабинет 27" class="w-full h-full object-cover" />
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <div class="flex items-center justify-between mb-3">
-                            <h3 class="text-xl font-bold text-gray-800">Кабинет 27</h3>
-                            <span class="inline-flex items-center px-3 py-1 bg-slate-100 rounded-full text-sm text-slate-700">
-                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path>
-                                </svg>
-                                21 м²
-                            </span>
-                        </div>
-                        <div class="mb-3">
-                            <span class="text-sm text-gray-600 group-capacity">до 10 чел.</span>
-                        </div>
-
-                        <div class="mb-3 pricing-group">
-                            <div class="space-y-2">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">22BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">20BYN/ч</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="pricing-individual hidden">
-                            <div class="space-y-2">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">18BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">16BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">11:00-16:00</span>
-                                    <span class="text-lg font-bold text-emerald-600">14BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">18:00-20:00</span>
-                                    <span class="text-lg font-bold text-slate-800">20BYN/ч</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold">
-                            Забронировать
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Кабинет 23 -->
-                <div class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
-                    <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
-
-                        <img src="assets/cabinet-23/img.png" alt="Кабинет 23" class="w-full h-full object-cover" />
-
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <div class="flex items-center justify-between mb-3">
-                            <h3 class="text-xl font-bold text-gray-800">Кабинет 23</h3>
-                            <span class="inline-flex items-center px-3 py-1 bg-slate-100 rounded-full text-sm text-slate-700">
-                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path>
-                                </svg>
-                                21 м²
-                            </span>
-                        </div>
-                        <div class="mb-3">
-                            <span class="text-sm text-gray-600 group-capacity">до 8 чел.</span>
-                        </div>
-
-                        <div class="mb-3 pricing-group">
-                            <div class="space-y-2">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">22BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">20BYN/ч</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="pricing-individual hidden">
-                            <div class="space-y-2">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">18BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">16BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">11:00-16:00</span>
-                                    <span class="text-lg font-bold text-emerald-600">14BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">18:00-20:00</span>
-                                    <span class="text-lg font-bold text-slate-800">20BYN/ч</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold">
-                            Забронировать
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Кабинет 9 -->
-                <div class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
-                    <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
-                        <img src="assets/cabinet-9/img.png" alt="Кабинет 9" class="w-full h-full object-cover" />
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <div class="flex items-center justify-between mb-3">
-                            <h3 class="text-xl font-bold text-gray-800">Кабинет 9</h3>
-                            <span class="inline-flex items-center px-3 py-1 bg-slate-100 rounded-full text-sm text-slate-700">
-                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path>
-                                </svg>
-                                21 м²
-                            </span>
-                        </div>
-                        <div class="mb-3">
-                            <span class="text-sm text-gray-600 group-capacity">до 8 чел.</span>
-                        </div>
-
-                        <div class="mb-3 pricing-group">
-                            <div class="space-y-2">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">22BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">20BYN/ч</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="pricing-individual hidden">
-                            <div class="space-y-2">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">18BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">16BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">11:00-16:00</span>
-                                    <span class="text-lg font-bold text-emerald-600">14BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">18:00-20:00</span>
-                                    <span class="text-lg font-bold text-slate-800">20BYN/ч</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold">
-                            Забронировать
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Кабинет 38.1 -->
-                <div class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
-                    <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
-                        <img src="assets/cabinet-38-1/img.png" alt="Кабинет 38.1" class="w-full h-full object-cover" />
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <div class="flex items-center justify-between mb-3">
-                            <h3 class="text-xl font-bold text-gray-800">Кабинет 38.1</h3>
-                            <span class="inline-flex items-center px-3 py-1 bg-slate-100 rounded-full text-sm text-slate-700">
-                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path>
-                                </svg>
-                                13.5 м²
-                            </span>
-                        </div>
-                        <div class="mb-3">
-                            <span class="text-sm text-gray-600 group-capacity">компактный</span>
-                        </div>
-
-                        <div class="mb-3 pricing-group">
-                            <div class="space-y-2">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">22BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">20BYN/ч</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="pricing-individual hidden">
-                            <div class="space-y-2">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">18BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">16BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">11:00-16:00</span>
-                                    <span class="text-lg font-bold text-emerald-600">14BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">18:00-20:00</span>
-                                    <span class="text-lg font-bold text-slate-800">20BYN/ч</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold">
-                            Забронировать
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Кабинет 51 -->
-                <div class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
-                    <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center relative">
-                        <span class="absolute top-3 right-3 bg-emerald-500 text-white px-3 py-1 rounded-full text-xs font-semibold">Большой Зал</span>
-
-                        <img src="assets/cabinet-51/img.png" alt="Кабинет 51" class="w-full h-full object-cover" />
-
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <div class="flex items-center justify-between mb-3">
-                            <h3 class="text-xl font-bold text-gray-800">Кабинет 51</h3>
-                            <span class="inline-flex items-center px-3 py-1 bg-slate-100 rounded-full text-sm text-slate-700">
-                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path>
-                                </svg>
-                                50 м²
-                            </span>
-                        </div>
-                        <div class="mb-3">
-                            <span class="text-sm text-gray-600 group-capacity">до 25 чел.</span>
-                        </div>
-
-                        <div class="mb-3 pricing-group">
-                            <div class="space-y-2">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">27BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">25BYN/ч</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="pricing-individual hidden">
-                            <div class="space-y-2">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">18BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">16BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">11:00-16:00</span>
-                                    <span class="text-lg font-bold text-emerald-600">14BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">18:00-20:00</span>
-                                    <span class="text-lg font-bold text-slate-800">20BYN/ч</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold">
-                            Забронировать
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Кабинет 38 -->
-                <div class="office-card bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
-                    <div class="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center relative">
-                        <span class="absolute top-3 right-3 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-semibold">Зал</span>
-                        <img src="assets/cabinet-38/img.png" alt="Кабинет 38" class="w-full h-full object-cover" />
-
-                    </div>
-                    <div class="p-5 flex flex-col flex-1">
-                        <div class="flex items-center justify-between mb-3">
-                            <h3 class="text-xl font-bold text-gray-800">Кабинет 38</h3>
-                            <span class="inline-flex items-center px-3 py-1 bg-slate-100 rounded-full text-sm text-slate-700">
-                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path>
-                                </svg>
-                                35 м²
-                            </span>
-                        </div>
-                        <div class="mb-3">
-                            <span class="text-sm text-gray-600 group-capacity">до 20 чел.</span>
-                        </div>
-
-                        <div class="mb-3 pricing-group">
-                            <div class="space-y-2">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">24BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">22BYN/ч</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="pricing-individual hidden">
-                            <div class="space-y-2">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">до 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">18BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">более 10 ч/нед</span>
-                                    <span class="text-lg font-bold text-slate-800">16BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">11:00-16:00</span>
-                                    <span class="text-lg font-bold text-emerald-600">14BYN/ч</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs text-gray-600">18:00-20:00</span>
-                                    <span class="text-lg font-bold text-slate-800">20BYN/ч</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button class="mt-auto w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-slate-700 transition text-sm font-semibold">
-                            Забронировать
-                        </button>
-                    </div>
-                </div>
-
+                </a>
+                <?php endforeach; ?>
             </div>
 
             <div class="mt-12 bg-blue-50 border-l-4 border-blue-400 p-6 max-w-4xl mx-auto">
