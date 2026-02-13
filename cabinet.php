@@ -30,7 +30,8 @@ if (!$cabinet) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Кабинет не найден - Кабинет24</title>
+        <title>Кабинет не найден — Кабинет24</title>
+        <meta name="robots" content="noindex, nofollow">
         <script src="https://cdn.tailwindcss.com"></script>
         <?php include 'templates/head.php'; ?>
     </head>
@@ -63,8 +64,26 @@ function getBadgeColor($type) {
 }
 
 $badgeColor = getBadgeColor($cabinet['type'] ?? null);
-$pageTitle = htmlspecialchars($cabinet['name']) . ' - Кабинет24';
-$pageDescription = htmlspecialchars($cabinet['name']) . ' - ' . ($cabinet['type'] ? $cabinet['type'] . ' кабинет' : 'кабинет') . ' для аренды в центре Минска. ' . $cabinet['size'] . ' м², ' . $cabinet['capacity'] . '.';
+
+// SEO: Build rich meta data
+$cabinetName = htmlspecialchars($cabinet['name']);
+$cabinetType = $cabinet['type'] ? $cabinet['type'] . ' кабинет' : 'кабинет';
+$pageTitle = $cabinetName . ' — аренда ' . mb_strtolower($cabinetType) . 'а почасово в Минске | Кабинет24';
+$pageDescription = $cabinetName . ' — ' . $cabinetType . ' для аренды в центре Минска, ' . $cabinet['size'] . ' м², ' . $cabinet['capacity'] . ' Почасовая аренда рядом с метро Академия наук. Wi-Fi, кондиционер, чай/кофе.';
+$canonicalUrl = 'https://kabinet24.by/cabinet/' . $cabinet['slug'];
+$mainImageUrl = 'https://kabinet24.by/' . $cabinet['images']['main'];
+
+// Минимальная цена для мета-данных
+$minPrice = null;
+foreach (['group', 'individual'] as $pricingType) {
+    if (!empty($cabinet['pricing'][$pricingType])) {
+        foreach ($cabinet['pricing'][$pricingType] as $p) {
+            if ($minPrice === null || $p['price'] < $minPrice) {
+                $minPrice = $p['price'];
+            }
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -74,6 +93,118 @@ $pageDescription = htmlspecialchars($cabinet['name']) . ' - ' . ($cabinet['type'
     <title><?= $pageTitle ?></title>
     <link rel="icon" type="image/png" href="/assets/logo.png">
     <meta name="description" content="<?= $pageDescription ?>">
+    <meta name="keywords" content="<?= $cabinetName ?>, аренда кабинета Минск, почасовая аренда, <?= htmlspecialchars(mb_strtolower($cabinetType)) ?> аренда, коворкинг Минск, аренда помещений Минск, метро Академия наук">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="<?= $canonicalUrl ?>">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="<?= $canonicalUrl ?>">
+    <meta property="og:title" content="<?= $pageTitle ?>">
+    <meta property="og:description" content="<?= $pageDescription ?>">
+    <meta property="og:image" content="<?= $mainImageUrl ?>">
+    <meta property="og:site_name" content="Кабинет24">
+    <meta property="og:locale" content="ru_RU">
+    <?php if ($minPrice): ?>
+    <meta property="product:price:amount" content="<?= $minPrice ?>">
+    <meta property="product:price:currency" content="BYN">
+    <?php endif; ?>
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?= $pageTitle ?>">
+    <meta name="twitter:description" content="<?= $pageDescription ?>">
+    <meta name="twitter:image" content="<?= $mainImageUrl ?>">
+
+    <!-- JSON-LD: Product -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "<?= $cabinetName ?>",
+        "description": "<?= htmlspecialchars($cabinet['description']) ?>",
+        "image": "<?= $mainImageUrl ?>",
+        "brand": {
+            "@type": "Brand",
+            "name": "Кабинет24"
+        },
+        "category": "Аренда помещений"
+        <?php if ($minPrice): ?>
+        ,"offers": {
+            "@type": "Offer",
+            "priceCurrency": "BYN",
+            "price": "<?= $minPrice ?>",
+            "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "price": "<?= $minPrice ?>",
+                "priceCurrency": "BYN",
+                "unitCode": "HUR",
+                "unitText": "час"
+            },
+            "availability": "https://schema.org/InStock",
+            "url": "<?= $canonicalUrl ?>"
+        }
+        <?php endif; ?>
+        ,"additionalProperty": [
+            {
+                "@type": "PropertyValue",
+                "name": "Площадь",
+                "value": "<?= $cabinet['size'] ?> м²"
+            },
+            {
+                "@type": "PropertyValue",
+                "name": "Вместимость",
+                "value": "<?= htmlspecialchars($cabinet['capacity']) ?>"
+            }
+        ]
+    }
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Главная",
+                "item": "https://kabinet24.by/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Кабинеты",
+                "item": "https://kabinet24.by/#offices"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "<?= $cabinetName ?>",
+                "item": "<?= $canonicalUrl ?>"
+            }
+        ]
+    }
+    </script>
+
+    <!-- JSON-LD: LocalBusiness -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Кабинет24",
+        "url": "https://kabinet24.by",
+        "telephone": "+375291916311",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "ул. Я. Коласа 37, МЦ Айсберг",
+            "addressLocality": "Минск",
+            "addressCountry": "BY"
+        },
+        "openingHours": "Mo-Su 09:00-22:00"
+    }
+    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -113,8 +244,8 @@ $pageDescription = htmlspecialchars($cabinet['name']) . ' - ' . ($cabinet['type'
 
     <main class="container mx-auto px-4 py-8">
         <!-- Breadcrumb -->
-        <nav class="mb-6 text-sm">
-            <ol class="flex items-center space-x-2 text-gray-500">
+        <nav class="mb-6 text-sm" aria-label="Навигация">
+            <ol class="flex items-center space-x-2 text-gray-500" itemscope itemtype="https://schema.org/BreadcrumbList">
                 <li><a href="/" class="hover:text-blue-600">Главная</a></li>
                 <li><span>/</span></li>
                 <li><a href="/#offices" class="hover:text-blue-600">Кабинеты</a></li>
@@ -123,7 +254,7 @@ $pageDescription = htmlspecialchars($cabinet['name']) . ' - ' . ($cabinet['type'
             </ol>
         </nav>
 
-        <div class="grid lg:grid-cols-2 gap-8">
+        <article class="grid lg:grid-cols-2 gap-8" itemscope itemtype="https://schema.org/Product">
             <!-- Photo Gallery -->
             <div class="space-y-4">
                 <!-- Main Photo -->
@@ -132,7 +263,7 @@ $pageDescription = htmlspecialchars($cabinet['name']) . ' - ' . ($cabinet['type'
                         <img
                             id="main-photo"
                             src="/<?= htmlspecialchars($cabinet['images']['main']) ?>"
-                            alt="<?= htmlspecialchars($cabinet['name']) ?> - главное фото"
+                            alt="<?= $cabinetName ?> — <?= htmlspecialchars($cabinetType) ?> для аренды в Минске, <?= $cabinet['size'] ?> м²"
                             class="w-full h-full object-cover hover:scale-105 transition duration-300"
                         >
                     </div>
@@ -143,7 +274,7 @@ $pageDescription = htmlspecialchars($cabinet['name']) . ' - ' . ($cabinet['type'
                 <div class="grid grid-cols-4 gap-3">
                     <?php foreach ($cabinet['images']['gallery'] as $index => $image): ?>
                     <a href="/<?= htmlspecialchars($image) ?>" class="glightbox thumbnail aspect-square rounded-lg overflow-hidden bg-gray-200 cursor-pointer" data-gallery="cabinet-gallery">
-                        <img src="/<?= htmlspecialchars($image) ?>" alt="Фото <?= $index + 1 ?>" class="w-full h-full object-cover">
+                        <img src="/<?= htmlspecialchars($image) ?>" alt="<?= $cabinetName ?> — фото интерьера <?= $index + 1 ?>" class="w-full h-full object-cover">
                     </a>
                     <?php endforeach; ?>
                 </div>
@@ -188,7 +319,7 @@ $pageDescription = htmlspecialchars($cabinet['name']) . ' - ' . ($cabinet['type'
 
                 <!-- Pricing -->
                 <div class="bg-white border border-gray-200 rounded-xl p-6 space-y-4">
-                    <h3 class="font-semibold text-lg text-gray-900">Стоимость аренды</h3>
+                    <h2 class="font-semibold text-lg text-gray-900">Стоимость аренды</h2>
 
                     <div class="space-y-3">
                         <!-- Group Pricing -->
@@ -226,7 +357,7 @@ $pageDescription = htmlspecialchars($cabinet['name']) . ' - ' . ($cabinet['type'
                 <!-- Amenities -->
                 <?php if (!empty($cabinet['amenities'])): ?>
                 <div class="space-y-3">
-                    <h3 class="font-semibold text-lg text-gray-900">Удобства</h3>
+                    <h2 class="font-semibold text-lg text-gray-900">Удобства</h2>
                     <div class="flex flex-wrap gap-2">
                         <?php foreach ($cabinet['amenities'] as $amenity): ?>
                         <span class="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-sm">
@@ -247,7 +378,7 @@ $pageDescription = htmlspecialchars($cabinet['name']) . ' - ' . ($cabinet['type'
                     </a>
                 </div>
             </div>
-        </div>
+        </article>
 
         <!-- Back to all -->
         <div class="mt-12 pt-8 border-t border-gray-200">
