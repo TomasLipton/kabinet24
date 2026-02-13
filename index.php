@@ -147,12 +147,12 @@
             <!-- Key Stats -->
             <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
                 <div class="text-center p-8 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border border-blue-200 shadow-sm hover:shadow-md transition">
-                    <div class="text-5xl font-bold text-blue-900 mb-2">8</div>
+                    <div class="text-5xl font-bold text-blue-900 mb-2">14</div>
                     <div class="text-blue-700 font-semibold">Кабинетов и залов</div>
-                    <div class="text-sm text-blue-600 mt-1">от 13.5 до 50 м²</div>
+                    <div class="text-sm text-blue-600 mt-1">от 12 до 50 м²</div>
                 </div>
                 <div class="text-center p-8 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
-                    <div class="text-5xl font-bold text-slate-900 mb-2">от 14BYN</div>
+                    <div class="text-5xl font-bold text-slate-900 mb-2">от 12BYN</div>
                     <div class="text-slate-700 font-semibold">Стоимость аренды</div>
                     <div class="text-sm text-slate-600 mt-1">за час</div>
                 </div>
@@ -192,7 +192,7 @@
                     <ul class="text-sm text-gray-600 space-y-1">
                         <li>• Наличными</li>
                         <li>• Картой через терминал</li>
-                        <li>• Безналичный расчет для юр. лиц</li>
+                        <li>• Безналичный расчет и оплата на сайте</li>
                     </ul>
                 </div>
 
@@ -219,7 +219,7 @@
                         </svg>
                     </div>
                     <h3 class="text-lg font-semibold mb-2 text-gray-800">Бесплатный паркинг</h3>
-                    <p class="text-sm text-gray-600">Удобная парковка для ваших клиентов прямо у здания</p>
+                    <p class="text-sm text-gray-600">Удобная парковка</p>
                 </div>
 
                 <!-- Дополнительное оборудование -->
@@ -230,7 +230,7 @@
                         </svg>
                     </div>
                     <h3 class="text-lg font-semibold mb-2 text-gray-800">Доп. оборудование</h3>
-                    <p class="text-sm text-gray-600 mb-2">За 2 руб/час:</p>
+                    <p class="text-sm text-gray-600 mb-2">За 3 руб/час:</p>
                     <ul class="text-sm text-gray-600 space-y-1">
                         <li>• Проектор</li>
                         <li>• Песочница</li>
