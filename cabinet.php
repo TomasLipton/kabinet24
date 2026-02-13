@@ -32,6 +32,7 @@ if (!$cabinet) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Кабинет не найден - Кабинет24</title>
         <script src="https://cdn.tailwindcss.com"></script>
+        <?php include 'templates/head.php'; ?>
     </head>
     <body class="bg-gray-50 min-h-screen flex items-center justify-center">
         <div class="text-center">
@@ -92,6 +93,7 @@ $pageDescription = htmlspecialchars($cabinet['name']) . ' - ' . ($cabinet['type'
             transform: scale(1.02);
         }
     </style>
+    <?php include 'templates/head.php'; ?>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->

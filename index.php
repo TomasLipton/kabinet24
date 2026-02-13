@@ -2,15 +2,6 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKM4RF1N9L"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-TKM4RF1N9L');
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Кабинет24 - Почасовая аренда уютных и современных кабинетов и залов в центре Минска</title>
@@ -100,6 +91,8 @@
         }
     }
     </script>
+
+    <?php include 'templates/head.php'; ?>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
