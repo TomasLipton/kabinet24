@@ -107,7 +107,7 @@
                     <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 transition">Контакты</a>
                 </div>
                 <a href="#" class="ms_booking bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
-                    Забронировать
+                    Забронировать онлайн
                 </a>
             </div>
         </nav>
@@ -597,6 +597,12 @@
                                 <p class="text-gray-600">г. Минск, ул. Я. Коласа 37<br>МЦ "Айсберг"<br>🚇 Ст. метро Академия наук</p>
                             </div>
                         </div>
+                        <a href="#" class="ms_booking mt-2 inline-flex items-center space-x-3 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition shadow-md hover:shadow-lg">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <span class="font-semibold">Забронировать онлайн</span>
+                        </a>
                     </div>
                 </div>
 
