@@ -4,7 +4,10 @@ deployment:
     - /bin/cp index.php $DEPLOYPATH
     - /bin/cp cabinet.php $DEPLOYPATH
     - /bin/cp .htaccess $DEPLOYPATH
-    - /bin/mkdir -p $DEPLOYPATH/data/cabinets
+    - /bin/mkdir -p $DEPLOYPATH/data/cabinets/en
     - /bin/cp -r data/cabinets/*.json $DEPLOYPATH/data/cabinets/
+    - /bin/cp -r data/cabinets/en/*.json $DEPLOYPATH/data/cabinets/en/
     - /bin/mkdir -p $DEPLOYPATH/templates
     - /bin/cp -r templates/*.php $DEPLOYPATH/templates/
+    - /bin/mkdir -p $DEPLOYPATH/lang
+    - /bin/cp -r lang/*.php $DEPLOYPATH/lang/

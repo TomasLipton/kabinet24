@@ -1,0 +1,55 @@
+{
+  "booking_url": "",
+  "order": 6,
+  "slug": "kabinet-27",
+  "number": "27",
+  "name": "Office 27",
+  "type": null,
+  "size": 21,
+  "capacity": "up to 10 people",
+  "description": "A comfortable office for individual and group work. Suitable for consultations, workshops, and small trainings.",
+  "images": {
+    "main": "assets/cabinet-27/img.webp",
+    "gallery": [
+      "assets/cabinet-27/img.webp"
+    ]
+  },
+  "pricing": {
+    "group": [
+      {
+        "label": "up to 10 h/week",
+        "price": 22
+      },
+      {
+        "label": "over 10 h/week",
+        "price": 20
+      }
+    ],
+    "individual": [
+      {
+        "label": "up to 10 h/week",
+        "price": 18
+      },
+      {
+        "label": "over 10 h/week",
+        "price": 16
+      },
+      {
+        "label": "11:00-16:00",
+        "price": 14,
+        "highlight": true
+      },
+      {
+        "label": "18:00-20:00",
+        "price": 20
+      }
+    ]
+  },
+  "amenities": [
+    "Wi-Fi",
+    "Air conditioning",
+    "Flipchart",
+    "Tea & coffee",
+    "Parking"
+  ]
+}

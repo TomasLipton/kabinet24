@@ -5,5 +5,11 @@ RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
+# /en/ -> index.php
+RewriteRule ^en/?$ index.php [L,QSA]
+
+# /en/cabinet/slug -> cabinet.php?slug=slug
+RewriteRule ^en/cabinet/([a-z0-9-]+)/?$ cabinet.php?slug=$1 [L,QSA]
+
 # /cabinet/slug -> cabinet.php?slug=slug
 RewriteRule ^cabinet/([a-z0-9-]+)/?$ cabinet.php?slug=$1 [L,QSA]

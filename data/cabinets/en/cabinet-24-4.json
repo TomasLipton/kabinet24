@@ -1,0 +1,58 @@
+{
+  "booking_url": "",
+  "order": 9,
+  "slug": "kabinet-24-4",
+  "number": "24.4",
+  "name": "Office 24.4",
+  "type": null,
+  "size": 16.5,
+  "capacity": "up to 10 people",
+  "description": "A functional office for individual and group work. Convenient location and comfortable setting.",
+  "images": {
+    "main": "assets/cabinet-24-4/img-1.webp",
+    "gallery": [
+      "assets/cabinet-24-4/img-1.webp",
+      "assets/cabinet-24-4/img-2.webp",
+      "assets/cabinet-24-4/img-3.webp",
+      "assets/cabinet-24-4/img-4.webp"
+    ]
+  },
+  "pricing": {
+    "group": [
+      {
+        "label": "up to 10 h/week",
+        "price": 22
+      },
+      {
+        "label": "over 10 h/week",
+        "price": 20
+      }
+    ],
+    "individual": [
+      {
+        "label": "up to 10 h/week",
+        "price": 18
+      },
+      {
+        "label": "over 10 h/week",
+        "price": 16
+      },
+      {
+        "label": "11:00-16:00",
+        "price": 14,
+        "highlight": true
+      },
+      {
+        "label": "18:00-20:00",
+        "price": 20
+      }
+    ]
+  },
+  "amenities": [
+    "Wi-Fi",
+    "Air conditioning",
+    "Flipchart",
+    "Tea & coffee",
+    "Parking"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "booking_url": "https://n1816695.yclients.com/company/1612443/personal/select-time?o=m4985073",
+  "order": 11,
+  "slug": "kabinet-51-bolshoy-zal",
+  "number": "51",
+  "name": "Office 51",
+  "type": "Large Hall",
+  "size": 50,
+  "capacity": "up to 25 people",
+  "description": "A spacious hall for trainings, seminars, lectures, and group events. The largest room with excellent capacity.",
+  "images": {
+    "main": "assets/cabinet-51/img.webp",
+    "gallery": [
+      "assets/cabinet-51/img.webp"
+    ]
+  },
+  "pricing": {
+    "group": [
+      {
+        "label": "up to 10 h/week",
+        "price": 27
+      },
+      {
+        "label": "over 10 h/week",
+        "price": 25
+      }
+    ],
+    "individual": [
+      {
+        "label": "up to 10 h/week",
+        "price": 18
+      },
+      {
+        "label": "over 10 h/week",
+        "price": 16
+      },
+      {
+        "label": "11:00-16:00",
+        "price": 14,
+        "highlight": true
+      },
+      {
+        "label": "18:00-20:00",
+        "price": 20
+      }
+    ]
+  },
+  "amenities": [
+    "Wi-Fi",
+    "Air conditioning",
+    "Flipchart",
+    "Tea & coffee",
+    "Parking"
+  ]
+}

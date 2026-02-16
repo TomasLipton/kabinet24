@@ -1,17 +1,18 @@
 <?php
+require __DIR__ . '/lang/helper.php';
+
 // Получаем slug из URL
 $slug = $_GET['slug'] ?? '';
 $slug = preg_replace('/[^a-z0-9-]/', '', $slug);
 
 if (empty($slug)) {
-    header('Location: /#offices');
+    header('Location: ' . $langPrefix . '/#offices');
     exit;
 }
 
 // Ищем JSON файл по slug
 $cabinet = null;
-$cabinetsDir = __DIR__ . '/data/cabinets/';
-$files = glob($cabinetsDir . '*.json');
+$files = glob($cabinetsDataDir . '*.json');
 
 foreach ($files as $file) {
     $data = json_decode(file_get_contents($file), true);
@@ -26,11 +27,11 @@ if (!$cabinet) {
     http_response_code(404);
     ?>
     <!DOCTYPE html>
-    <html lang="ru">
+    <html lang="<?= $lang ?>">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Кабинет не найден — Кабинет24</title>
+        <title><?= $t['cabinet_not_found_title'] ?></title>
         <meta name="robots" content="noindex, nofollow">
         <script src="https://cdn.tailwindcss.com"></script>
         <?php include 'templates/head.php'; ?>
@@ -38,9 +39,9 @@ if (!$cabinet) {
     <body class="bg-gray-50 min-h-screen flex items-center justify-center">
         <div class="text-center">
             <h1 class="text-6xl font-bold text-gray-300 mb-4">404</h1>
-            <p class="text-xl text-gray-600 mb-8">Кабинет не найден</p>
-            <a href="/#offices" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
-                Смотреть все кабинеты
+            <p class="text-xl text-gray-600 mb-8"><?= $t['cabinet_not_found'] ?></p>
+            <a href="<?= $langPrefix ?>/#offices" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+                <?= $t['cabinet_view_all'] ?>
             </a>
         </div>
     <?php include 'templates/footer-scripts.php'; ?>
@@ -52,42 +53,47 @@ if (!$cabinet) {
 
 // Функция для получения badge цвета по типу
 function getBadgeColor($type) {
-    switch ($type) {
-        case 'VIP':
-            return 'bg-amber-500';
-        case 'Большой Зал':
-            return 'bg-emerald-500';
-        case 'Зал':
-            return 'bg-blue-500';
-        default:
-            return 'bg-slate-500';
-    }
+    return match($type) {
+        'VIP' => 'bg-amber-500',
+        'Большой Зал', 'Large Hall' => 'bg-emerald-500',
+        'Зал', 'Hall' => 'bg-blue-500',
+        default => 'bg-slate-500'
+    };
 }
 
 $badgeColor = getBadgeColor($cabinet['type'] ?? null);
 
 // SEO: Build rich meta data
 $cabinetName = htmlspecialchars($cabinet['name']);
-// Родительный падеж для title: "аренда (чего?)"
+
 switch ($cabinet['type']) {
     case 'VIP':
-        $cabinetTypeGenitive = 'VIP кабинета';
+        $cabinetTypeGenitive = $t['cabinet_seo_type_vip_genitive'];
+        $cabinetType = $t['cabinet_seo_type_vip'];
         break;
     case 'Зал':
-        $cabinetTypeGenitive = 'зала';
+    case 'Hall':
+        $cabinetTypeGenitive = $t['cabinet_seo_type_hall_genitive'];
+        $cabinetType = $t['cabinet_seo_type_hall'];
         break;
     case 'Большой Зал':
-        $cabinetTypeGenitive = 'большого зала';
+    case 'Large Hall':
+        $cabinetTypeGenitive = $t['cabinet_seo_type_large_hall_genitive'];
+        $cabinetType = $t['cabinet_seo_type_large_hall'];
         break;
     default:
-        $cabinetTypeGenitive = 'кабинета';
+        $cabinetTypeGenitive = $t['cabinet_seo_type_default_genitive'];
+        $cabinetType = $t['cabinet_seo_type_default'];
         break;
 }
-$cabinetType = $cabinet['type'] ? $cabinet['type'] . ' кабинет' : 'кабинет';
-$pageTitle = $cabinetName . ' — аренда ' . $cabinetTypeGenitive . ' почасово в Минске';
-$pageDescription = $cabinetName . ' — ' . $cabinetType . ' для аренды в центре Минска, ' . $cabinet['size'] . ' м², ' . $cabinet['capacity'] . ' Почасовая аренда рядом с метро Академия наук. Wi-Fi, кондиционер, чай/кофе.';
-$canonicalUrl = 'https://kabinet24.by/cabinet/' . $cabinet['slug'];
+
+$pageTitle = sprintf($t['cabinet_seo_title_pattern'], $cabinetName, $cabinetTypeGenitive);
+$pageDescription = sprintf($t['cabinet_seo_desc_pattern'], $cabinetName, $cabinetType, $cabinet['size'], $cabinet['capacity']);
+$canonicalUrl = 'https://kabinet24.by' . $langPrefix . '/cabinet/' . $cabinet['slug'];
+$alternateRuUrl = 'https://kabinet24.by/cabinet/' . $cabinet['slug'];
+$alternateEnUrl = 'https://kabinet24.by/en/cabinet/' . $cabinet['slug'];
 $mainImageUrl = 'https://kabinet24.by/' . $cabinet['images']['main'];
+$seoKeywords = sprintf($t['cabinet_seo_keywords_pattern'], $cabinetName, htmlspecialchars(mb_strtolower($cabinetType)));
 
 // Минимальная цена для мета-данных
 $minPrice = null;
@@ -102,16 +108,19 @@ foreach (['group', 'individual'] as $pricingType) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="<?= $lang ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $pageTitle ?></title>
     <link rel="icon" type="image/png" href="/assets/logo.png">
     <meta name="description" content="<?= $pageDescription ?>">
-    <meta name="keywords" content="<?= $cabinetName ?>, аренда кабинета Минск, почасовая аренда, <?= htmlspecialchars(mb_strtolower($cabinetType)) ?> аренда, коворкинг Минск, аренда помещений Минск, метро Академия наук">
+    <meta name="keywords" content="<?= $seoKeywords ?>">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="<?= $canonicalUrl ?>">
+    <link rel="alternate" hreflang="ru" href="<?= $alternateRuUrl ?>">
+    <link rel="alternate" hreflang="en" href="<?= $alternateEnUrl ?>">
+    <link rel="alternate" hreflang="x-default" href="<?= $alternateRuUrl ?>">
 
     <!-- Open Graph -->
     <meta property="og:type" content="product">
@@ -119,8 +128,8 @@ foreach (['group', 'individual'] as $pricingType) {
     <meta property="og:title" content="<?= $pageTitle ?>">
     <meta property="og:description" content="<?= $pageDescription ?>">
     <meta property="og:image" content="<?= $mainImageUrl ?>">
-    <meta property="og:site_name" content="Кабинет24">
-    <meta property="og:locale" content="ru_RU">
+    <meta property="og:site_name" content="<?= $t['site_name'] ?>">
+    <meta property="og:locale" content="<?= $ogLocale ?>">
     <?php if ($minPrice): ?>
     <meta property="product:price:amount" content="<?= $minPrice ?>">
     <meta property="product:price:currency" content="BYN">
@@ -142,9 +151,9 @@ foreach (['group', 'individual'] as $pricingType) {
         "image": "<?= $mainImageUrl ?>",
         "brand": {
             "@type": "Brand",
-            "name": "Кабинет24"
+            "name": "<?= $t['jsonld_brand'] ?>"
         },
-        "category": "Аренда помещений"
+        "category": "<?= $t['jsonld_category'] ?>"
         <?php if ($minPrice): ?>
         ,"offers": {
             "@type": "Offer",
@@ -155,7 +164,7 @@ foreach (['group', 'individual'] as $pricingType) {
                 "price": "<?= $minPrice ?>",
                 "priceCurrency": "BYN",
                 "unitCode": "HUR",
-                "unitText": "час"
+                "unitText": "<?= $t['jsonld_unit_text'] ?>"
             },
             "availability": "https://schema.org/InStock",
             "url": "<?= $canonicalUrl ?>"
@@ -164,12 +173,12 @@ foreach (['group', 'individual'] as $pricingType) {
         ,"additionalProperty": [
             {
                 "@type": "PropertyValue",
-                "name": "Площадь",
-                "value": "<?= $cabinet['size'] ?> м²"
+                "name": "<?= $t['jsonld_area'] ?>",
+                "value": "<?= $cabinet['size'] ?> <?= $t['offices_sqm'] ?>"
             },
             {
                 "@type": "PropertyValue",
-                "name": "Вместимость",
+                "name": "<?= $t['jsonld_capacity'] ?>",
                 "value": "<?= htmlspecialchars($cabinet['capacity']) ?>"
             }
         ]
@@ -185,14 +194,14 @@ foreach (['group', 'individual'] as $pricingType) {
             {
                 "@type": "ListItem",
                 "position": 1,
-                "name": "Главная",
-                "item": "https://kabinet24.by/"
+                "name": "<?= $t['jsonld_home'] ?>",
+                "item": "https://kabinet24.by<?= $langPrefix ?>/"
             },
             {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "Кабинеты",
-                "item": "https://kabinet24.by/#offices"
+                "name": "<?= $t['jsonld_offices'] ?>",
+                "item": "https://kabinet24.by<?= $langPrefix ?>/#offices"
             },
             {
                 "@type": "ListItem",
@@ -209,13 +218,13 @@ foreach (['group', 'individual'] as $pricingType) {
     {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
-        "name": "Кабинет24",
-        "url": "https://kabinet24.by",
+        "name": "<?= $t['jsonld_brand'] ?>",
+        "url": "https://kabinet24.by<?= $langPrefix ?>",
         "telephone": "+375291916311",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "ул. Я. Коласа 37, МЦ Айсберг",
-            "addressLocality": "Минск",
+            "streetAddress": "<?= $t['jsonld_cabinet_street'] ?>",
+            "addressLocality": "<?= $t['jsonld_cabinet_city'] ?>",
             "addressCountry": "BY"
         },
         "openingHours": "Mo-Su 09:00-22:00"
@@ -247,24 +256,27 @@ foreach (['group', 'individual'] as $pricingType) {
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
-                <a href="/" class="text-2xl font-bold text-blue-600">Кабинет24</a>
-                <a href="/" class="text-gray-600 hover:text-blue-600 transition flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                    </svg>
-                    Все кабинеты
-                </a>
+                <a href="<?= $langPrefix ?>/" class="text-2xl font-bold text-blue-600"><?= $t['site_name'] ?></a>
+                <div class="flex items-center gap-4">
+                    <a href="<?= $langPrefix ?>/" class="text-gray-600 hover:text-blue-600 transition flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        <?= $t['cabinet_all'] ?>
+                    </a>
+                    <a href="<?= $lang === 'ru' ? '/en/cabinet/' . $cabinet['slug'] : '/cabinet/' . $cabinet['slug'] ?>" class="text-gray-500 hover:text-blue-600 transition font-medium"><?= $lang === 'ru' ? 'EN' : 'RU' ?></a>
+                </div>
             </div>
         </nav>
     </header>
 
     <main class="container mx-auto px-4 py-8">
         <!-- Breadcrumb -->
-        <nav class="mb-6 text-sm" aria-label="Навигация">
+        <nav class="mb-6 text-sm" aria-label="<?= $t['cabinet_breadcrumb_aria'] ?>">
             <ol class="flex items-center space-x-2 text-gray-500" itemscope itemtype="https://schema.org/BreadcrumbList">
-                <li><a href="/" class="hover:text-blue-600">Главная</a></li>
+                <li><a href="<?= $langPrefix ?>/" class="hover:text-blue-600"><?= $t['cabinet_breadcrumb_home'] ?></a></li>
                 <li><span>/</span></li>
-                <li><a href="/#offices" class="hover:text-blue-600">Кабинеты</a></li>
+                <li><a href="<?= $langPrefix ?>/#offices" class="hover:text-blue-600"><?= $t['cabinet_breadcrumb_offices'] ?></a></li>
                 <li><span>/</span></li>
                 <li class="text-gray-900 font-medium"><?= htmlspecialchars($cabinet['name']) ?></li>
             </ol>
@@ -279,7 +291,7 @@ foreach (['group', 'individual'] as $pricingType) {
                         <img
                             id="main-photo"
                             src="/<?= htmlspecialchars($cabinet['images']['main']) ?>"
-                            alt="<?= $cabinetName ?> — <?= htmlspecialchars($cabinetType) ?> для аренды в Минске, <?= $cabinet['size'] ?> м²"
+                            alt="<?= sprintf($t['cabinet_seo_img_alt_pattern'], $cabinetName, htmlspecialchars($cabinetType), $cabinet['size']) ?>"
                             class="w-full h-full object-cover hover:scale-105 transition duration-300"
                             loading="lazy" width="600" height="450"
                         >
@@ -291,7 +303,7 @@ foreach (['group', 'individual'] as $pricingType) {
                 <div class="grid grid-cols-4 gap-3">
                     <?php foreach ($cabinet['images']['gallery'] as $index => $image): ?>
                     <a href="/<?= htmlspecialchars($image) ?>" class="glightbox thumbnail aspect-square rounded-lg overflow-hidden bg-gray-200 cursor-pointer" data-gallery="cabinet-gallery">
-                        <img src="/<?= htmlspecialchars($image) ?>" alt="<?= $cabinetName ?> — фото интерьера <?= $index + 1 ?>" class="w-full h-full object-cover" loading="lazy" width="150" height="150">
+                        <img src="/<?= htmlspecialchars($image) ?>" alt="<?= sprintf($t['cabinet_seo_gallery_alt_pattern'], $cabinetName, $index + 1) ?>" class="w-full h-full object-cover" loading="lazy" width="150" height="150">
                     </a>
                     <?php endforeach; ?>
                 </div>
@@ -305,7 +317,7 @@ foreach (['group', 'individual'] as $pricingType) {
                     <?php if ($cabinet['type']): ?>
                     <div class="flex items-center gap-3 mb-2">
                         <span class="<?= $badgeColor ?> text-white px-3 py-1 rounded-full text-xs font-semibold"><?= htmlspecialchars($cabinet['type']) ?></span>
-                        <span class="text-gray-500 text-sm">Кабинет для групповой и индивидуальной работы</span>
+                        <span class="text-gray-500 text-sm"><?= $t['cabinet_subtitle'] ?></span>
                     </div>
                     <?php endif; ?>
                     <h1 class="text-3xl md:text-4xl font-bold text-gray-900"><?= htmlspecialchars($cabinet['name']) ?></h1>
@@ -317,7 +329,7 @@ foreach (['group', 'individual'] as $pricingType) {
                         <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path>
                         </svg>
-                        <span class="font-semibold text-slate-800"><?= htmlspecialchars($cabinet['size']) ?> м²</span>
+                        <span class="font-semibold text-slate-800"><?= htmlspecialchars($cabinet['size']) ?> <?= $t['offices_sqm'] ?></span>
                     </div>
                     <div class="flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-lg">
                         <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -336,17 +348,17 @@ foreach (['group', 'individual'] as $pricingType) {
 
                 <!-- Pricing -->
                 <div class="bg-white border border-gray-200 rounded-xl p-6 space-y-4">
-                    <h2 class="font-semibold text-lg text-gray-900">Стоимость аренды</h2>
+                    <h2 class="font-semibold text-lg text-gray-900"><?= $t['cabinet_pricing_h2'] ?></h2>
 
                     <div class="space-y-3">
                         <!-- Group Pricing -->
                         <?php if (!empty($cabinet['pricing']['group'])): ?>
                         <div class="pb-3 border-b border-gray-100">
-                            <p class="font-medium text-gray-900 mb-2">Групповая аренда</p>
+                            <p class="font-medium text-gray-900 mb-2"><?= $t['cabinet_pricing_group'] ?></p>
                             <?php foreach ($cabinet['pricing']['group'] as $price): ?>
                             <div class="flex justify-between items-center <?= isset($price['highlight']) && $price['highlight'] ? 'text-emerald-600' : '' ?>">
                                 <span class="text-sm text-gray-500"><?= htmlspecialchars($price['label']) ?></span>
-                                <span class="text-lg font-bold <?= isset($price['highlight']) && $price['highlight'] ? 'text-emerald-600' : 'text-slate-800' ?>"><?= $price['price'] ?>BYN<span class="text-base font-normal text-gray-500">/час</span></span>
+                                <span class="text-lg font-bold <?= isset($price['highlight']) && $price['highlight'] ? 'text-emerald-600' : 'text-slate-800' ?>"><?= $price['price'] ?>BYN<span class="text-base font-normal text-gray-500"><?= $t['cabinet_pricing_unit'] ?></span></span>
                             </div>
                             <?php endforeach; ?>
                         </div>
@@ -355,11 +367,11 @@ foreach (['group', 'individual'] as $pricingType) {
                         <!-- Individual Pricing -->
                         <?php if (!empty($cabinet['pricing']['individual'])): ?>
                         <div class="pb-3">
-                            <p class="font-medium text-gray-900 mb-2">Индивидуальная аренда</p>
+                            <p class="font-medium text-gray-900 mb-2"><?= $t['cabinet_pricing_individual'] ?></p>
                             <?php foreach ($cabinet['pricing']['individual'] as $price): ?>
                             <div class="flex justify-between items-center">
                                 <span class="text-sm text-gray-500"><?= htmlspecialchars($price['label']) ?></span>
-                                <span class="text-lg font-bold <?= isset($price['highlight']) && $price['highlight'] ? 'text-emerald-600' : 'text-slate-800' ?>"><?= $price['price'] ?>BYN<span class="text-base font-normal text-gray-500">/час</span></span>
+                                <span class="text-lg font-bold <?= isset($price['highlight']) && $price['highlight'] ? 'text-emerald-600' : 'text-slate-800' ?>"><?= $price['price'] ?>BYN<span class="text-base font-normal text-gray-500"><?= $t['cabinet_pricing_unit'] ?></span></span>
                             </div>
                             <?php endforeach; ?>
                         </div>
@@ -367,14 +379,14 @@ foreach (['group', 'individual'] as $pricingType) {
                     </div>
 
                     <p class="text-sm text-gray-500">
-                        * Скидка 10% при аренде более 10 ч/неделю
+                        <?= $t['cabinet_pricing_note'] ?>
                     </p>
                 </div>
 
                 <!-- Amenities -->
                 <?php if (!empty($cabinet['amenities'])): ?>
                 <div class="space-y-3">
-                    <h2 class="font-semibold text-lg text-gray-900">Удобства</h2>
+                    <h2 class="font-semibold text-lg text-gray-900"><?= $t['cabinet_amenities_h2'] ?></h2>
                     <div class="flex flex-wrap gap-2">
                         <?php foreach ($cabinet['amenities'] as $amenity): ?>
                         <span class="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-sm">
@@ -389,15 +401,15 @@ foreach (['group', 'individual'] as $pricingType) {
                 <div class="flex flex-col gap-3 pt-4">
                     <?php if (!empty($cabinet['booking_url'])): ?>
                     <a href="<?= htmlspecialchars($cabinet['booking_url']) ?>" target="_blank" rel="noopener" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition text-center text-lg">
-                        Записаться онлайн
+                        <?= $t['cabinet_book_online'] ?>
                     </a>
                     <?php endif; ?>
                     <div class="flex flex-col sm:flex-row gap-3">
                         <a href="tel:+375291916311" class="flex-1 bg-slate-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-700 transition text-center">
-                            📞 Позвонить
+                            <?= $t['cabinet_call'] ?>
                         </a>
                         <a href="https://t.me/psychoanalitik_by" target="_blank" rel="noopener" class="flex-1 bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition text-center">
-                            Написать в Telegram
+                            <?= $t['cabinet_telegram'] ?>
                         </a>
                     </div>
                 </div>
@@ -406,11 +418,11 @@ foreach (['group', 'individual'] as $pricingType) {
 
         <!-- Back to all -->
         <div class="mt-12 pt-8 border-t border-gray-200">
-            <a href="/#offices" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium">
+            <a href="<?= $langPrefix ?>/#offices" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                 </svg>
-                Смотреть все кабинеты
+                <?= $t['cabinet_view_all'] ?>
             </a>
         </div>
     </main>

@@ -1,0 +1,45 @@
+{
+  "booking_url": "",
+  "order": 3,
+  "slug": "kabinet-24-1-vip",
+  "number": "24.1",
+  "name": "Office 24.1",
+  "type": "VIP",
+  "size": 19.7,
+  "capacity": "up to 8 people",
+  "description": "A VIP office for individual consultations and small group sessions. Comfortable setting and modern interior.",
+  "images": {
+    "main": "assets/cabinet-24-1/img-4.webp",
+    "gallery": [
+      "assets/cabinet-24-1/img-1.webp",
+      "assets/cabinet-24-1/img-2.webp",
+      "assets/cabinet-24-1/img-3.webp",
+      "assets/cabinet-24-1/img-4.webp"
+    ]
+  },
+  "pricing": {
+    "group": [
+      {
+        "label": "Standard",
+        "price": 25
+      }
+    ],
+    "individual": [
+      {
+        "label": "Standard",
+        "price": 20
+      },
+      {
+        "label": "18:00-20:00",
+        "price": 22
+      }
+    ]
+  },
+  "amenities": [
+    "Wi-Fi",
+    "Air conditioning",
+    "Flipchart",
+    "Tea & coffee",
+    "Parking"
+  ]
+}

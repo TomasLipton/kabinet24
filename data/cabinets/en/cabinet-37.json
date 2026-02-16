@@ -1,0 +1,38 @@
+{
+  "booking_url": "",
+  "order": 1,
+  "slug": "kabinet-37-vip",
+  "number": "37",
+  "name": "Office 37",
+  "type": "VIP",
+  "size": 32,
+  "capacity": "up to 15 people",
+  "description": "A spacious VIP office with modern renovation, ideal for trainings, seminars, group classes, and business meetings. Panoramic windows provide natural lighting.",
+  "images": {
+    "main": "assets/cabinet-37/img.webp",
+    "gallery": [
+      "assets/cabinet-37/img.webp"
+    ]
+  },
+  "pricing": {
+    "group": [
+      {
+        "label": "up to 10 h/week",
+        "price": 35
+      }
+    ],
+    "individual": [
+      {
+        "label": "Standard",
+        "price": 25
+      }
+    ]
+  },
+  "amenities": [
+    "Wi-Fi",
+    "Air conditioning",
+    "Flipchart",
+    "Tea & coffee",
+    "Parking"
+  ]
+}
