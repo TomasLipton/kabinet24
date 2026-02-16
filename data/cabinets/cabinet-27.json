@@ -9,9 +9,9 @@
   "capacity": "до 10 чел.",
   "description": "Комфортный кабинет для индивидуальной и групповой работы. Подходит для консультаций, мастер-классов и небольших тренингов.",
   "images": {
-    "main": "assets/cabinet-27/img.png",
+    "main": "assets/cabinet-27/img.webp",
     "gallery": [
-      "assets/cabinet-27/img.png"
+      "assets/cabinet-27/img.webp"
     ]
   },
   "pricing": {

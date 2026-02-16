@@ -42,6 +42,17 @@ The page sections (in order):
 
 All user-facing content is in Russian. Maintain Russian language for any text additions or modifications.
 
-##Other
+## Images
 
-Use BYN for currency 
+При добавлении новых изображений кабинетов:
+
+1. **Формат**: WebP, качество 80%, ширина 600px (высота автоматически)
+2. **Конвертация**: `cwebp -resize 600 0 -q 80 original.png -o output.webp`
+3. **Оригиналы**: сохранять с постфиксом `_full` (например `img_full.png`) — они не коммитятся, но хранятся локально
+4. **Структура папок**: `assets/cabinet-{number}/` — WebP файлы для сайта, `_full` файлы как бэкап
+5. **JSON**: пути в `data/cabinets/cabinet-{number}.json` должны указывать на `.webp` файлы
+6. **HTML атрибуты**: все `<img>` должны иметь `loading="lazy"`, `width` и `height`
+
+## Other
+
+Use BYN for currency

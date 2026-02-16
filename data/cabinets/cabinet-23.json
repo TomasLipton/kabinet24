@@ -9,9 +9,9 @@
   "capacity": "до 8 чел.",
   "description": "Уютный кабинет для индивидуальных консультаций и небольших групповых занятий. Спокойная атмосфера для продуктивной работы.",
   "images": {
-    "main": "assets/cabinet-23/img.png",
+    "main": "assets/cabinet-23/img.webp",
     "gallery": [
-      "assets/cabinet-23/img.png"
+      "assets/cabinet-23/img.webp"
     ]
   },
   "pricing": {

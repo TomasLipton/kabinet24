@@ -9,12 +9,12 @@
   "capacity": "до 20 чел.",
   "description": "Просторный кабинет для проведения тренингов, групповых занятий и индивидуальных консультаций. Комфортная обстановка и удобное расположение.",
   "images": {
-    "main": "assets/cabinet-43/43-1.jpg",
+    "main": "assets/cabinet-43/43-1.webp",
     "gallery": [
-      "assets/cabinet-43/43.jpg",
-      "assets/cabinet-43/43-1.jpg",
-      "assets/cabinet-43/43-2.jpg",
-      "assets/cabinet-43/43-3.jpg"
+      "assets/cabinet-43/43.webp",
+      "assets/cabinet-43/43-1.webp",
+      "assets/cabinet-43/43-2.webp",
+      "assets/cabinet-43/43-3.webp"
     ]
   },
   "pricing": {

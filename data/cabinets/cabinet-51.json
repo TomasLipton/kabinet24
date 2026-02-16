@@ -9,9 +9,9 @@
   "capacity": "до 25 чел.",
   "description": "Просторный зал для проведения тренингов, семинаров, лекций и групповых мероприятий. Самое большое помещение с отличной вместимостью.",
   "images": {
-    "main": "assets/cabinet-51/img.png",
+    "main": "assets/cabinet-51/img.webp",
     "gallery": [
-      "assets/cabinet-51/img.png"
+      "assets/cabinet-51/img.webp"
     ]
   },
   "pricing": {

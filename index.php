@@ -327,7 +327,7 @@
                         <?php if ($cab['type']): ?>
                         <span class="absolute top-3 right-3 <?= getBadgeColorIndex($cab['type']) ?> text-white px-3 py-1 rounded-full text-xs font-semibold z-10"><?= htmlspecialchars($cab['type']) ?></span>
                         <?php endif; ?>
-                        <img src="<?= htmlspecialchars($cab['images']['main']) ?>" alt="<?= htmlspecialchars($cab['name']) ?>" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+                        <img src="<?= htmlspecialchars($cab['images']['main']) ?>" alt="<?= htmlspecialchars($cab['name']) ?>" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" width="600" height="400" />
                     </div>
                     <div class="p-5 flex flex-col flex-1">
                         <div class="flex items-center justify-between mb-3">

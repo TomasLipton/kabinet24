@@ -9,9 +9,9 @@
   "capacity": "до 8 чел.",
   "description": "Уютный VIP-кабинет для индивидуальных консультаций и небольших групповых занятий. Современный интерьер и комфортная атмосфера.",
   "images": {
-    "main": "assets/cabinet-28/img_1.png",
+    "main": "assets/cabinet-28/img_1.webp",
     "gallery": [
-      "assets/cabinet-28/img_1.png"
+      "assets/cabinet-28/img_1.webp"
     ]
   },
   "pricing": {

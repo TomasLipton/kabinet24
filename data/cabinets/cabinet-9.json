@@ -9,9 +9,9 @@
   "capacity": "до 8 чел.",
   "description": "Функциональный кабинет для индивидуальных консультаций и небольших групповых занятий. Удобное расположение и комфортная обстановка.",
   "images": {
-    "main": "assets/cabinet-9/img.png",
+    "main": "assets/cabinet-9/img.webp",
     "gallery": [
-      "assets/cabinet-9/img.png"
+      "assets/cabinet-9/img.webp"
     ]
   },
   "pricing": {

@@ -9,11 +9,11 @@
   "capacity": "до 20 чел.",
   "description": "Просторный зал для проведения тренингов, мастер-классов и групповых занятий. Отличное освещение и вместительность.",
   "images": {
-    "main": "assets/cabinet-24-2/img-1.jpg",
+    "main": "assets/cabinet-24-2/img-1.webp",
     "gallery": [
-      "assets/cabinet-24-2/img-1.jpg",
-      "assets/cabinet-24-2/img-2.jpg",
-      "assets/cabinet-24-2/img-3.jpg"
+      "assets/cabinet-24-2/img-1.webp",
+      "assets/cabinet-24-2/img-2.webp",
+      "assets/cabinet-24-2/img-3.webp"
     ]
   },
   "pricing": {

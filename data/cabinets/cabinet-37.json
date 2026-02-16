@@ -9,9 +9,9 @@
   "capacity": "до 15 чел.",
   "description": "Просторный VIP-кабинет с современным ремонтом, идеально подходит для проведения тренингов, семинаров, групповых занятий и деловых встреч. Панорамные окна обеспечивают естественное освещение.",
   "images": {
-    "main": "assets/cabinet-37/img.png",
+    "main": "assets/cabinet-37/img.webp",
     "gallery": [
-      "assets/cabinet-37/img.png"
+      "assets/cabinet-37/img.webp"
     ]
   },
   "pricing": {

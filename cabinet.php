@@ -280,6 +280,7 @@ foreach (['group', 'individual'] as $pricingType) {
                             src="/<?= htmlspecialchars($cabinet['images']['main']) ?>"
                             alt="<?= $cabinetName ?> — <?= htmlspecialchars($cabinetType) ?> для аренды в Минске, <?= $cabinet['size'] ?> м²"
                             class="w-full h-full object-cover hover:scale-105 transition duration-300"
+                            loading="lazy" width="600" height="450"
                         >
                     </div>
                 </a>
@@ -289,7 +290,7 @@ foreach (['group', 'individual'] as $pricingType) {
                 <div class="grid grid-cols-4 gap-3">
                     <?php foreach ($cabinet['images']['gallery'] as $index => $image): ?>
                     <a href="/<?= htmlspecialchars($image) ?>" class="glightbox thumbnail aspect-square rounded-lg overflow-hidden bg-gray-200 cursor-pointer" data-gallery="cabinet-gallery">
-                        <img src="/<?= htmlspecialchars($image) ?>" alt="<?= $cabinetName ?> — фото интерьера <?= $index + 1 ?>" class="w-full h-full object-cover">
+                        <img src="/<?= htmlspecialchars($image) ?>" alt="<?= $cabinetName ?> — фото интерьера <?= $index + 1 ?>" class="w-full h-full object-cover" loading="lazy" width="150" height="150">
                     </a>
                     <?php endforeach; ?>
                 </div>
