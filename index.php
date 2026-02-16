@@ -147,7 +147,7 @@
             <!-- Key Stats -->
             <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
                 <div class="text-center p-8 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border border-blue-200 shadow-sm hover:shadow-md transition">
-                    <div class="text-5xl font-bold text-blue-900 mb-2">14</div>
+                    <div class="text-5xl font-bold text-blue-900 mb-2">11</div>
                     <div class="text-blue-700 font-semibold">Кабинетов и залов</div>
                     <div class="text-sm text-blue-600 mt-1">от 17 до 50 м²</div>
                 </div>
@@ -376,7 +376,7 @@
             </div>
 
             <div class="mt-12 bg-blue-50 border-l-4 border-blue-400 p-6 max-w-4xl mx-auto">
-                <p class="text-sm text-gray-700"><strong>Обратите внимание:</strong> Скидки не суммируются. Специальные условия для VIP-кабинетов 28 и 37. Дополнительное оборудование (проектор, песочница, кушетка) - 3 руб/час.</p>
+                <p class="text-sm text-gray-700"><strong>Обратите внимание:</strong> Скидки не суммируются. Специальные условия для VIP-кабинетов <u>28, 37 и 24.1</u>. Дополнительное оборудование (проектор, песочница, кушетка) - 3 руб/час.</p>
             </div>
         </div>
     </section>
