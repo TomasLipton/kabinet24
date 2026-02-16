@@ -369,13 +369,20 @@ foreach (['group', 'individual'] as $pricingType) {
                 <?php endif; ?>
 
                 <!-- CTA -->
-                <div class="flex flex-col sm:flex-row gap-3 pt-4">
-                    <a href="tel:+375291916311" class="flex-1 bg-slate-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-700 transition text-center">
-                        📞 Позвонить
+                <div class="flex flex-col gap-3 pt-4">
+                    <?php if (!empty($cabinet['booking_url'])): ?>
+                    <a href="<?= htmlspecialchars($cabinet['booking_url']) ?>" target="_blank" rel="noopener" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition text-center text-lg">
+                        Записаться онлайн
                     </a>
-                    <a href="https://t.me/psychoanalitik_by" target="_blank" rel="noopener" class="flex-1 bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition text-center">
-                        Написать в Telegram
-                    </a>
+                    <?php endif; ?>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="tel:+375291916311" class="flex-1 bg-slate-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-700 transition text-center">
+                            📞 Позвонить
+                        </a>
+                        <a href="https://t.me/psychoanalitik_by" target="_blank" rel="noopener" class="flex-1 bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition text-center">
+                            Написать в Telegram
+                        </a>
+                    </div>
                 </div>
             </div>
         </article>
