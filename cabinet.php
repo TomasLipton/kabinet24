@@ -43,6 +43,7 @@ if (!$cabinet) {
                 Смотреть все кабинеты
             </a>
         </div>
+    <?php include 'templates/footer-scripts.php'; ?>
     </body>
     </html>
     <?php
@@ -426,5 +427,6 @@ foreach (['group', 'individual'] as $pricingType) {
             closeEffect: 'fade'
         });
     </script>
+<?php include 'templates/footer-scripts.php'; ?>
 </body>
 </html>

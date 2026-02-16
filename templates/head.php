@@ -8,7 +8,4 @@
     gtag('config', 'G-TKM4RF1N9L');
 </script>
 
-<!-- Yclients Widget -->
-<script type="text/javascript" src="https://w1816695.yclients.com/widgetJS" charset="UTF-8"></script>
-
 <script src="//code.jivosite.com/widget/cemtzaEEiI" async></script>

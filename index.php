@@ -666,5 +666,6 @@
             });
         });
     </script>
+<?php include 'templates/footer-scripts.php'; ?>
 </body>
 </html>
