@@ -106,7 +106,7 @@
                     <a href="#amenities" class="nav-link text-gray-700 hover:text-blue-600 transition">Удобства</a>
                     <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 transition">Контакты</a>
                 </div>
-                <a href="#contact" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                <a href="#" class="ms_booking bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
                     Забронировать
                 </a>
             </div>
@@ -287,11 +287,11 @@
             <!-- Tabs -->
             <div class="flex justify-center mb-12">
                 <div class="inline-flex bg-white rounded-lg shadow-md p-1">
-                    <button onclick="switchPricing('group')" id="tab-group" class="pricing-tab px-8 py-3 rounded-lg font-semibold transition-all bg-slate-800 text-white">
-                        Групповая аренда
-                    </button>
-                    <button onclick="switchPricing('individual')" id="tab-individual" class="pricing-tab px-8 py-3 rounded-lg font-semibold transition-all text-gray-600">
+                    <button onclick="switchPricing('individual')" id="tab-individual" class="pricing-tab px-8 py-3 rounded-lg font-semibold transition-all bg-slate-800 text-white">
                         Индивидуальная аренда
+                    </button>
+                    <button onclick="switchPricing('group')" id="tab-group" class="pricing-tab px-8 py-3 rounded-lg font-semibold transition-all text-gray-600">
+                        Групповая аренда
                     </button>
                 </div>
             </div>
@@ -340,11 +340,11 @@
                             </span>
                         </div>
                         <div class="mb-3">
-                            <span class="text-sm text-gray-600 group-capacity"><?= htmlspecialchars($cab['capacity']) ?></span>
+                            <span class="text-sm text-gray-600 group-capacity hidden"><?= htmlspecialchars($cab['capacity']) ?></span>
                         </div>
 
                         <!-- Group Pricing -->
-                        <div class="mb-3 pricing-group">
+                        <div class="mb-3 pricing-group hidden">
                             <div class="space-y-2">
                                 <?php foreach ($cab['pricing']['group'] as $price): ?>
                                 <div class="flex justify-between items-center">
@@ -356,7 +356,7 @@
                         </div>
 
                         <!-- Individual Pricing -->
-                        <div class="pricing-individual hidden">
+                        <div class="pricing-individual">
                             <div class="space-y-2">
                                 <?php foreach ($cab['pricing']['individual'] as $price): ?>
                                 <div class="flex justify-between items-center">
@@ -536,7 +536,7 @@
             </div>
 
             <div class="mt-12 max-w-4xl mx-auto bg-blue-50 p-6 rounded-lg">
-                <h3 class="font-semibold text-gray-800 mb-4 text-lg">Дополнительное оборудование за 2 руб/час:</h3>
+                <h3 class="font-semibold text-gray-800 mb-4 text-lg">Дополнительное оборудование за 3 руб/час:</h3>
                 <ul class="grid md:grid-cols-3 gap-4 text-gray-700">
                     <li class="flex items-center">
                         <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
