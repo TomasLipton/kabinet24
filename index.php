@@ -149,10 +149,10 @@
                 <div class="text-center p-8 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border border-blue-200 shadow-sm hover:shadow-md transition">
                     <div class="text-5xl font-bold text-blue-900 mb-2">14</div>
                     <div class="text-blue-700 font-semibold">Кабинетов и залов</div>
-                    <div class="text-sm text-blue-600 mt-1">от 12 до 50 м²</div>
+                    <div class="text-sm text-blue-600 mt-1">от 17 до 50 м²</div>
                 </div>
                 <div class="text-center p-8 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
-                    <div class="text-5xl font-bold text-slate-900 mb-2">от 12BYN</div>
+                    <div class="text-5xl font-bold text-slate-900 mb-2">от 14BYN</div>
                     <div class="text-slate-700 font-semibold">Стоимость аренды</div>
                     <div class="text-sm text-slate-600 mt-1">за час</div>
                 </div>
@@ -233,7 +233,7 @@
                     <p class="text-sm text-gray-600 mb-2">За 3 руб/час:</p>
                     <ul class="text-sm text-gray-600 space-y-1">
                         <li>• Проектор</li>
-                        <li>• Песочница</li>
+                        <li>• Юнгианская песочница</li>
                         <li>• Кушетка для практик</li>
                     </ul>
                 </div>
@@ -260,11 +260,11 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition">
                     <h3 class="text-lg font-semibold mb-2 text-gray-800">Консультанты</h3>
-                    <p class="text-gray-600">Психологи, юристы, бухгалтеры и другие специалисты для встреч с клиентами</p>
+                    <p class="text-gray-600">Психологи, терапевты, коучи, логопеды, медиаторы, юристы, бухгалтеры и другие специалисты для встреч с клиентами.</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition">
-                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Тренеры</h3>
-                    <p class="text-gray-600">Проведение индивидуальных сессий, мастер-классов и групповых занятий</p>
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Тренеры, преподаватели, лекторы</h3>
+                    <p class="text-gray-600">Проведение индивидуальных и групповых занятий, мастер-классов, лекций</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition">
                     <h3 class="text-lg font-semibold mb-2 text-gray-800">Стартапы</h3>
@@ -376,7 +376,7 @@
             </div>
 
             <div class="mt-12 bg-blue-50 border-l-4 border-blue-400 p-6 max-w-4xl mx-auto">
-                <p class="text-sm text-gray-700"><strong>Обратите внимание:</strong> Скидки не суммируются. Специальные условия для VIP-кабинетов 28 и 37. Дополнительное оборудование (проектор, песочница, кушетка) - 2 руб/час.</p>
+                <p class="text-sm text-gray-700"><strong>Обратите внимание:</strong> Скидки не суммируются. Специальные условия для VIP-кабинетов 28 и 37. Дополнительное оборудование (проектор, песочница, кушетка) - 3 руб/час.</p>
             </div>
         </div>
     </section>
