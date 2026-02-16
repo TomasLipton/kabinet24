@@ -1,0 +1,58 @@
+{
+  "booking_url": "",
+  "order": 13,
+  "slug": "kabinet-43",
+  "number": "43",
+  "name": "Кабинет 43",
+  "type": null,
+  "size": 35,
+  "capacity": "до 20 чел.",
+  "description": "Просторный кабинет для проведения тренингов, групповых занятий и индивидуальных консультаций. Комфортная обстановка и удобное расположение.",
+  "images": {
+    "main": "assets/cabinet-43/43-1.jpg",
+    "gallery": [
+      "assets/cabinet-43/43.jpg",
+      "assets/cabinet-43/43-1.jpg",
+      "assets/cabinet-43/43-2.jpg",
+      "assets/cabinet-43/43-3.jpg"
+    ]
+  },
+  "pricing": {
+    "group": [
+      {
+        "label": "до 10 ч/нед",
+        "price": 24
+      },
+      {
+        "label": "более 10 ч/нед",
+        "price": 22
+      }
+    ],
+    "individual": [
+      {
+        "label": "до 10 ч/нед",
+        "price": 18
+      },
+      {
+        "label": "более 10 ч/нед",
+        "price": 16
+      },
+      {
+        "label": "11:00-16:00",
+        "price": 14,
+        "highlight": true
+      },
+      {
+        "label": "18:00-20:00",
+        "price": 20
+      }
+    ]
+  },
+  "amenities": [
+    "Wi-Fi",
+    "Кондиционер",
+    "Флипчарт",
+    "Чай, кофе",
+    "Парковка"
+  ]
+}
