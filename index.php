@@ -152,7 +152,7 @@
                     <div class="text-sm text-blue-600 mt-1">от 17 до 50 м²</div>
                 </div>
                 <div class="text-center p-8 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
-                    <div class="text-5xl font-bold text-slate-900 mb-2">от 14BYN</div>
+                    <div class="text-5xl font-bold text-slate-900 mb-2">от 14 BYN</div>
                     <div class="text-slate-700 font-semibold">Стоимость аренды</div>
                     <div class="text-sm text-slate-600 mt-1">за час</div>
                 </div>
