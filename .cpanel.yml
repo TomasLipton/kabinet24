@@ -8,3 +8,6 @@ deployment:
     - /bin/cp -r data/cabinets/*.json $DEPLOYPATH/data/cabinets/
     - /bin/mkdir -p $DEPLOYPATH/templates
     - /bin/cp -r templates/*.php $DEPLOYPATH/templates/
+    - php generate-sitemap.php
+    - /bin/cp sitemap.xml $DEPLOYPATH
+    - /bin/cp robots.txt $DEPLOYPATH
