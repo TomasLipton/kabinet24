@@ -7,6 +7,11 @@
  * Результат: создаёт sitemap.xml в текущей директории
  */
 
+if (PHP_SAPI !== 'cli') {
+    http_response_code(403);
+    exit('Forbidden');
+}
+
 $baseUrl = 'https://kabinet24.by';
 $dataDir = __DIR__ . '/data/cabinets';
 $outputFile = __DIR__ . '/sitemap.xml';
