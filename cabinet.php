@@ -67,8 +67,23 @@ $badgeColor = getBadgeColor($cabinet['type'] ?? null);
 
 // SEO: Build rich meta data
 $cabinetName = htmlspecialchars($cabinet['name']);
+// Родительный падеж для title: "аренда (чего?)"
+switch ($cabinet['type']) {
+    case 'VIP':
+        $cabinetTypeGenitive = 'VIP кабинета';
+        break;
+    case 'Зал':
+        $cabinetTypeGenitive = 'зала';
+        break;
+    case 'Большой Зал':
+        $cabinetTypeGenitive = 'большого зала';
+        break;
+    default:
+        $cabinetTypeGenitive = 'кабинета';
+        break;
+}
 $cabinetType = $cabinet['type'] ? $cabinet['type'] . ' кабинет' : 'кабинет';
-$pageTitle = $cabinetName . ' — аренда ' . mb_strtolower($cabinetType) . 'а почасово в Минске | Кабинет24';
+$pageTitle = $cabinetName . ' — аренда ' . $cabinetTypeGenitive . ' почасово в Минске';
 $pageDescription = $cabinetName . ' — ' . $cabinetType . ' для аренды в центре Минска, ' . $cabinet['size'] . ' м², ' . $cabinet['capacity'] . ' Почасовая аренда рядом с метро Академия наук. Wi-Fi, кондиционер, чай/кофе.';
 $canonicalUrl = 'https://kabinet24.by/cabinet/' . $cabinet['slug'];
 $mainImageUrl = 'https://kabinet24.by/' . $cabinet['images']['main'];
