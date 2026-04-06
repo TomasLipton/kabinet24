@@ -218,7 +218,7 @@ foreach (['group', 'individual'] as $pricingType) {
             "addressLocality": "Минск",
             "addressCountry": "BY"
         },
-        "openingHours": "Mo-Su 09:00-22:00"
+        "openingHours": "Mo-Su 07:00-00:00"
     }
     </script>
 
@@ -400,6 +400,7 @@ foreach (['group', 'individual'] as $pricingType) {
                             Написать в Telegram
                         </a>
                     </div>
+                    <p class="text-sm text-gray-500 text-center">⏰ Работаем ежедневно с 7:00 до 24:00</p>
                 </div>
             </div>
         </article>

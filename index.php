@@ -96,18 +96,31 @@
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <div class="text-2xl font-bold text-blue-600">Кабинет24</div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 transition">О нас</a>
-                    <a href="#offices" class="nav-link text-gray-700 hover:text-blue-600 transition">Кабинеты</a>
-                    <a href="#amenities" class="nav-link text-gray-700 hover:text-blue-600 transition">Удобства</a>
-                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 transition">Контакты</a>
+    <header class="bg-white/95 backdrop-blur-md border-b border-gray-200/80 sticky top-0 z-50">
+        <nav class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="/" class="flex items-center gap-2.5 group">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center shadow-md group-hover:bg-blue-700 transition-colors">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-gray-900">Кабинет<span class="text-blue-600">24</span></span>
+                </a>
+                <!-- Nav Links -->
+                <div class="hidden md:flex items-center gap-1">
+                    <a href="#about" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition-all">О нас</a>
+                    <a href="#offices" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition-all">Кабинеты</a>
+                    <a href="#amenities" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition-all">Удобства</a>
+                    <a href="#contact" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition-all">Контакты</a>
                 </div>
-                <a href="#" class="ms_booking bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
-                    Забронировать онлайн
+                <!-- CTA Button -->
+                <a href="#" class="ms_booking inline-flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 transform">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                    Забронировать
                 </a>
             </div>
         </nav>
@@ -565,86 +578,33 @@
     <!-- Contact Section -->
     <section id="contact" class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Забронировать кабинет</h2>
-            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
-                <div>
-                    <h3 class="text-2xl font-semibold mb-6 text-gray-800">Свяжитесь с нами</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-start space-x-4">
-                            <svg class="w-6 h-6 text-blue-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                            </svg>
-                            <div>
-                                <p class="font-semibold text-gray-800">Телефон / Viber</p>
-                                <a href="tel:+375291916311" class="text-blue-600 hover:text-blue-700 text-lg">+375 (29) 191-63-11</a>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <svg class="w-6 h-6 text-blue-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                            </svg>
-                            <div>
-                                <p class="font-semibold text-gray-800">Telegram</p>
-                                <a href="https://t.me/psychoanalitik_by" target="_blank" rel="noopener" class="text-blue-600 hover:text-blue-700">@psychoanalitik_by</a>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <svg class="w-6 h-6 text-blue-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
-                            <div>
-                                <p class="font-semibold text-gray-800">Адрес</p>
-                                <p class="text-gray-600">г. Минск, ул. Я. Коласа 37<br>МЦ "Айсберг"<br>🚇 Ст. метро Академия наук</p>
-                            </div>
-                        </div>
-                        <a href="#" class="ms_booking mt-2 inline-flex items-center space-x-3 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition shadow-md hover:shadow-lg">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                            </svg>
-                            <span class="font-semibold">Забронировать онлайн</span>
-                        </a>
-                    </div>
-                </div>
+            <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Забронировать кабинет</h2>
+            <p class="text-center text-gray-500 mb-12">Свяжитесь с нами любым удобным способом</p>
 
-<!--                <div>-->
-<!--                    <form class="space-y-4" method="POST" action="">-->
-<!--                        <div>-->
-<!--                            <label class="block text-gray-700 font-medium mb-2">Ваше имя *</label>-->
-<!--                            <input type="text" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">-->
-<!--                        </div>-->
-<!--                        <div>-->
-<!--                            <label class="block text-gray-700 font-medium mb-2">Телефон *</label>-->
-<!--                            <input type="tel" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="+375 (29) 123-45-67">-->
-<!--                        </div>-->
-<!--                        <div>-->
-<!--                            <label class="block text-gray-700 font-medium mb-2">Какой кабинет интересует?</label>-->
-<!--                            <select name="cabinet" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">-->
-<!--                                <option value="">Выберите кабинет</option>-->
-<!--                                <option value="37">VIP-1 Кабинет 37 (32 м²)</option>-->
-<!--                                <option value="28">VIP-2 Кабинет 28 (21 м²)</option>-->
-<!--                                <option value="27">Кабинет 27 (21 м²)</option>-->
-<!--                                <option value="23">Кабинет 23 (21 м²)</option>-->
-<!--                                <option value="9">Кабинет 9 (21 м²)</option>-->
-<!--                                <option value="38.1">Кабинет 38.1 (13.5 м²)</option>-->
-<!--                                <option value="51">Кабинет 51 - Большой зал (50 м²)</option>-->
-<!--                                <option value="38">Кабинет 38 - Зал (35 м²)</option>-->
-<!--                            </select>-->
-<!--                        </div>-->
-<!--                        <div>-->
-<!--                            <label class="block text-gray-700 font-medium mb-2">Желаемая дата и время</label>-->
-<!--                            <input type="datetime-local" name="datetime" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">-->
-<!--                        </div>-->
-<!--                        <div>-->
-<!--                            <label class="block text-gray-700 font-medium mb-2">Комментарий</label>-->
-<!--                            <textarea name="message" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="Укажите количество человек, длительность аренды"></textarea>-->
-<!--                        </div>-->
-<!--                        <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">-->
-<!--                            Отправить заявку-->
-<!--                        </button>-->
-<!--                        <p class="text-sm text-gray-600 text-center">Мы свяжемся с вами в течение 30 минут</p>-->
-<!--                    </form>-->
-<!--                </div>-->
+            <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-10">
+                <div class="border border-gray-200 rounded-xl p-6">
+                    <p class="text-sm text-gray-500 mb-1">Телефон / Viber</p>
+                    <a href="tel:+375291916311" class="text-lg font-semibold text-gray-900 hover:text-blue-600 transition">+375 (29) 191-63-11</a>
+                </div>
+                <div class="border border-gray-200 rounded-xl p-6">
+                    <p class="text-sm text-gray-500 mb-1">Telegram</p>
+                    <a href="https://t.me/psychoanalitik_by" target="_blank" rel="noopener" class="text-lg font-semibold text-gray-900 hover:text-blue-600 transition">@psychoanalitik_by</a>
+                </div>
+                <div class="border border-gray-200 rounded-xl p-6">
+                    <p class="text-sm text-gray-500 mb-1">Адрес</p>
+                    <p class="font-semibold text-gray-900">ул. Я. Коласа 37</p>
+                    <p class="text-sm text-gray-500">МЦ "Айсберг", 🚇 м. Академия наук</p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="#" class="ms_booking inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                    Забронировать онлайн
+                </a>
+                <p class="text-gray-400 text-sm mt-4">⏰ Работаем ежедневно с 7:00 до 24:00</p>
             </div>
         </div>
     </section>
