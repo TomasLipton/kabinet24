@@ -126,7 +126,8 @@
                 </div>
                 <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-slate-200 to-white bg-clip-text text-transparent">Почасовая аренда уютных и современных кабинетов и залов</h1>
                 <p class="text-xl mb-4 text-gray-300">Комфортные помещения для различных задач: индивидуальной и групповой работы, мастер-классов, фотосессий, телесных практик, йоги, тренингов, лекций и деловых встреч.</p>
-                <p class="text-lg mb-8 text-slate-300">📍 ул. Я. Коласа 37, 🚇 Ст. метро Академия наук, МЦ "Айсберг"</p>
+                <p class="text-lg mb-2 text-slate-300">📍 ул. Я. Коласа 37, 🚇 Ст. метро Академия наук, МЦ "Айсберг"</p>
+                <p class="text-lg mb-8 text-slate-300">⏰ Работаем ежедневно с 7:00 до 24:00</p>
                 <div class="flex flex-wrap gap-4">
                     <a href="#offices" class="bg-white text-slate-900 px-8 py-3 rounded-lg font-semibold hover:bg-slate-100 transition-all shadow-lg hover:shadow-xl hover:scale-105 transform">
                         Выбрать кабинет
