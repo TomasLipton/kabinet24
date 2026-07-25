@@ -46,6 +46,12 @@ if ($files === false || empty($files)) {
             continue;
         }
 
+        // Отключённые кабинеты не попадают в карту сайта
+        if (!($data['enabled'] ?? true)) {
+            echo "Пропуск (отключён): {$data['slug']}\n";
+            continue;
+        }
+
         $urls[] = [
             'loc'        => $baseUrl . '/cabinet/' . $data['slug'],
             'changefreq' => 'weekly',

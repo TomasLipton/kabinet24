@@ -331,7 +331,8 @@ if (preg_match('#^/pravila-arendy/?$#', $path)) {
             $cabinets = [];
             foreach (glob($cabinetsDir . '*.json') as $file) {
                 $data = json_decode(file_get_contents($file), true);
-                if ($data) {
+                // Кабинеты с "enabled": false не показываются на сайте
+                if ($data && ($data['enabled'] ?? true)) {
                     $cabinets[] = $data;
                 }
             }

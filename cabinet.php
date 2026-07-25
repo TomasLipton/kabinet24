@@ -16,7 +16,10 @@ $files = glob($cabinetsDir . '*.json');
 foreach ($files as $file) {
     $data = json_decode(file_get_contents($file), true);
     if ($data && isset($data['slug']) && $data['slug'] === $slug) {
-        $cabinet = $data;
+        // Отключённый кабинет отдаёт 404, как будто страницы нет
+        if ($data['enabled'] ?? true) {
+            $cabinet = $data;
+        }
         break;
     }
 }
