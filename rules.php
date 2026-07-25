@@ -172,6 +172,33 @@ function accentClasses($accent) {
             </div>
         </div>
 
+        <!-- Система скидок -->
+        <div class="max-w-4xl mx-auto mb-12">
+            <div class="bg-white border-2 border-emerald-200 rounded-2xl p-8 shadow-sm">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800">Система скидок</h2>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="bg-emerald-50 rounded-xl p-6">
+                        <div class="text-3xl font-bold text-emerald-600 mb-2">до 10%</div>
+                        <p class="text-sm text-gray-600 leading-relaxed">При аренде более 10 часов в неделю — на все кабинеты, кроме 28 и 37.</p>
+                    </div>
+                    <div class="bg-emerald-50 rounded-xl p-6">
+                        <div class="text-3xl font-bold text-emerald-600 mb-2">14 BYN<span class="text-lg font-normal text-gray-500">/час</span></div>
+                        <p class="text-sm text-gray-600 leading-relaxed">С 11:00 до 16:00 в будние дни — обычные кабинеты для индивидуальной аренды, кроме 28 и 37.</p>
+                    </div>
+                </div>
+
+                <p class="text-sm text-gray-500 italic mt-6">Скидки не суммируются.</p>
+            </div>
+        </div>
+
         <!-- Разделы правил -->
         <div class="max-w-4xl mx-auto space-y-6">
             <?php foreach ($sections as $section): ?>
