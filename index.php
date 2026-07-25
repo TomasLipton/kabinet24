@@ -1,3 +1,13 @@
+<?php
+// Роутинг для окружений без Apache/.htaccess (например, Herd/nginx),
+// где все запросы попадают на index.php.
+$path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
+if (preg_match('#^/cabinet/([a-z0-9-]+)/?$#', $path, $matches)) {
+    $_GET['slug'] = $matches[1];
+    require __DIR__ . '/cabinet.php';
+    exit;
+}
+?>
 <!--Vova-->
 <!DOCTYPE html>
 <html lang="ru">
