@@ -191,7 +191,7 @@ function accentClasses($accent) {
                     </div>
                     <div class="bg-emerald-50 rounded-xl p-6">
                         <div class="text-3xl font-bold text-emerald-600 mb-2">14 BYN<span class="text-lg font-normal text-gray-500">/час</span></div>
-                        <p class="text-sm text-gray-600 leading-relaxed">С 11:00 до 16:00 в будние дни — обычные кабинеты для индивидуальной аренды, кроме 28 и 37.</p>
+                        <p class="text-sm text-gray-600 leading-relaxed">Акция «Счастливый час»: с 11:00 до 16:00 в будние дни — обычные кабинеты для индивидуальной аренды, кроме 28 и 37. Час, начинающийся в 16:00, в акцию уже не входит.</p>
                     </div>
                 </div>
 

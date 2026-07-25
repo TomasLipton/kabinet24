@@ -204,9 +204,10 @@ if (preg_match('#^/pravila-arendy/?$#', $path)) {
                     <h3 class="text-lg font-semibold mb-2 text-gray-800">Система скидок</h3>
                     <ul class="text-sm text-gray-600 space-y-1">
                         <li>• Скидка 10% при аренде более 10 ч/неделю</li>
-                        <li>• Специальные цены 11:00-16:00</li>
+                        <li>• «Счастливый час» — специальные цены с 11:00 до 16:00</li>
                         <li class="text-xs text-gray-500 italic">*Скидки не суммируются</li>
                     </ul>
+                    <a href="/pravila-arendy" class="inline-block mt-3 text-sm text-blue-600 font-medium hover:underline">Подробнее →</a>
                 </div>
 
                 <!-- Оплата -->
@@ -406,6 +407,7 @@ if (preg_match('#^/pravila-arendy/?$#', $path)) {
 
             <div class="mt-12 bg-blue-50 border-l-4 border-blue-400 p-6 max-w-4xl mx-auto">
                 <p class="text-sm text-gray-700"><strong>Обратите внимание:</strong> Скидки не суммируются. Специальные условия для VIP-кабинетов <u>28, 37 и 24.1</u>. Дополнительное оборудование (проектор, песочница, кушетка) - 3 руб/час.</p>
+                <p class="text-sm text-gray-700 mt-3">Цена 11:00-16:00 — акция «Счастливый час», только в будние дни. <a href="/pravila-arendy" class="text-blue-600 font-medium hover:underline">Условия акции →</a></p>
             </div>
 
             <!-- Условия отмены -->

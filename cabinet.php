@@ -379,6 +379,10 @@ foreach (['group', 'individual'] as $pricingType) {
                     <p class="text-sm text-gray-500">
                         * Скидка 10% при аренде более 10 ч/неделю
                     </p>
+                    <p class="text-sm text-gray-500">
+                        * Цена 11:00-16:00 — акция «Счастливый час», только в будние дни.
+                        <a href="/pravila-arendy" class="text-blue-600 font-medium hover:underline">Условия акции →</a>
+                    </p>
                 </div>
 
                 <!-- Условия отмены -->
