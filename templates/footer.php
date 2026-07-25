@@ -12,6 +12,7 @@
                     <li><a href="/#about" class="text-gray-400 hover:text-white transition">О нас</a></li>
                     <li><a href="/#offices" class="text-gray-400 hover:text-white transition">Кабинеты</a></li>
                     <li><a href="/#amenities" class="text-gray-400 hover:text-white transition">Удобства</a></li>
+                    <li><a href="/pravila-arendy" class="text-gray-400 hover:text-white transition">Правила аренды</a></li>
                     <li><a href="/#contact" class="text-gray-400 hover:text-white transition">Контакты</a></li>
                 </ul>
             </div>

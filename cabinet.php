@@ -378,6 +378,20 @@ foreach (['group', 'individual'] as $pricingType) {
                     </p>
                 </div>
 
+                <!-- Условия отмены -->
+                <div class="flex gap-3 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <svg class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M12 21a9 9 0 110-18 9 9 0 010 18z"></path>
+                    </svg>
+                    <div>
+                        <h2 class="font-semibold text-gray-900 mb-1">Условия отмены</h2>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Бесплатная отмена за 24 часа до начала аренды. Если Вы отменяете аренду менее чем за 24 часа, Вы должны оплатить стоимость аренды в полном объёме.
+                        </p>
+                        <a href="/pravila-arendy" class="inline-block mt-2 text-sm text-blue-600 font-medium hover:underline">Все правила аренды →</a>
+                    </div>
+                </div>
+
                 <!-- Amenities -->
                 <?php if (!empty($cabinet['amenities'])): ?>
                 <div class="space-y-3">

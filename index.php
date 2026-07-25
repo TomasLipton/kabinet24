@@ -7,6 +7,10 @@ if (preg_match('#^/cabinet/([a-z0-9-]+)/?$#', $path, $matches)) {
     require __DIR__ . '/cabinet.php';
     exit;
 }
+if (preg_match('#^/pravila-arendy/?$#', $path)) {
+    require __DIR__ . '/rules.php';
+    exit;
+}
 ?>
 <!--Vova-->
 <!DOCTYPE html>
@@ -401,6 +405,11 @@ if (preg_match('#^/cabinet/([a-z0-9-]+)/?$#', $path, $matches)) {
 
             <div class="mt-12 bg-blue-50 border-l-4 border-blue-400 p-6 max-w-4xl mx-auto">
                 <p class="text-sm text-gray-700"><strong>Обратите внимание:</strong> Скидки не суммируются. Специальные условия для VIP-кабинетов <u>28, 37 и 24.1</u>. Дополнительное оборудование (проектор, песочница, кушетка) - 3 руб/час.</p>
+            </div>
+
+            <!-- Условия отмены -->
+            <div class="mt-6 bg-amber-50 border-l-4 border-amber-400 p-6 max-w-4xl mx-auto">
+                <p class="text-sm text-gray-700"><strong>Условия отмены:</strong> Бесплатная отмена за 24 часа до начала аренды. Если Вы отменяете аренду менее чем за 24 часа, Вы должны оплатить стоимость аренды в полном объёме. <a href="/pravila-arendy" class="text-blue-600 font-medium hover:underline">Все правила аренды →</a></p>
             </div>
         </div>
     </section>

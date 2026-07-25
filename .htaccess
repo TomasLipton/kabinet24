@@ -7,3 +7,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 # /cabinet/slug -> cabinet.php?slug=slug
 RewriteRule ^cabinet/([a-z0-9-]+)/?$ cabinet.php?slug=$1 [L,QSA]
+
+# /pravila-arendy -> rules.php
+RewriteRule ^pravila-arendy/?$ rules.php [L,QSA]

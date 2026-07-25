@@ -25,6 +25,13 @@ $urls = [
     ],
 ];
 
+// Статические страницы
+$urls[] = [
+    'loc'        => $baseUrl . '/pravila-arendy',
+    'changefreq' => 'monthly',
+    'priority'   => '0.5',
+];
+
 // Страницы кабинетов из JSON-файлов
 $files = glob($dataDir . '/*.json');
 
