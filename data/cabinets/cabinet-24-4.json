@@ -10,9 +10,10 @@
   "capacity": "до 10 чел.",
   "description": "Функциональный кабинет для индивидуальной и групповой работы. Удобное расположение и комфортная обстановка.",
   "images": {
-    "main": "",
+    "main": "assets/cabinet-24-4/img-5.webp",
     "gallery": [
       "assets/cabinet-24-4/img-2.webp",
+      "assets/cabinet-24-4/img-6.webp",
       "assets/cabinet-24-4/img-4.webp"
     ]
   },
