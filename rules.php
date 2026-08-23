@@ -153,7 +153,7 @@ function accentClasses($accent) {
         <div class="max-w-4xl mx-auto mb-12">
             <div class="bg-white border-2 border-blue-200 rounded-2xl p-8 shadow-sm">
                 <h2 class="text-2xl font-bold text-gray-800 mb-2">Как считается арендный час</h2>
-                <p class="text-gray-600 mb-6">Стоимость аренды помещения указана за 1 психотерапевтический час.</p>
+                <p class="text-gray-600 mb-6">Стоимость аренды помещения указана за 1 психотерапевтический час (50 минут).</p>
 
                 <div class="grid sm:grid-cols-2 gap-4">
                     <div class="bg-blue-50 rounded-xl p-6 text-center">
@@ -162,7 +162,7 @@ function accentClasses($accent) {
                     </div>
                     <div class="bg-emerald-50 rounded-xl p-6 text-center">
                         <div class="text-4xl font-bold text-emerald-600 mb-1">10 <span class="text-2xl font-semibold">мин</span></div>
-                        <p class="text-sm text-gray-600">Не оплачиваются</p>
+                        <p class="text-sm text-gray-600">Время для перехода кабинета следующему арендатору</p>
                     </div>
                 </div>
 

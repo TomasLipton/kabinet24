@@ -21,6 +21,30 @@
                             Прейскурант (PDF)
                         </a>
                     </li>
+                    <li>
+                        <a href="/assets/rental-agreement.pdf" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition inline-flex items-center gap-1.5">
+                            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            Договор аренды (публичная оферта) (PDF)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/assets/privacy-policy.pdf" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition inline-flex items-center gap-1.5">
+                            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            Политика конфиденциальности (PDF)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/assets/cookie-policy.pdf" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition inline-flex items-center gap-1.5">
+                            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            Политика обработки cookie (PDF)
+                        </a>
+                    </li>
                     <li><a href="/#contact" class="text-gray-400 hover:text-white transition">Контакты</a></li>
                 </ul>
             </div>

@@ -157,7 +157,10 @@ if (preg_match('#^/pravila-arendy/?$#', $path)) {
                 <p class="text-lg mb-8 text-slate-300">⏰ Работаем ежедневно с 7:00 до 24:00</p>
                 <div class="flex flex-wrap gap-4">
                     <a href="#offices" class="bg-white text-slate-900 px-8 py-3 rounded-lg font-semibold hover:bg-slate-100 transition-all shadow-lg hover:shadow-xl hover:scale-105 transform">
-                        Выбрать кабинет
+                        Прейскурант
+                    </a>
+                    <a href="/pravila-arendy" class="border-2 border-slate-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-slate-800/50 hover:border-slate-400 transition-all backdrop-blur-sm">
+                        Правила аренды
                     </a>
                     <a href="#contact" class="border-2 border-slate-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-slate-800/50 hover:border-slate-400 transition-all backdrop-blur-sm">
                         Связаться с нами
