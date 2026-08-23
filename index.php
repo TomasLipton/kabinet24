@@ -178,9 +178,9 @@ if (preg_match('#^/pravila-arendy/?$#', $path)) {
             <!-- Key Stats -->
             <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
                 <div class="text-center p-8 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border border-blue-200 shadow-sm hover:shadow-md transition">
-                    <div class="text-5xl font-bold text-blue-900 mb-2">11</div>
+                    <div class="text-5xl font-bold text-blue-900 mb-2">9</div>
                     <div class="text-blue-700 font-semibold">Кабинетов и залов</div>
-                    <div class="text-sm text-blue-600 mt-1">от 17 до 50 м²</div>
+                    <div class="text-sm text-blue-600 mt-1">от 17 до 37 м²</div>
                 </div>
                 <div class="text-center p-8 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
                     <div class="text-5xl font-bold text-slate-900 mb-2">от 14 BYN</div>
