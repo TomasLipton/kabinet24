@@ -48,7 +48,7 @@ $cabinets = loadCabinets();
     <meta name="twitter:description" content="Почасовая аренда помещений в Минске для проведения консультаций, семинаров, тренингов, лекций. Рядом с метро Академия наук. Бесплатный Wi-Fi, чай, кофе, парковка.">
     <meta name="twitter:image" content="https://kabinet24.by/assets/logo.png">
 
-    <link rel="stylesheet" href="/assets/css/site.css">
+    <link rel="stylesheet" href="<?= e(stylesheetUrl()) ?>">
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -395,6 +395,33 @@ $cabinets = loadCabinets();
         </div>
     </section>
 
+    <!-- Directions Section -->
+    <section id="directions" class="py-16 bg-white" aria-labelledby="directions-heading">
+        <div class="container mx-auto px-4">
+            <h2 id="directions-heading" class="text-4xl font-bold text-center mb-6 text-gray-800">Как нас найти</h2>
+            <div id="directions-description" class="max-w-3xl mx-auto text-center text-lg text-gray-600 mb-8 space-y-2">
+                <p>Мы находимся по адресу ул. Якуба Коласа, 37.</p>
+                <p>Подъезд 1, этаж 3, офис №24.</p>
+                <p>Вход со стороны ул. Богдана Хмельницкого.</p>
+                <p>Как нас найти от ст. м. «Академия наук» — ниже в видео.</p>
+            </div>
+            <video
+                class="rounded-2xl bg-slate-900 shadow-lg"
+                style="display: block; width: 100%; max-width: 384px; height: auto; margin: 0 auto;"
+                width="720"
+                height="1280"
+                controls
+                playsinline
+                preload="none"
+                poster="/assets/videos/directions-poster.webp"
+                aria-label="Как пройти от станции метро «Академия наук» до Кабинет24"
+                aria-describedby="directions-description"
+            >
+                <source src="/assets/videos/directions.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео. <a href="/assets/videos/directions.mp4">Открыть видео с маршрутом</a>.
+            </video>
+        </div>
+    </section>
 
     <!-- Amenities Section -->
     <section id="amenities" class="py-16 bg-gray-50">

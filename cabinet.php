@@ -133,7 +133,7 @@ foreach (['group', 'individual'] as $pricingType) {
         ],
     ]) ?></script>
 
-    <link rel="stylesheet" href="/assets/css/site.css">
+    <link rel="stylesheet" href="<?= e(stylesheetUrl()) ?>">
 
     <!-- GLightbox CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css">

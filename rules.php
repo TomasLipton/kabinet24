@@ -103,7 +103,7 @@ function accentClasses($accent) {
     }
     </script>
 
-    <link rel="stylesheet" href="/assets/css/site.css">
+    <link rel="stylesheet" href="<?= e(stylesheetUrl()) ?>">
     <?php include __DIR__ . '/templates/head.php'; ?>
 </head>
 <body class="bg-gray-50">

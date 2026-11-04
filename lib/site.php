@@ -12,6 +12,12 @@ function e($value): string
     return htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
+function stylesheetUrl(): string
+{
+    $version = substr(hash_file('sha256', __DIR__ . '/../assets/css/site.css'), 0, 12);
+    return '/assets/css/site.css?v=' . $version;
+}
+
 function jsonLd(array $data): string
 {
     return json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR);

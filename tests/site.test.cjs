@@ -38,7 +38,7 @@ const checkCommon = html => {
     assert.match(html, /50% стоимости аренды/);
     assert.ok(html.includes(`с ${config.opening_time} до ${config.closing_time}`));
     assert.doesNotMatch(html, /cdn\.tailwindcss\.com|Warning:|Fatal error:|с 7:00|до 22:00/);
-    assert.match(html, /href="\/assets\/css\/site\.css"/);
+    assert.match(html, /href="\/assets\/css\/site\.css\?v=[a-f0-9]{12}"/);
 };
 
 test('catalog and every public room page expose the correct prices, hours, cancellation and booking links', async () => {
