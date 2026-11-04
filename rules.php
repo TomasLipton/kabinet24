@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/lib/site.php';
 $pageTitle = 'Правила аренды — Кабинет24';
 $pageDescription = 'Правила аренды кабинетов и залов в Минске: время аренды, продление, условия отмены и переноса записи, ответственность арендатора.';
 $canonicalUrl = 'https://kabinet24.by/pravila-arendy';
@@ -22,7 +23,7 @@ $sections = [
         'accent' => 'amber',
         'icon' => 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z',
         'items' => [
-            'Бесплатная отмена за 24 часа до начала аренды. Если Вы отменяете аренду менее чем за 24 часа, то Вы должны оплатить стоимость аренды в полном объёме.',
+            cancellationText(),
             'Перенос записи по Вашей просьбе на тот же день, но на другое время, менее чем за 24 часа до самой записи происходит без дополнительной оплаты. За исключением аренды в горячие часы.',
         ],
     ],
@@ -66,7 +67,7 @@ function accentClasses($accent) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $pageTitle ?></title>
-    <link rel="icon" type="image/png" href="/assets/logo.png">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
     <meta name="description" content="<?= $pageDescription ?>">
     <meta name="keywords" content="правила аренды, аренда кабинета Минск, условия отмены, почасовая аренда, Кабинет24">
     <meta name="robots" content="index, follow">
@@ -102,7 +103,7 @@ function accentClasses($accent) {
     }
     </script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/css/site.css">
     <?php include __DIR__ . '/templates/head.php'; ?>
 </head>
 <body class="bg-gray-50">
@@ -186,12 +187,12 @@ function accentClasses($accent) {
 
                 <div class="grid sm:grid-cols-2 gap-4">
                     <div class="bg-emerald-50 rounded-xl p-6">
-                        <div class="text-3xl font-bold text-emerald-600 mb-2">до 10%</div>
-                        <p class="text-sm text-gray-600 leading-relaxed">При аренде более 10 часов в неделю — на все кабинеты, кроме 28 и 37.</p>
+                        <div class="text-3xl font-bold text-emerald-600 mb-2">Спецтарифы</div>
+                        <p class="text-sm text-gray-600 leading-relaxed"><?= e(siteConfig()['discount_note']) ?></p>
                     </div>
                     <div class="bg-emerald-50 rounded-xl p-6">
                         <div class="text-3xl font-bold text-emerald-600 mb-2">14 BYN<span class="text-lg font-normal text-gray-500">/час</span></div>
-                        <p class="text-sm text-gray-600 leading-relaxed">Акция «Счастливый час»: с 11:00 до 16:00 в будние дни — обычные кабинеты для индивидуальной аренды, кроме 28 и 37. Час, начинающийся в 16:00, в акцию уже не входит.</p>
+                        <p class="text-sm text-gray-600 leading-relaxed"><?= e(siteConfig()['happy_hour_note']) ?></p>
                     </div>
                 </div>
 
@@ -231,7 +232,7 @@ function accentClasses($accent) {
                 <h2 class="text-2xl font-bold mb-3">Остались вопросы?</h2>
                 <p class="text-slate-300 mb-8">Администратор ответит на любые вопросы и поможет подобрать подходящее помещение.</p>
                 <div class="flex flex-wrap justify-center gap-3">
-                    <a href="#" class="ms_booking inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md hover:shadow-lg">
+                    <a href="<?= e(bookingUrl()) ?>" target="_blank" rel="noopener" class="ms_booking inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md hover:shadow-lg">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                         </svg>

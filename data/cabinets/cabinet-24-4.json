@@ -7,25 +7,24 @@
   "name": "Кабинет 24.4",
   "type": null,
   "size": 16.5,
-  "capacity": "до 10 чел.",
+  "capacity": "до 8 чел.",
   "description": "Функциональный кабинет для индивидуальной и групповой работы. Удобное расположение и комфортная обстановка.",
   "images": {
-    "main": "assets/cabinet-24-4/img-5.webp",
+    "main": "assets/cabinet-24-4/updated-1.webp",
     "gallery": [
-      "assets/cabinet-24-4/img-2.webp",
-      "assets/cabinet-24-4/img-6.webp",
-      "assets/cabinet-24-4/img-4.webp"
+      "assets/cabinet-24-4/updated-1.webp",
+      "assets/cabinet-24-4/updated-2.webp"
     ]
   },
   "pricing": {
     "group": [
       {
         "label": "до 10 ч/нед",
-        "price": 22
+        "price": 20
       },
       {
         "label": "более 10 ч/нед",
-        "price": 20
+        "price": 18
       }
     ],
     "individual": [
@@ -41,10 +40,6 @@
         "label": "11:00-16:00",
         "price": 14,
         "highlight": true
-      },
-      {
-        "label": "18:00-20:00",
-        "price": 20
       }
     ]
   },

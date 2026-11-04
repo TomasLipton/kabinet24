@@ -1,12 +1,15 @@
 RewriteEngine On
 RewriteBase /
 
+# Internal source folders are not public pages.
+RewriteRule ^(?:lib|templates|scripts|styles|tests|node_modules)(?:/|$) - [F,L]
+
 # Если файл или папка существует - не трогаем
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 # /cabinet/slug -> cabinet.php?slug=slug
-RewriteRule ^cabinet/([a-z0-9-]+)/?$ cabinet.php?slug=$1 [L,QSA]
+RewriteRule ^cabinet/([a-z0-9-]+)/?$ cabinet.php?slug=$1 [L]
 
 # /pravila-arendy -> rules.php
 RewriteRule ^pravila-arendy/?$ rules.php [L,QSA]

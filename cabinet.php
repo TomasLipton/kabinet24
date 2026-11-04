@@ -1,55 +1,19 @@
 <?php
-// Получаем slug из URL
+require_once __DIR__ . '/lib/site.php';
 $slug = $_GET['slug'] ?? '';
-$slug = preg_replace('/[^a-z0-9-]/', '', $slug);
-
-if (empty($slug)) {
-    header('Location: /#offices');
+if (!is_string($slug) || !preg_match('/^[a-z0-9-]+$/D', $slug)) {
+    require __DIR__ . '/templates/not-found.php';
     exit;
 }
-
-// Ищем JSON файл по slug
 $cabinet = null;
-$cabinetsDir = __DIR__ . '/data/cabinets/';
-$files = glob($cabinetsDir . '*.json');
-
-foreach ($files as $file) {
-    $data = json_decode(file_get_contents($file), true);
-    if ($data && isset($data['slug']) && $data['slug'] === $slug) {
-        // Отключённый кабинет отдаёт 404, как будто страницы нет
-        if ($data['enabled'] ?? true) {
-            $cabinet = $data;
-        }
+foreach (loadCabinets() as $item) {
+    if ($item['slug'] === $slug) {
+        $cabinet = $item;
         break;
     }
 }
-
-// 404 если кабинет не найден
 if (!$cabinet) {
-    http_response_code(404);
-    ?>
-    <!DOCTYPE html>
-    <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Кабинет не найден — Кабинет24</title>
-        <meta name="robots" content="noindex, nofollow">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <?php include 'templates/head.php'; ?>
-    </head>
-    <body class="bg-gray-50 min-h-screen flex items-center justify-center">
-        <div class="text-center">
-            <h1 class="text-6xl font-bold text-gray-300 mb-4">404</h1>
-            <p class="text-xl text-gray-600 mb-8">Кабинет не найден</p>
-            <a href="/#offices" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
-                Смотреть все кабинеты
-            </a>
-        </div>
-    <?php include 'templates/footer-scripts.php'; ?>
-    </body>
-    </html>
-    <?php
+    require __DIR__ . '/templates/not-found.php';
     exit;
 }
 
@@ -70,7 +34,7 @@ function getBadgeColor($type) {
 $badgeColor = getBadgeColor($cabinet['type'] ?? null);
 
 // SEO: Build rich meta data
-$cabinetName = htmlspecialchars($cabinet['name']);
+$cabinetName = $cabinet['name'];
 // Родительный падеж для title: "аренда (чего?)"
 switch ($cabinet['type']) {
     case 'VIP':
@@ -109,19 +73,19 @@ foreach (['group', 'individual'] as $pricingType) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $pageTitle ?></title>
-    <link rel="icon" type="image/png" href="/assets/logo.png">
-    <meta name="description" content="<?= $pageDescription ?>">
-    <meta name="keywords" content="<?= $cabinetName ?>, аренда кабинета Минск, почасовая аренда, <?= htmlspecialchars(mb_strtolower($cabinetType)) ?> аренда, коворкинг Минск, аренда помещений Минск, метро Академия наук">
+    <title><?= e($pageTitle) ?></title>
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <meta name="description" content="<?= e($pageDescription) ?>">
+    <meta name="keywords" content="<?= e($cabinetName) ?>, аренда кабинета Минск, почасовая аренда, <?= htmlspecialchars(mb_strtolower($cabinetType)) ?> аренда, коворкинг Минск, аренда помещений Минск, метро Академия наук">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="<?= $canonicalUrl ?>">
+    <link rel="canonical" href="<?= e($canonicalUrl) ?>">
 
     <!-- Open Graph -->
     <meta property="og:type" content="product">
-    <meta property="og:url" content="<?= $canonicalUrl ?>">
-    <meta property="og:title" content="<?= $pageTitle ?>">
-    <meta property="og:description" content="<?= $pageDescription ?>">
-    <meta property="og:image" content="<?= $mainImageUrl ?>">
+    <meta property="og:url" content="<?= e($canonicalUrl) ?>">
+    <meta property="og:title" content="<?= e($pageTitle) ?>">
+    <meta property="og:description" content="<?= e($pageDescription) ?>">
+    <meta property="og:image" content="<?= e($mainImageUrl) ?>">
     <meta property="og:site_name" content="Кабинет24">
     <meta property="og:locale" content="ru_RU">
     <?php if ($minPrice): ?>
@@ -131,119 +95,50 @@ foreach (['group', 'individual'] as $pricingType) {
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<?= $pageTitle ?>">
-    <meta name="twitter:description" content="<?= $pageDescription ?>">
-    <meta name="twitter:image" content="<?= $mainImageUrl ?>">
+    <meta name="twitter:title" content="<?= e($pageTitle) ?>">
+    <meta name="twitter:description" content="<?= e($pageDescription) ?>">
+    <meta name="twitter:image" content="<?= e($mainImageUrl) ?>">
 
-    <!-- JSON-LD: Product -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Product",
-        "name": "<?= $cabinetName ?>",
-        "description": "<?= htmlspecialchars($cabinet['description']) ?>",
-        "image": "<?= $mainImageUrl ?>",
-        "brand": {
-            "@type": "Brand",
-            "name": "Кабинет24"
-        },
-        "category": "Аренда помещений"
-        <?php if ($minPrice): ?>
-        ,"offers": {
-            "@type": "Offer",
-            "priceCurrency": "BYN",
-            "price": "<?= $minPrice ?>",
-            "priceSpecification": {
-                "@type": "UnitPriceSpecification",
-                "price": "<?= $minPrice ?>",
-                "priceCurrency": "BYN",
-                "unitCode": "HUR",
-                "unitText": "час"
-            },
-            "availability": "https://schema.org/InStock",
-            "url": "<?= $canonicalUrl ?>"
-        }
-        <?php endif; ?>
-        ,"additionalProperty": [
-            {
-                "@type": "PropertyValue",
-                "name": "Площадь",
-                "value": "<?= $cabinet['size'] ?> м²"
-            },
-            {
-                "@type": "PropertyValue",
-                "name": "Вместимость",
-                "value": "<?= htmlspecialchars($cabinet['capacity']) ?>"
-            }
-        ]
-    }
-    </script>
+    <script type="application/ld+json"><?= jsonLd([
+        '@context' => 'https://schema.org', '@type' => 'Product',
+        'name' => $cabinet['name'], 'description' => $cabinet['description'],
+        'image' => $mainImageUrl, 'brand' => ['@type' => 'Brand', 'name' => 'Кабинет24'],
+        'category' => 'Аренда помещений',
+        'offers' => [
+            '@type' => 'Offer', 'priceCurrency' => 'BYN', 'price' => $minPrice,
+            'priceSpecification' => ['@type' => 'UnitPriceSpecification', 'price' => $minPrice, 'priceCurrency' => 'BYN', 'unitText' => 'арендный час (50 минут)'],
+            'availability' => 'https://schema.org/InStock', 'url' => $canonicalUrl,
+        ],
+        'additionalProperty' => [
+            ['@type' => 'PropertyValue', 'name' => 'Площадь', 'value' => $cabinet['size'] . ' м²'],
+            ['@type' => 'PropertyValue', 'name' => 'Вместимость', 'value' => $cabinet['capacity']],
+        ],
+    ]) ?></script>
+    <script type="application/ld+json"><?= jsonLd([
+        '@context' => 'https://schema.org', '@type' => 'BreadcrumbList',
+        'itemListElement' => [
+            ['@type' => 'ListItem', 'position' => 1, 'name' => 'Главная', 'item' => 'https://kabinet24.by/'],
+            ['@type' => 'ListItem', 'position' => 2, 'name' => 'Кабинеты', 'item' => 'https://kabinet24.by/#offices'],
+            ['@type' => 'ListItem', 'position' => 3, 'name' => $cabinet['name'], 'item' => $canonicalUrl],
+        ],
+    ]) ?></script>
+    <script type="application/ld+json"><?= jsonLd([
+        '@context' => 'https://schema.org', '@type' => 'LocalBusiness',
+        'name' => 'Кабинет24', 'url' => 'https://kabinet24.by', 'telephone' => '+375291916311',
+        'address' => ['@type' => 'PostalAddress', 'streetAddress' => 'ул. Я. Коласа 37, МЦ Айсберг', 'addressLocality' => 'Минск', 'addressCountry' => 'BY'],
+        'openingHoursSpecification' => [
+            '@type' => 'OpeningHoursSpecification',
+            'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+            'opens' => siteConfig()['opening_time'], 'closes' => closingTimeSchema(),
+        ],
+    ]) ?></script>
 
-    <!-- JSON-LD: BreadcrumbList -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Главная",
-                "item": "https://kabinet24.by/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Кабинеты",
-                "item": "https://kabinet24.by/#offices"
-            },
-            {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "<?= $cabinetName ?>",
-                "item": "<?= $canonicalUrl ?>"
-            }
-        ]
-    }
-    </script>
-
-    <!-- JSON-LD: LocalBusiness -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Кабинет24",
-        "url": "https://kabinet24.by",
-        "telephone": "+375291916311",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "ул. Я. Коласа 37, МЦ Айсберг",
-            "addressLocality": "Минск",
-            "addressCountry": "BY"
-        },
-        "openingHours": "Mo-Su 07:00-00:00"
-    }
-    </script>
-
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/css/site.css">
 
     <!-- GLightbox CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css">
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .thumbnail {
-            transition: all 0.2s ease;
-        }
-        .thumbnail:hover {
-            opacity: 0.8;
-            transform: scale(1.02);
-        }
-    </style>
-    <?php include 'templates/head.php'; ?>
+    <?php include __DIR__ . '/templates/head.php'; ?>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
@@ -289,9 +184,9 @@ foreach (['group', 'individual'] as $pricingType) {
                         <img
                             id="main-photo"
                             src="/<?= htmlspecialchars($cabinet['images']['main']) ?>"
-                            alt="<?= $cabinetName ?> — <?= htmlspecialchars($cabinetType) ?> для аренды в Минске, <?= $cabinet['size'] ?> м²"
+                            alt="<?= e($cabinetName) ?> — <?= htmlspecialchars($cabinetType) ?> для аренды в Минске, <?= $cabinet['size'] ?> м²"
                             class="w-full h-full object-cover hover:scale-105 transition duration-300"
-                            loading="lazy" width="600" height="450"
+                            fetchpriority="high" width="600" height="450"
                         >
                     </div>
                 </a>
@@ -300,8 +195,9 @@ foreach (['group', 'individual'] as $pricingType) {
                 <?php if (!empty($cabinet['images']['gallery']) && count($cabinet['images']['gallery']) > 1): ?>
                 <div class="grid grid-cols-4 gap-3">
                     <?php foreach ($cabinet['images']['gallery'] as $index => $image): ?>
+                    <?php if ($image === $cabinet['images']['main']) continue; ?>
                     <a href="/<?= htmlspecialchars($image) ?>" class="glightbox thumbnail aspect-square rounded-lg overflow-hidden bg-gray-200 cursor-pointer" data-gallery="cabinet-gallery">
-                        <img src="/<?= htmlspecialchars($image) ?>" alt="<?= $cabinetName ?> — фото интерьера <?= $index + 1 ?>" class="w-full h-full object-cover" loading="lazy" width="150" height="150">
+                        <img src="/<?= htmlspecialchars($image) ?>" alt="<?= e($cabinetName) ?> — фото интерьера <?= $index + 1 ?>" class="w-full h-full object-cover" loading="lazy" width="150" height="150">
                     </a>
                     <?php endforeach; ?>
                 </div>
@@ -346,7 +242,7 @@ foreach (['group', 'individual'] as $pricingType) {
 
                 <!-- Pricing -->
                 <div class="bg-white border border-gray-200 rounded-xl p-6 space-y-4">
-                    <h2 class="font-semibold text-lg text-gray-900">Стоимость аренды</h2>
+                    <h2 class="font-semibold text-lg text-gray-900">Стоимость аренды</h2><p class="text-sm text-gray-500">За арендный час (50 минут).</p>
 
                     <div class="space-y-3">
                         <!-- Group Pricing -->
@@ -377,10 +273,10 @@ foreach (['group', 'individual'] as $pricingType) {
                     </div>
 
                     <p class="text-sm text-gray-500">
-                        * Скидка 10% при аренде более 10 ч/неделю
+                        <?= e(siteConfig()['discount_note']) ?>
                     </p>
                     <p class="text-sm text-gray-500">
-                        * Цена 11:00-16:00 — акция «Счастливый час», только в будние дни.
+                        <?= e(siteConfig()['happy_hour_note']) ?>
                         <a href="/pravila-arendy" class="text-blue-600 font-medium hover:underline">Условия акции →</a>
                     </p>
                 </div>
@@ -393,7 +289,7 @@ foreach (['group', 'individual'] as $pricingType) {
                     <div>
                         <h2 class="font-semibold text-gray-900 mb-1">Условия отмены</h2>
                         <p class="text-sm text-gray-600 leading-relaxed">
-                            Бесплатная отмена за 24 часа до начала аренды. Если Вы отменяете аренду менее чем за 24 часа, Вы должны оплатить стоимость аренды в полном объёме.
+                            <?= e(cancellationText()) ?>
                         </p>
                         <a href="/pravila-arendy" class="inline-block mt-2 text-sm text-blue-600 font-medium hover:underline">Все правила аренды →</a>
                     </div>
@@ -415,11 +311,9 @@ foreach (['group', 'individual'] as $pricingType) {
 
                 <!-- CTA -->
                 <div class="flex flex-col gap-3 pt-4">
-                    <?php if (!empty($cabinet['booking_url'])): ?>
-                    <a href="<?= htmlspecialchars($cabinet['booking_url']) ?>" target="_blank" rel="noopener" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition text-center text-lg">
+                    <a href="<?= e(bookingUrl($cabinet)) ?>" target="_blank" rel="noopener" class="<?= empty($cabinet['booking_url']) ? 'ms_booking ' : '' ?>bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition text-center text-lg">
                         Записаться онлайн
                     </a>
-                    <?php endif; ?>
                     <div class="flex flex-col sm:flex-row gap-3">
                         <a href="tel:+375291916311" class="flex-1 bg-slate-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-700 transition text-center">
                             📞 Позвонить
@@ -428,7 +322,7 @@ foreach (['group', 'individual'] as $pricingType) {
                             Написать в Telegram
                         </a>
                     </div>
-                    <p class="text-sm text-gray-500 text-center">⏰ Работаем ежедневно с 7:00 до 24:00</p>
+                    <p class="text-sm text-gray-500 text-center">⏰ Работаем ежедневно <?= e(openingHoursText()) ?></p>
                 </div>
             </div>
         </article>
@@ -447,15 +341,7 @@ foreach (['group', 'individual'] as $pricingType) {
     <?php include __DIR__ . '/templates/footer.php'; ?>
 
     <!-- GLightbox JS -->
-    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-    <script>
-        const lightbox = GLightbox({
-            touchNavigation: true,
-            loop: true,
-            openEffect: 'zoom',
-            closeEffect: 'fade'
-        });
-    </script>
-<?php include 'templates/footer-scripts.php'; ?>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js" data-gallery-script async></script>
+<?php include __DIR__ . '/templates/footer-scripts.php'; ?>
 </body>
 </html>

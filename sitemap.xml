@@ -4,66 +4,66 @@
     <loc>https://kabinet24.by/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-11-04</lastmod>
   </url>
   <url>
     <loc>https://kabinet24.by/pravila-arendy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-    <lastmod>2026-07-25</lastmod>
-  </url>
-  <url>
-    <loc>https://kabinet24.by/cabinet/kabinet-24-1-vip</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2026-07-25</lastmod>
-  </url>
-  <url>
-    <loc>https://kabinet24.by/cabinet/kabinet-24-2-zal</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2026-07-25</lastmod>
-  </url>
-  <url>
-    <loc>https://kabinet24.by/cabinet/kabinet-24-3</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2026-07-25</lastmod>
-  </url>
-  <url>
-    <loc>https://kabinet24.by/cabinet/kabinet-24-4</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2026-07-25</lastmod>
-  </url>
-  <url>
-    <loc>https://kabinet24.by/cabinet/kabinet-27</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2026-07-25</lastmod>
-  </url>
-  <url>
-    <loc>https://kabinet24.by/cabinet/kabinet-28-vip</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-11-04</lastmod>
   </url>
   <url>
     <loc>https://kabinet24.by/cabinet/kabinet-37-vip</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-11-04</lastmod>
   </url>
   <url>
-    <loc>https://kabinet24.by/cabinet/kabinet-43</loc>
+    <loc>https://kabinet24.by/cabinet/kabinet-28-vip</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-11-04</lastmod>
+  </url>
+  <url>
+    <loc>https://kabinet24.by/cabinet/kabinet-24-1-vip</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-11-04</lastmod>
   </url>
   <url>
     <loc>https://kabinet24.by/cabinet/kabinet-9</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-11-04</lastmod>
+  </url>
+  <url>
+    <loc>https://kabinet24.by/cabinet/kabinet-27</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-11-04</lastmod>
+  </url>
+  <url>
+    <loc>https://kabinet24.by/cabinet/kabinet-24-2-zal</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-11-04</lastmod>
+  </url>
+  <url>
+    <loc>https://kabinet24.by/cabinet/kabinet-24-3</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-11-04</lastmod>
+  </url>
+  <url>
+    <loc>https://kabinet24.by/cabinet/kabinet-24-4</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-11-04</lastmod>
+  </url>
+  <url>
+    <loc>https://kabinet24.by/cabinet/kabinet-43</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-11-04</lastmod>
   </url>
 </urlset>

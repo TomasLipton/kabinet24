@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/lib/site.php";
 // Роутинг для окружений без Apache/.htaccess (например, Herd/nginx),
 // где все запросы попадают на index.php.
 $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
@@ -11,15 +12,19 @@ if (preg_match('#^/pravila-arendy/?$#', $path)) {
     require __DIR__ . '/rules.php';
     exit;
 }
+if (!in_array($path, ['/', '/index.php'], true)) {
+    require __DIR__ . '/templates/not-found.php';
+    exit;
+}
+$cabinets = loadCabinets();
 ?>
-<!--Vova-->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Кабинет24 - Почасовая аренда уютных и современных кабинетов и залов в центре Минска</title>
-    <link rel="icon" type="image/png" href="/assets/logo.png">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
     <meta name="description" content="Почасовая аренда помещений в Минске для проведения консультаций, семинаров, тренингов, лекций. Рядом с метро Академия наук. Бесплатный Wi-Fi, чай, кофе, парковка.">
     <meta name="keywords" content="аренда кабинета Минск, аренда помещений Минск, почасовая аренда, коворкинг Минск, аренда залов Минск, кабинет для консультаций, аренда офиса почасово, помещение для семинара, тренинг зал аренда, метро Академия наук">
     <meta name="robots" content="index, follow">
@@ -43,24 +48,7 @@ if (preg_match('#^/pravila-arendy/?$#', $path)) {
     <meta name="twitter:description" content="Почасовая аренда помещений в Минске для проведения консультаций, семинаров, тренингов, лекций. Рядом с метро Академия наук. Бесплатный Wi-Fi, чай, кофе, парковка.">
     <meta name="twitter:image" content="https://kabinet24.by/assets/logo.png">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .office-card {
-            transition: all 0.3s ease;
-        }
-        .office-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        /* Hover only for inactive tab buttons */
-        .pricing-tab:not(.bg-slate-800):hover {
-            background-color: rgb(243 244 246);
-        }
-    </style>
+    <link rel="stylesheet" href="/assets/css/site.css">
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -100,13 +88,13 @@ if (preg_match('#^/pravila-arendy/?$#', $path)) {
         "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            "opens": "08:00",
-            "closes": "22:00"
+            "opens": "<?= e(siteConfig()['opening_time']) ?>",
+            "closes": "<?= e(closingTimeSchema()) ?>"
         }
     }
     </script>
 
-    <?php include 'templates/head.php'; ?>
+    <?php include __DIR__ . '/templates/head.php'; ?>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
@@ -130,8 +118,8 @@ if (preg_match('#^/pravila-arendy/?$#', $path)) {
                     <a href="#contact" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition-all">Контакты</a>
                 </div>
                 <!-- CTA Button -->
-                <a href="#" class="ms_booking inline-flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 transform">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <a href="<?= e(bookingUrl()) ?>" target="_blank" rel="noopener" class="ms_booking inline-flex items-center gap-2 bg-blue-600 text-white px-3 sm:px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 transform">
+                    <svg class="hidden sm:block w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
                     Забронировать
@@ -151,10 +139,10 @@ if (preg_match('#^/pravila-arendy/?$#', $path)) {
                 <div class="inline-block mb-4 px-4 py-2 bg-slate-700/40 border border-slate-600/50 rounded-full">
                     <span class="text-slate-200 text-sm font-semibold">Премиум локация в центре Минска</span>
                 </div>
-                <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-slate-200 to-white bg-clip-text text-transparent">Почасовая аренда уютных и современных кабинетов и залов</h1>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-slate-200 to-white bg-clip-text text-transparent">Почасовая аренда уютных и современных кабинетов и залов</h1>
                 <p class="text-xl mb-4 text-gray-300">Комфортные помещения для различных задач: индивидуальной и групповой работы, мастер-классов, фотосессий, телесных практик, йоги, тренингов, лекций и деловых встреч.</p>
                 <p class="text-lg mb-2 text-slate-300">📍 ул. Я. Коласа 37, 🚇 Ст. метро Академия наук, МЦ "Айсберг"</p>
-                <p class="text-lg mb-8 text-slate-300">⏰ Работаем ежедневно с 7:00 до 24:00</p>
+                <p class="text-lg mb-8 text-slate-300">⏰ Работаем ежедневно <?= e(openingHoursText()) ?></p>
                 <div class="flex flex-wrap gap-4">
                     <a href="#offices" class="bg-white text-slate-900 px-8 py-3 rounded-lg font-semibold hover:bg-slate-100 transition-all shadow-lg hover:shadow-xl hover:scale-105 transform">
                         Прейскурант
@@ -178,17 +166,17 @@ if (preg_match('#^/pravila-arendy/?$#', $path)) {
             <!-- Key Stats -->
             <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
                 <div class="text-center p-8 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border border-blue-200 shadow-sm hover:shadow-md transition">
-                    <div class="text-5xl font-bold text-blue-900 mb-2">9</div>
+                    <div class="text-4xl md:text-3xl lg:text-5xl font-bold text-blue-900 mb-2"><?= count($cabinets) ?></div>
                     <div class="text-blue-700 font-semibold">Кабинетов и залов</div>
-                    <div class="text-sm text-blue-600 mt-1">от 17 до 37 м²</div>
+                    <div class="text-sm text-blue-600 mt-1">от <?= e(min(array_column($cabinets, 'size'))) ?> до <?= e(max(array_column($cabinets, 'size'))) ?> м²</div>
                 </div>
                 <div class="text-center p-8 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
-                    <div class="text-5xl font-bold text-slate-900 mb-2">от 14 BYN</div>
+                    <div class="text-4xl md:text-3xl lg:text-5xl font-bold text-slate-900 mb-2">от 14 BYN</div>
                     <div class="text-slate-700 font-semibold">Стоимость аренды</div>
                     <div class="text-sm text-slate-600 mt-1">за час</div>
                 </div>
                 <div class="text-center p-8 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl border border-emerald-200 shadow-sm hover:shadow-md transition">
-                    <div class="text-5xl font-bold text-emerald-900 mb-2">до 10%</div>
+                    <div class="text-3xl md:text-xl lg:text-3xl font-bold text-emerald-900 mb-2">Спецтарифы</div>
                     <div class="text-emerald-700 font-semibold">Скидки</div>
                     <div class="text-sm text-emerald-600 mt-1">при долгосрочной аренде</div>
                 </div>
@@ -206,7 +194,7 @@ if (preg_match('#^/pravila-arendy/?$#', $path)) {
                     </div>
                     <h3 class="text-lg font-semibold mb-2 text-gray-800">Система скидок</h3>
                     <ul class="text-sm text-gray-600 space-y-1">
-                        <li>• Скидка 10% при аренде более 10 ч/неделю</li>
+                        <li>• Специальные тарифы при аренде более 10 ч/неделю</li>
                         <li>• «Счастливый час» — специальные цены с 11:00 до 16:00</li>
                         <li class="text-xs text-gray-500 italic">*Скидки не суммируются</li>
                     </ul>
@@ -318,11 +306,11 @@ if (preg_match('#^/pravila-arendy/?$#', $path)) {
 
             <!-- Tabs -->
             <div class="flex justify-center mb-12">
-                <div class="inline-flex bg-white rounded-lg shadow-md p-1">
-                    <button onclick="switchPricing('individual')" id="tab-individual" class="pricing-tab px-8 py-3 rounded-lg font-semibold transition-all bg-slate-800 text-white">
+                <div class="inline-flex flex-col sm:flex-row bg-white rounded-lg shadow-md p-1">
+                    <button type="button" aria-pressed="true" id="tab-individual" class="pricing-tab px-8 py-3 rounded-lg font-semibold transition-all bg-slate-800 text-white">
                         Индивидуальная аренда
                     </button>
-                    <button onclick="switchPricing('group')" id="tab-group" class="pricing-tab px-8 py-3 rounded-lg font-semibold transition-all text-gray-600">
+                    <button type="button" aria-pressed="false" id="tab-group" class="pricing-tab px-8 py-3 rounded-lg font-semibold transition-all text-gray-600">
                         Групповая аренда
                     </button>
                 </div>
@@ -330,19 +318,6 @@ if (preg_match('#^/pravila-arendy/?$#', $path)) {
 
             <!-- Offices Grid -->
             <?php
-            // Load all cabinet JSON files
-            $cabinetsDir = __DIR__ . '/data/cabinets/';
-            $cabinets = [];
-            foreach (glob($cabinetsDir . '*.json') as $file) {
-                $data = json_decode(file_get_contents($file), true);
-                // Кабинеты с "enabled": false не показываются на сайте
-                if ($data && ($data['enabled'] ?? true)) {
-                    $cabinets[] = $data;
-                }
-            }
-            // Sort by order
-            usort($cabinets, fn($a, $b) => ($a['order'] ?? 99) - ($b['order'] ?? 99));
-
             // Badge colors by type
             function getBadgeColorIndex($type) {
                 return match($type) {
@@ -360,7 +335,7 @@ if (preg_match('#^/pravila-arendy/?$#', $path)) {
                         <?php if ($cab['type']): ?>
                         <span class="absolute top-3 right-3 <?= getBadgeColorIndex($cab['type']) ?> text-white px-3 py-1 rounded-full text-xs font-semibold z-10"><?= htmlspecialchars($cab['type']) ?></span>
                         <?php endif; ?>
-                        <img src="<?= htmlspecialchars($cab['images']['main']) ?>" alt="<?= htmlspecialchars($cab['name']) ?>" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" width="600" height="400" />
+                        <img src="/<?= e($cab['images']['main']) ?>" alt="<?= htmlspecialchars($cab['name']) ?>" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" width="600" height="400" />
                     </div>
                     <div class="p-5 flex flex-col flex-1">
                         <div class="flex items-center justify-between mb-3">
@@ -409,79 +384,17 @@ if (preg_match('#^/pravila-arendy/?$#', $path)) {
             </div>
 
             <div class="mt-12 bg-blue-50 border-l-4 border-blue-400 p-6 max-w-4xl mx-auto">
-                <p class="text-sm text-gray-700"><strong>Обратите внимание:</strong> Скидки не суммируются. Специальные условия для VIP-кабинетов <u>28, 37 и 24.1</u>. Дополнительное оборудование (проектор, песочница, кушетка) - 3 руб/час.</p>
-                <p class="text-sm text-gray-700 mt-3">Цена 11:00-16:00 — акция «Счастливый час», только в будние дни. <a href="/pravila-arendy" class="text-blue-600 font-medium hover:underline">Условия акции →</a></p>
+                <p class="text-sm text-gray-700"><strong>Обратите внимание:</strong> Стоимость указана за арендный час (50 минут). <?= e(siteConfig()['discount_note']) ?> Дополнительное оборудование (проектор, песочница, кушетка) - 3 руб/час.</p>
+                <p class="text-sm text-gray-700 mt-3"><?= e(siteConfig()['happy_hour_note']) ?> <a href="/pravila-arendy" class="text-blue-600 font-medium hover:underline">Условия акции →</a></p>
             </div>
 
             <!-- Условия отмены -->
             <div class="mt-6 bg-amber-50 border-l-4 border-amber-400 p-6 max-w-4xl mx-auto">
-                <p class="text-sm text-gray-700"><strong>Условия отмены:</strong> Бесплатная отмена за 24 часа до начала аренды. Если Вы отменяете аренду менее чем за 24 часа, Вы должны оплатить стоимость аренды в полном объёме. <a href="/pravila-arendy" class="text-blue-600 font-medium hover:underline">Все правила аренды →</a></p>
+                <p class="text-sm text-gray-700"><strong>Условия отмены:</strong> <?= e(cancellationText()) ?> <a href="/pravila-arendy" class="text-blue-600 font-medium hover:underline">Все правила аренды →</a></p>
             </div>
         </div>
     </section>
 
-    <script>
-        function switchPricing(type) {
-            const groupPricing = document.querySelectorAll('.pricing-group');
-            const individualPricing = document.querySelectorAll('.pricing-individual');
-            const groupCapacity = document.querySelectorAll('.group-capacity');
-            const tabGroup = document.getElementById('tab-group');
-            const tabIndividual = document.getElementById('tab-individual');
-
-            if (type === 'group') {
-                groupPricing.forEach(el => el.classList.remove('hidden'));
-                individualPricing.forEach(el => el.classList.add('hidden'));
-                groupCapacity.forEach(el => el.classList.remove('hidden'));
-
-                tabGroup.classList.add('bg-slate-800', 'text-white');
-                tabGroup.classList.remove('text-gray-600');
-                tabIndividual.classList.remove('bg-slate-800', 'text-white');
-                tabIndividual.classList.add('text-gray-600');
-            } else {
-                groupPricing.forEach(el => el.classList.add('hidden'));
-                individualPricing.forEach(el => el.classList.remove('hidden'));
-                groupCapacity.forEach(el => el.classList.add('hidden'));
-
-                tabIndividual.classList.add('bg-slate-800', 'text-white');
-                tabIndividual.classList.remove('text-gray-600');
-                tabGroup.classList.remove('bg-slate-800', 'text-white');
-                tabGroup.classList.add('text-gray-600');
-            }
-        }
-
-        // Highlight active menu item on scroll
-        function highlightActiveSection() {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-link');
-
-            let current = '';
-            const scrollPosition = window.scrollY + 100; // Offset for header
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-
-                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('text-blue-600', 'font-semibold');
-                link.classList.add('text-gray-700');
-
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.remove('text-gray-700');
-                    link.classList.add('text-blue-600', 'font-semibold');
-                }
-            });
-        }
-
-        // Add scroll event listener
-        window.addEventListener('scroll', highlightActiveSection);
-        // Run on page load
-        window.addEventListener('load', highlightActiveSection);
-    </script>
 
     <!-- Amenities Section -->
     <section id="amenities" class="py-16 bg-gray-50">
@@ -623,13 +536,13 @@ if (preg_match('#^/pravila-arendy/?$#', $path)) {
             </div>
 
             <div class="text-center">
-                <a href="#" class="ms_booking inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md hover:shadow-lg">
+                <a href="<?= e(bookingUrl()) ?>" target="_blank" rel="noopener" class="ms_booking inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md hover:shadow-lg">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
                     Забронировать онлайн
                 </a>
-                <p class="text-gray-400 text-sm mt-4">⏰ Работаем ежедневно с 7:00 до 24:00</p>
+                <p class="text-gray-400 text-sm mt-4">⏰ Работаем ежедневно <?= e(openingHoursText()) ?></p>
             </div>
         </div>
     </section>
@@ -637,21 +550,6 @@ if (preg_match('#^/pravila-arendy/?$#', $path)) {
     <!-- Footer -->
     <?php include __DIR__ . '/templates/footer.php'; ?>
 
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
-<?php include 'templates/footer-scripts.php'; ?>
+<?php include __DIR__ . '/templates/footer-scripts.php'; ?>
 </body>
 </html>

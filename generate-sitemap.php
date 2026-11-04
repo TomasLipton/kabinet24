@@ -32,32 +32,14 @@ $urls[] = [
     'priority'   => '0.5',
 ];
 
-// Страницы кабинетов из JSON-файлов
-$files = glob($dataDir . '/*.json');
-
-if ($files === false || empty($files)) {
-    fwrite(STDERR, "Внимание: JSON-файлы кабинетов не найдены в $dataDir\n");
-} else {
-    foreach ($files as $file) {
-        $data = json_decode(file_get_contents($file), true);
-
-        if (!$data || empty($data['slug'])) {
-            fwrite(STDERR, "Пропуск: не удалось прочитать slug из $file\n");
-            continue;
-        }
-
-        // Отключённые кабинеты не попадают в карту сайта
-        if (!($data['enabled'] ?? true)) {
-            echo "Пропуск (отключён): {$data['slug']}\n";
-            continue;
-        }
-
-        $urls[] = [
-            'loc'        => $baseUrl . '/cabinet/' . $data['slug'],
-            'changefreq' => 'weekly',
-            'priority'   => '0.8',
-        ];
-    }
+// Use the same validated catalog as the website.
+require_once __DIR__ . '/lib/site.php';
+foreach (loadCabinets() as $cabinet) {
+    $urls[] = [
+        'loc' => $baseUrl . '/cabinet/' . $cabinet['slug'],
+        'changefreq' => 'weekly',
+        'priority' => '0.8',
+    ];
 }
 
 // Генерация XML

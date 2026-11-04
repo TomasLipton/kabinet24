@@ -18,14 +18,14 @@
   "pricing": {
     "group": [
       {
-        "label": "до 10 ч/нед",
-        "price": 35
+        "label": "Стандарт",
+        "price": 30
       }
     ],
     "individual": [
       {
         "label": "Стандарт",
-        "price": 25
+        "price": 22
       }
     ]
   },

@@ -1,0 +1,15 @@
+{
+  "name": "kabinet24",
+  "private": true,
+  "scripts": {
+    "build": "tailwindcss -i styles/site.css -o assets/css/site.css --minify",
+    "check": "php scripts/validate.php",
+    "test": "node --test tests/*.test.cjs"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

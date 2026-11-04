@@ -1,58 +1,30 @@
-# CLAUDE.md
+# Project guidance
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-## Project Overview
-
-This is a single-page static website for **Kabinet24** (kabinet24.by) - a room rental service for hourly office/cabinet rental in Minsk, Belarus. The entire site consists of a single `index.php` file with embedded HTML, CSS, and JavaScript.
+Kabinet24 is a Russian-language room rental catalog in Minsk. Use BYN for prices.
 
 ## Architecture
 
-- **Single-file architecture**: All content is in `index.php` - HTML structure, Tailwind CSS styling, and vanilla JavaScript
-- **No build process**: The site uses Tailwind CSS via CDN (`cdn.tailwindcss.com`), no compilation needed
-- **Static assets**: Room photos stored in `assets/cabinet-{number}/` directories
-- **PHP usage**: Minimal - only used for dynamic copyright year (`<?php echo date('Y'); ?>`)
+- PHP 8.2+, DOM and mbstring; no database or application framework.
+- `index.php`: homepage and fallback routing; `cabinet.php`: room pages; `rules.php`: rental rules.
+- `data/cabinets/*.json`: room data and the source of truth for prices.
+- `data/site.json`: shared hours, cancellation terms, default booking URL and tariff notes.
+- `lib/site.php`: shared configuration, catalog loading, escaping and JSON-LD serialization.
+- `templates/`: shared footer and integrations (Google Analytics, Jivo, Yclients).
+- Tailwind 3.4.17 is built locally. Edit `styles/site.css` and run `npm run build`; commit `assets/css/site.css`. Include PHP and JS files in Tailwind content scanning.
+- `assets/js/site.js`: pricing switches, navigation and gallery initialization.
 
-## Deployment
+## Content changes
 
-Deployment happens via cPanel Git integration:
-- Push to master triggers automatic deployment
-- Files are copied to `/home/psychoan/domains/kabinet24.by/public_html/`
-- Configuration in `.cpanel.yml`
+Keep all visitor-facing text in Russian. Change hours and cancellation terms in `data/site.json`, not independently in templates. Keep prices in cabinet JSON and regenerate both PDFs with `scripts/build-documents.py` after price changes. Preserve unrelated terms of the offer. Never invent room-specific Yclients IDs; use the configured fallback when no verified room URL exists.
 
-## Key Features in the Code
-
-- **Pricing toggle**: `switchPricing()` function switches between group and individual rental pricing views
-- **Scroll-based navigation highlight**: `highlightActiveSection()` updates nav links based on scroll position
-- **Smooth scrolling**: Anchor links scroll smoothly to sections
-
-## Content Structure
-
-The page sections (in order):
-1. Header with navigation
-2. Hero section
-3. About section (features, pricing info)
-4. Use cases section
-5. Offices/cabinets grid with pricing tabs
-6. Amenities section
-7. Contact section
-8. Footer
-
-## Language
-
-All user-facing content is in Russian. Maintain Russian language for any text additions or modifications.
+Disabled rooms must be absent from the catalog and sitemap and return 404. Use `enabled: false` rather than deleting JSON, because deployment does not delete old server files. Validate slugs as strings. Escape HTML with `e()` and generate structured data with `jsonLd()`.
 
 ## Images
 
-При добавлении новых изображений кабинетов:
+Use WebP quality around 80%, width 600 px. Every image needs meaningful alt text and explicit dimensions. Use lazy loading below the fold, but load the main room photograph eagerly. Keep local originals with `_full` suffix out of new commits and deployments. Preserve attached photo content when optimizing website assets.
 
-1. **Формат**: WebP, качество 80%, ширина 600px (высота автоматически)
-2. **Конвертация**: `cwebp -resize 600 0 -q 80 original.png -o output.webp`
-3. **Оригиналы**: сохранять с постфиксом `_full` (например `img_full.png`) — они не коммитятся, но хранятся локально
-4. **Структура папок**: `assets/cabinet-{number}/` — WebP файлы для сайта, `_full` файлы как бэкап
-5. **JSON**: пути в `data/cabinets/cabinet-{number}.json` должны указывать на `.webp` файлы
-6. **HTML атрибуты**: все `<img>` должны иметь `loading="lazy"`, `width` и `height`
+## Checks and deployment
 
-## Other
+See README for setup. Run `npm run build`, `npm run check`, `php generate-sitemap.php` and `npm test`. Inspect PDF rendering after edits. CI checks PHP 8.2/8.4 and whether compiled CSS is current.
 
-Use BYN for currency
+cPanel deployment runs `scripts/deploy.sh` via `.cpanel.yml`. Include new runtime folders/files in the deployment script. Publishing requires an explicit user request.

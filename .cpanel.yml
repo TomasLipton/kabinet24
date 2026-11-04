@@ -1,13 +1,3 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/psychoan/domains/kabinet24.by/public_html/
-    - /bin/cp index.php $DEPLOYPATH
-    - /bin/cp cabinet.php $DEPLOYPATH
-    - /bin/cp .htaccess $DEPLOYPATH
-    - /bin/mkdir -p $DEPLOYPATH/data/cabinets
-    - /bin/cp -r data/cabinets/*.json $DEPLOYPATH/data/cabinets/
-    - /bin/mkdir -p $DEPLOYPATH/templates
-    - /bin/cp -r templates/*.php $DEPLOYPATH/templates/
-    - php generate-sitemap.php
-    - /bin/cp sitemap.xml $DEPLOYPATH
-    - /bin/cp robots.txt $DEPLOYPATH
+    - /bin/bash scripts/deploy.sh
