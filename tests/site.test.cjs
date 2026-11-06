@@ -10,6 +10,13 @@ const catalog = fs.readdirSync(path.join(root, 'data/cabinets')).filter(f => f.e
 const active = catalog.filter(c => c.enabled !== false);
 let server, base, serverErrors = '';
 
+async function fetchStatus(url) {
+    const response = await fetch(url);
+    // Consume the response body even when the check only needs its status.
+    await response.arrayBuffer();
+    return response.status;
+}
+
 before(async () => {
     const probe = net.createServer();
     await new Promise(resolve => probe.listen(0, '127.0.0.1', resolve));
@@ -22,7 +29,7 @@ before(async () => {
     server.stderr.on('data', data => { serverErrors += data; });
     for (let attempt = 0; attempt < 100; attempt++) {
         if (spawnError) throw spawnError;
-        try { await fetch(base); return; } catch { await new Promise(resolve => setTimeout(resolve, 50)); }
+        try { await fetchStatus(base); return; } catch { await new Promise(resolve => setTimeout(resolve, 50)); }
     }
     throw new Error('PHP server did not start: ' + serverErrors);
 });
@@ -90,9 +97,8 @@ test('rental rules and every public document are delivered', async () => {
         assert.equal(response.status, 200);
         assert.equal((await response.text()).slice(0, 5), '%PDF-');
     }
-    assert.equal((await fetch(base + '/assets/css/site.css')).status, 200);
-    const generator = await fetch(base + '/generate-sitemap.php');
-    assert.equal(generator.status, 403);
+    assert.equal(await fetchStatus(base + '/assets/css/site.css'), 200);
+    assert.equal(await fetchStatus(base + '/generate-sitemap.php'), 403);
 });
 
 test('the cabinet in the URL path has priority over conflicting query parameters', async () => {
@@ -124,7 +130,7 @@ test('all nine active tariffs match the supplied price list', () => {
 
 test('internal PHP templates and tooling cannot be opened as public pages', async () => {
     for (const route of ['/templates/footer.php', '/lib/site.php', '/scripts/build-documents.py', '/styles/site.css', '/tests/site.test.cjs']) {
-        assert.equal((await fetch(base + route)).status, 403, route);
+        assert.equal(await fetchStatus(base + route), 403, route);
     }
 });
 
