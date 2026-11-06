@@ -419,30 +419,43 @@ $cabinets = loadCabinets();
     </section>
 
     <!-- Directions Section -->
-    <section id="directions" class="py-16 bg-white" aria-labelledby="directions-heading">
+    <section id="directions" class="bg-white py-10 md:py-16" aria-labelledby="directions-heading">
         <div class="container mx-auto px-4">
-            <h2 id="directions-heading" class="text-4xl font-bold text-center mb-6 text-gray-800">Как нас найти</h2>
-            <div id="directions-description" class="max-w-3xl mx-auto text-center text-lg text-gray-600 mb-8 space-y-2">
-                <p>Мы находимся по адресу ул. Якуба Коласа, 37.</p>
-                <p>Подъезд 1, этаж 3, офис №24.</p>
-                <p>Вход со стороны ул. Богдана Хмельницкого.</p>
-                <p>Как нас найти от ст. м. «Академия наук» — ниже в видео.</p>
+            <div class="mx-auto grid max-w-4xl gap-6 rounded-2xl border border-slate-200 bg-slate-50 p-5 sm:p-8 md:grid-cols-[minmax(0,1fr)_minmax(0,18rem)] md:items-center md:gap-10">
+                <div>
+                    <h2 id="directions-heading" class="text-3xl font-bold text-slate-900 md:text-4xl">Как нас найти</h2>
+                    <div id="directions-description" class="mt-4 space-y-2 text-slate-700">
+                        <p class="font-semibold text-slate-900">ул. Якуба Коласа, 37 · МЦ «Айсберг»</p>
+                        <p>Вход со стороны ул. Богдана Хмельницкого</p>
+                        <p class="font-semibold text-slate-900">Подъезд 1 · 3-й этаж · офис 24</p>
+                    </div>
+                    <a href="https://yandex.by/maps/org/aysberg/17172289743/" target="_blank" rel="noopener" class="mt-5 inline-flex min-h-11 items-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700">
+                        <svg class="home-icon" aria-hidden="true"><use href="#home-pin"/></svg>
+                        Открыть на карте
+                        <svg class="home-icon" aria-hidden="true"><use href="#home-external"/></svg>
+                    </a>
+                </div>
+                <figure class="mx-auto w-full max-w-xs overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                    <figcaption id="directions-video-caption" class="flex items-start gap-2 px-4 py-3 text-sm font-semibold text-slate-800">
+                        <svg class="home-icon text-blue-600" aria-hidden="true"><use href="#home-train"/></svg>
+                        Видео маршрута от метро «Академия наук»
+                    </figcaption>
+                    <video
+                        class="block h-auto w-full bg-slate-900"
+                        width="720"
+                        height="1280"
+                        controls
+                        playsinline
+                        preload="none"
+                        poster="/assets/videos/directions-poster.webp"
+                        aria-labelledby="directions-video-caption"
+                        aria-describedby="directions-description"
+                    >
+                        <source src="/assets/videos/directions.mp4" type="video/mp4">
+                        Ваш браузер не поддерживает видео. <a href="/assets/videos/directions.mp4">Открыть видео с маршрутом</a>.
+                    </video>
+                </figure>
             </div>
-            <video
-                class="rounded-2xl bg-slate-900 shadow-lg"
-                style="display: block; width: 100%; max-width: 384px; height: auto; margin: 0 auto;"
-                width="720"
-                height="1280"
-                controls
-                playsinline
-                preload="none"
-                poster="/assets/videos/directions-poster.webp"
-                aria-label="Как пройти от станции метро «Академия наук» до Кабинет24"
-                aria-describedby="directions-description"
-            >
-                <source src="/assets/videos/directions.mp4" type="video/mp4">
-                Ваш браузер не поддерживает видео. <a href="/assets/videos/directions.mp4">Открыть видео с маршрутом</a>.
-            </video>
         </div>
     </section>
 
