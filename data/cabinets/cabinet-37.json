@@ -12,7 +12,8 @@
   "images": {
     "main": "assets/cabinet-37/img.webp",
     "gallery": [
-      "assets/cabinet-37/img.webp"
+      "assets/cabinet-37/img.webp",
+      "assets/cabinet-37/gallery-01.webp"
     ]
   },
   "pricing": {
