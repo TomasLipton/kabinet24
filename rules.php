@@ -239,7 +239,10 @@ function accentClasses($accent) {
                         Забронировать онлайн
                     </a>
                     <a href="tel:+375291916311" class="inline-flex items-center gap-2 border-2 border-slate-500 text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-slate-800/50 hover:border-slate-400 transition">
-                        📞 +375 (29) 191-63-11
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M7 3H5a2 2 0 0 0-2 2c0 9 7 16 16 16a2 2 0 0 0 2-2v-2l-5-2-2 2a12 12 0 0 1-7-7l2-2Z"/>
+                        </svg>
+                        +375 (29) 191-63-11
                     </a>
                 </div>
             </div>

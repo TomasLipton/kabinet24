@@ -96,10 +96,22 @@ $cabinets = loadCabinets();
 
     <?php include __DIR__ . '/templates/head.php'; ?>
 </head>
-<body class="bg-gray-50">
+<body class="home-page bg-gray-50">
+    <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
+    <symbol id="home-building" viewBox="0 0 24 24"><path d="M5 21h14M7 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M10 7h.01M14 7h.01M10 11h.01M14 11h.01M10 15h.01M14 15h.01M10 21v-3h4v3"/></symbol>
+    <symbol id="home-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 10-8 10s-8-5-8-10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+    <symbol id="home-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="home-train" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="15" rx="3"/><path d="M5 11h14M9 18l-2 3m8-3 2 3M9 14h.01M15 14h.01"/></symbol>
+    <symbol id="home-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="home-document" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Zm0 0v6h6M8 13h8m-8 4h6"/></symbol>
+    <symbol id="home-phone" viewBox="0 0 24 24"><path d="M7 3H5a2 2 0 0 0-2 2c0 9 7 16 16 16a2 2 0 0 0 2-2v-2l-5-2-2 2a12 12 0 0 1-7-7l2-2Z"/></symbol>
+    <symbol id="home-down" viewBox="0 0 24 24"><path d="M12 5v14m-6-6 6 6 6-6"/></symbol>
+    <symbol id="home-right" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="home-external" viewBox="0 0 24 24"><path d="M6 18 18 6M8 6h10v10"/></symbol>
+    </svg>
     <!-- Header -->
-    <header class="bg-white/95 backdrop-blur-md border-b border-gray-200/80 sticky top-0 z-50">
-        <nav class="container mx-auto px-4">
+    <header class="home-header bg-white/95 backdrop-blur-md border-b border-gray-200/80 sticky top-0 z-50">
+        <nav class="container mx-auto px-5">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
                 <a href="/" class="flex items-center gap-2.5 group">
@@ -112,14 +124,14 @@ $cabinets = loadCabinets();
                 </a>
                 <!-- Nav Links -->
                 <div class="hidden md:flex items-center gap-1">
-                    <a href="#about" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition-all">О нас</a>
                     <a href="#offices" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition-all">Кабинеты</a>
+                    <a href="#about" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition-all">О нас</a>
                     <a href="#amenities" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition-all">Удобства</a>
                     <a href="#contact" class="nav-link px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition-all">Контакты</a>
                 </div>
                 <!-- CTA Button -->
                 <a href="<?= e(bookingUrl()) ?>" target="_blank" rel="noopener" class="ms_booking inline-flex items-center gap-2 bg-blue-600 text-white px-3 sm:px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 transform">
-                    <svg class="hidden sm:block w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="hidden sm:block w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
                     Забронировать
@@ -129,32 +141,43 @@ $cabinets = loadCabinets();
     </header>
 
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-24 overflow-hidden">
-        <!-- Decorative Elements -->
-        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-slate-500/5 rounded-full blur-3xl"></div>
-
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="max-w-3xl">
-                <div class="inline-block mb-4 px-4 py-2 bg-slate-700/40 border border-slate-600/50 rounded-full">
-                    <span class="text-slate-200 text-sm font-semibold">Премиум локация в центре Минска</span>
-                </div>
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-slate-200 to-white bg-clip-text text-transparent">Почасовая аренда уютных и современных кабинетов и залов</h1>
-                <p class="text-xl mb-4 text-gray-300">Комфортные помещения для различных задач: индивидуальной и групповой работы, мастер-классов, фотосессий, телесных практик, йоги, тренингов, лекций и деловых встреч.</p>
-                <p class="text-lg mb-2 text-slate-300">📍 ул. Я. Коласа 37, 🚇 Ст. метро Академия наук, МЦ "Айсберг"</p>
-                <p class="text-lg mb-8 text-slate-300">⏰ Работаем ежедневно <?= e(openingHoursText()) ?></p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#offices" class="bg-white text-slate-900 px-8 py-3 rounded-lg font-semibold hover:bg-slate-100 transition-all shadow-lg hover:shadow-xl hover:scale-105 transform">
-                        Прейскурант
-                    </a>
-                    <a href="/pravila-arendy" class="border-2 border-slate-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-slate-800/50 hover:border-slate-400 transition-all backdrop-blur-sm">
-                        Правила аренды
-                    </a>
-                    <a href="#contact" class="border-2 border-slate-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-slate-800/50 hover:border-slate-400 transition-all backdrop-blur-sm">
-                        Связаться с нами
-                    </a>
+    <section class="home-hero">
+        <div class="home-hero-inner container mx-auto px-5">
+            <div>
+                <p class="home-kicker">Премиум локация в центре Минска</p>
+                <h1>Почасовая аренда уютных и современных кабинетов и залов</h1>
+                <p class="home-lead">Комфортные помещения для различных задач: индивидуальной и групповой работы, мастер-классов, фотосессий, телесных практик, йоги, тренингов, лекций и деловых встреч.</p>
+                <div class="home-details">
+                    <div>
+                        <svg class="home-icon" aria-hidden="true"><use href="#home-pin"/></svg>
+                        <div>ул. Якуба Коласа, 37 · МЦ «Айсберг»<small>Рядом с метро «Академия наук»</small></div>
+                    </div>
+                    <div>
+                        <svg class="home-icon" aria-hidden="true"><use href="#home-clock"/></svg>
+                        Ежедневно <?= e(openingHoursText()) ?>
+                    </div>
                 </div>
             </div>
+            <nav class="home-actions" aria-label="Кабинеты, условия и контакты">
+                <a class="home-catalog-cta" href="#offices">
+                    <span><svg class="home-icon" aria-hidden="true"><use href="#home-grid"/></svg>Кабинеты и цены</span>
+                    <svg class="home-icon" aria-hidden="true"><use href="#home-down"/></svg>
+                </a>
+                <div class="home-links">
+                    <a class="home-link" href="/assets/price-list-2026-from-may-1.pdf" target="_blank" rel="noopener" aria-label="Прейскурант, PDF в новой вкладке">
+                        <span><svg class="home-icon" aria-hidden="true"><use href="#home-document"/></svg>Прейскурант</span>
+                        <span><span class="home-pdf">PDF</span><svg class="home-icon" aria-hidden="true"><use href="#home-external"/></svg></span>
+                    </a>
+                    <a class="home-link" href="/pravila-arendy">
+                        <span><svg class="home-icon" aria-hidden="true"><use href="#home-document"/></svg>Правила аренды</span>
+                        <svg class="home-icon" aria-hidden="true"><use href="#home-right"/></svg>
+                    </a>
+                    <a class="home-link" href="#contact">
+                        <span><svg class="home-icon" aria-hidden="true"><use href="#home-phone"/></svg>Контакты</span>
+                        <svg class="home-icon" aria-hidden="true"><use href="#home-down"/></svg>
+                    </a>
+                </div>
+            </nav>
         </div>
     </section>
 
@@ -193,12 +216,20 @@ $cabinets = loadCabinets();
                         </svg>
                     </div>
                     <h3 class="text-lg font-semibold mb-2 text-gray-800">Система скидок</h3>
-                    <ul class="text-sm text-gray-600 space-y-1">
-                        <li>• Специальные тарифы при аренде более 10 ч/неделю</li>
-                        <li>• «Счастливый час» — специальные цены с 11:00 до 16:00</li>
-                        <li class="text-xs text-gray-500 italic">*Скидки не суммируются</li>
+                    <ul class="list-disc pl-4 text-sm text-gray-600 space-y-1">
+                        <li>Спецтарифы при аренде более 10 часов в неделю</li>
+                        <li>«Счастливый час» по будням с 11:00 до 16:00</li>
                     </ul>
-                    <a href="/pravila-arendy" class="inline-block mt-3 text-sm text-blue-600 font-medium hover:underline">Подробнее →</a>
+                    <details class="discount-details mt-2">
+                        <summary>
+                            <span class="discount-more">Подробнее</span><span class="discount-less">Свернуть</span>
+                            <svg class="home-icon" aria-hidden="true"><use href="#home-down"/></svg>
+                        </summary>
+                        <div class="space-y-2 pb-1 text-sm text-gray-600">
+                            <p><?= e(siteConfig()['discount_note']) ?></p>
+                            <p><?= e(siteConfig()['happy_hour_note']) ?></p>
+                        </div>
+                    </details>
                 </div>
 
                 <!-- Оплата -->
@@ -242,22 +273,6 @@ $cabinets = loadCabinets();
                     <p class="text-sm text-gray-600">Удобная парковка</p>
                 </div>
 
-                <!-- Дополнительное оборудование -->
-                <div class="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg transition">
-                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Доп. оборудование</h3>
-                    <p class="text-sm text-gray-600 mb-2">За 3 руб/час:</p>
-                    <ul class="text-sm text-gray-600 space-y-1">
-                        <li>• Проектор</li>
-                        <li>• Юнгианская песочница</li>
-                        <li>• Кушетка для практик</li>
-                    </ul>
-                </div>
-
                 <!-- Сервис -->
                 <div class="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg transition">
                     <div class="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-4">
@@ -269,51 +284,37 @@ $cabinets = loadCabinets();
                     <p class="text-sm text-gray-600">Администратор всегда готов помочь и ответить на ваши вопросы</p>
                 </div>
 
-            </div>
-        </div>
-    </section>
+                <!-- Дополнительное оборудование -->
+                <div class="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg transition">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Дополнительное оборудование</h3>
+                    <p class="text-sm text-gray-600 mb-2">3 BYN/час</p>
+                    <ul class="list-disc pl-4 text-sm text-gray-600 space-y-1">
+                        <li>Проектор</li>
+                        <li>Юнгианская песочница</li>
+                        <li>Кушетка для практик</li>
+                    </ul>
+                </div>
 
-    <!-- Use Cases Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Для кого подходит наш сервис</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition">
-                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Консультанты</h3>
-                    <p class="text-gray-600">Психологи, терапевты, коучи, логопеды, медиаторы, юристы, бухгалтеры и другие специалисты для встреч с клиентами.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition">
-                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Тренеры, преподаватели, лекторы</h3>
-                    <p class="text-gray-600">Проведение индивидуальных и групповых занятий, мастер-классов, лекций</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition">
-                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Стартапы</h3>
-                    <p class="text-gray-600">Проведение встреч, переговоров и презентаций без долгосрочной аренды офиса</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition">
-                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Практики</h3>
-                    <p class="text-gray-600">Йога, телесные практики, фотосессии в уютном пространстве</p>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- Offices Section -->
-    <section id="offices" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Кабинеты и залы</h2>
-            <p class="text-center text-gray-600 mb-12">Выберите подходящее помещение для ваших задач</p>
-
-            <!-- Tabs -->
-            <div class="flex justify-center mb-12">
-                <div class="inline-flex flex-col sm:flex-row bg-white rounded-lg shadow-md p-1">
-                    <button type="button" aria-pressed="true" id="tab-individual" class="pricing-tab px-8 py-3 rounded-lg font-semibold transition-all bg-slate-800 text-white">
-                        Индивидуальная аренда
-                    </button>
-                    <button type="button" aria-pressed="false" id="tab-group" class="pricing-tab px-8 py-3 rounded-lg font-semibold transition-all text-gray-600">
-                        Групповая аренда
-                    </button>
-                </div>
+    <section id="offices" class="home-catalog">
+        <div class="container mx-auto px-5">
+            <div class="home-catalog-heading md:text-center">
+                <p>Каталог</p>
+                <h2>Кабинеты и залы</h2>
+                <p>Помещения для индивидуальной и групповой аренды</p>
+            </div>
+            <div class="home-pricing" role="group" aria-label="Тип аренды">
+                <button type="button" aria-pressed="true" id="tab-individual" class="pricing-tab">Индивидуальная</button>
+                <button type="button" aria-pressed="false" id="tab-group" class="pricing-tab">Групповая</button>
             </div>
 
             <!-- Offices Grid -->
@@ -383,14 +384,36 @@ $cabinets = loadCabinets();
                 <?php endforeach; ?>
             </div>
 
-            <div class="mt-12 bg-blue-50 border-l-4 border-blue-400 p-6 max-w-4xl mx-auto">
-                <p class="text-sm text-gray-700"><strong>Обратите внимание:</strong> Стоимость указана за арендный час (50 минут). <?= e(siteConfig()['discount_note']) ?> Дополнительное оборудование (проектор, песочница, кушетка) - 3 руб/час.</p>
-                <p class="text-sm text-gray-700 mt-3"><?= e(siteConfig()['happy_hour_note']) ?> <a href="/pravila-arendy" class="text-blue-600 font-medium hover:underline">Условия акции →</a></p>
-            </div>
+            <p class="mt-8 text-sm text-gray-600 max-w-4xl mx-auto">Стоимость указана за арендный час (50 минут).</p>
 
             <!-- Условия отмены -->
             <div class="mt-6 bg-amber-50 border-l-4 border-amber-400 p-6 max-w-4xl mx-auto">
                 <p class="text-sm text-gray-700"><strong>Условия отмены:</strong> <?= e(cancellationText()) ?> <a href="/pravila-arendy" class="text-blue-600 font-medium hover:underline">Все правила аренды →</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Для кого подходит наш сервис</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition">
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Консультанты</h3>
+                    <p class="text-gray-600">Психологи, терапевты, коучи, логопеды, медиаторы, юристы, бухгалтеры и другие специалисты для встреч с клиентами.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition">
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Тренеры, преподаватели, лекторы</h3>
+                    <p class="text-gray-600">Проведение индивидуальных и групповых занятий, мастер-классов, лекций</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition">
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Стартапы</h3>
+                    <p class="text-gray-600">Проведение встреч, переговоров и презентаций без долгосрочной аренды офиса</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition">
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Практики</h3>
+                    <p class="text-gray-600">Йога, телесные практики, фотосессии в уютном пространстве</p>
+                </div>
             </div>
         </div>
     </section>
@@ -514,36 +537,13 @@ $cabinets = loadCabinets();
 
             </div>
 
-            <div class="mt-12 max-w-4xl mx-auto bg-blue-50 p-6 rounded-lg">
-                <h3 class="font-semibold text-gray-800 mb-4 text-lg">Дополнительное оборудование за 3 руб/час:</h3>
-                <ul class="grid md:grid-cols-3 gap-4 text-gray-700">
-                    <li class="flex items-center">
-                        <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        Проектор
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        Юнгианская песочница
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        Кушетка для практик
-                    </li>
-                </ul>
-            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Забронировать кабинет</h2>
+            <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Контакты</h2>
             <p class="text-center text-gray-500 mb-12">Свяжитесь с нами любым удобным способом</p>
 
             <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-10">
@@ -558,18 +558,20 @@ $cabinets = loadCabinets();
                 <div class="border border-gray-200 rounded-xl p-6">
                     <p class="text-sm text-gray-500 mb-1">Адрес</p>
                     <p class="font-semibold text-gray-900">ул. Я. Коласа 37</p>
-                    <p class="text-sm text-gray-500">МЦ "Айсберг", 🚇 м. Академия наук</p>
+                    <p class="text-sm text-gray-500">МЦ «Айсберг»</p>
+                    <p class="mt-1 flex items-center gap-1.5 text-sm text-gray-500">
+                        <svg class="home-icon" aria-hidden="true"><use href="#home-train"/></svg>
+                        м. Академия наук
+                    </p>
                 </div>
             </div>
 
             <div class="text-center">
-                <a href="<?= e(bookingUrl()) ?>" target="_blank" rel="noopener" class="ms_booking inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md hover:shadow-lg">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                    </svg>
-                    Забронировать онлайн
-                </a>
-                <p class="text-gray-400 text-sm mt-4">⏰ Работаем ежедневно <?= e(openingHoursText()) ?></p>
+                <button id="home-chat" type="button" hidden class="home-booking">Написать в чат</button>
+                <p class="mt-4 flex items-center justify-center gap-1.5 text-sm text-gray-500">
+                    <svg class="home-icon" aria-hidden="true"><use href="#home-clock"/></svg>
+                    <span>Работаем ежедневно <?= e(openingHoursText()) ?></span>
+                </p>
             </div>
         </div>
     </section>

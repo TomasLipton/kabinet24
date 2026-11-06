@@ -8,9 +8,142 @@ body { font-family: 'Inter', sans-serif; }
 section[id] { scroll-margin-top: 5rem; }
 .office-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
 .office-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-.pricing-tab:not(.bg-slate-800):hover { background-color: rgb(243 244 246); }
 .thumbnail { transition: opacity 0.2s ease, transform 0.2s ease; }
 .thumbnail:hover { opacity: 0.8; transform: scale(1.02); }
+
+:root { --site-blue: #2863ed; }
+.home-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.home-booking {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4375rem;
+  min-height: 2.75rem;
+  padding: 0 0.75rem;
+  border: 1px solid #c3d4fc;
+  border-radius: 0.625rem;
+  background: #f7faff;
+  color: #184dbd;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+.home-booking[hidden] { display: none; }
+.home-booking:hover { background: #eaf2ff; }
+.floating-booking {
+  position: fixed;
+  right: calc(1rem + env(safe-area-inset-right));
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-height: 3rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  background: var(--site-blue);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.1;
+  box-shadow: 0 3px 12px #14234d40;
+}
+.floating-booking:hover { background: #1e54d8; }
+.floating-booking-icon { display: flex; align-items: center; padding: 0.2rem 0.625rem 0.2rem 0; border-right: 1px solid #ffffff65; }
+.floating-booking .home-icon { width: 1.3rem; height: 1.3rem; }
+.home-hero {
+  padding: 2.0625rem 0 1.4375rem;
+  color: #f7faff;
+  background: radial-gradient(ellipse at 100% 0%, #263b60, transparent 60%), linear-gradient(150deg, #16243b, #131e31 70%);
+}
+.home-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4375rem;
+  margin-bottom: 0.9375rem;
+  padding: 0.375rem 0.625rem;
+  border: 1px solid #49618a;
+  border-radius: 1.25rem;
+  background: #20334f;
+  color: #d3e2ff;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.home-kicker .home-icon { width: 0.875rem; height: 0.875rem; }
+.home-hero h1 {
+  font-size: clamp(1.8125rem, 9.25vw, 2.3125rem);
+  font-weight: 700;
+  line-height: 1.105;
+  letter-spacing: -0.035em;
+}
+.home-lead { margin: 0.875rem 0 1.25rem; max-width: 34rem; color: #d5deeb; }
+.home-details { display: grid; gap: 0.75rem; margin-bottom: 1.4375rem; }
+.home-details > div { display: flex; align-items: flex-start; gap: 0.625rem; color: #e4ebf6; font-size: 0.875rem; line-height: 1.4; }
+.home-details .home-icon { width: 1.125rem; height: 1.125rem; margin-top: 1px; color: #9fbdfc; }
+.home-details small { display: block; margin-top: 2px; color: #b6c7de; font-size: 0.8125rem; }
+.home-catalog-cta, .home-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.625rem;
+}
+.home-catalog-cta {
+  min-height: 3.4375rem;
+  padding: 0 0.9375rem;
+  border-radius: 0.6875rem;
+  background: var(--site-blue);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 6px 18px #07163370;
+}
+.home-catalog-cta:hover { background: #1e54d8; }
+.home-catalog-cta > span, .home-link > span { display: inline-flex; align-items: center; gap: 0.5625rem; }
+.home-links { display: grid; margin-top: 0.75rem; }
+.home-link { min-height: 3rem; padding: 0 0.1875rem; color: #e4edf9; font-size: 0.875rem; font-weight: 600; }
+.home-link + .home-link { border-top: 1px solid #324057; }
+.home-link:hover { color: #fff; }
+.home-link .home-icon { width: 1.0625rem; height: 1.0625rem; color: #a8bee3; }
+.home-pdf { padding: 0.1875rem 0.3125rem; border-radius: 0.3125rem; background: #283750; color: #dbe6fa; font-size: 0.625rem; font-weight: 700; letter-spacing: 0.025em; }
+.home-catalog { padding: 1.625rem 0 3rem; background: #f6f8fc; }
+.home-catalog-heading > p:first-child { margin-bottom: 0.3125rem; color: #285abb; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.home-catalog-heading h2 { margin-bottom: 0.4375rem; color: #152238; font-size: 1.625rem; font-weight: 700; letter-spacing: -0.025em; line-height: 1.2; }
+.home-catalog-heading > p:last-child { color: #56647b; font-size: 0.875rem; }
+.home-pricing { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.25rem; max-width: 26rem; margin: 0.9375rem auto 1.5rem; padding: 0.25rem; border-radius: 0.6875rem; background: #e8edf6; }
+.home-pricing .pricing-tab { min-height: 2.75rem; padding: 0.25rem; border-radius: 0.5rem; color: #4b5a73; font-size: 0.8125rem; font-weight: 700; }
+.home-pricing .pricing-tab[aria-pressed="true"] { color: #1c4fb9; background: #fff; box-shadow: 0 1px 3px #1e31531c; }
+.home-pricing .pricing-tab[aria-pressed="false"]:hover { background: #dde5f4; }
+
+.discount-details summary { display: inline-flex; align-items: center; gap: 0.375rem; min-height: 2.75rem; color: #1d4ed8; font-size: 0.875rem; font-weight: 600; cursor: pointer; list-style: none; }
+.discount-details summary::-webkit-details-marker { display: none; }
+.discount-details summary .home-icon { width: 1rem; height: 1rem; }
+.discount-details[open] summary .home-icon { transform: rotate(180deg); }
+.discount-details .discount-less, .discount-details[open] .discount-more { display: none; }
+.discount-details[open] .discount-less { display: inline; }
+
+/* Replace the default booking launcher and use the in-page chat button on the homepage. */
+body > .yButton,
+.home-page :is(#jvLabelWrap, #jivo_chat_widget) { display: none !important; }
+
+@media (max-width: 359px) {
+  .home-header > nav { padding-inline: 1rem; }
+}
+@media (min-width: 768px) {
+  .home-hero { padding: 3.5rem 0; }
+  .home-hero-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(16rem, 22rem); align-items: center; gap: 2.5rem; }
+  .home-hero h1 { font-size: clamp(2.125rem, 4.5vw, 3.625rem); }
+  .home-details { margin-bottom: 0; }
+  .home-catalog { padding: 3.5rem 0 4rem; }
+  .home-catalog-heading h2 { font-size: 2.25rem; }
+  .home-pricing { margin-bottom: 2rem; }
+}
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
 }

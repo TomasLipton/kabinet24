@@ -8,4 +8,4 @@
     gtag('config', 'G-TKM4RF1N9L');
 </script>
 
-<script src="//code.jivosite.com/widget/cemtzaEEiI" async></script>
+<script src="https://code.jivosite.com/widget/cemtzaEEiI" async></script>

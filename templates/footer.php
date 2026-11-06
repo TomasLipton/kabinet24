@@ -1,4 +1,4 @@
-<footer class="bg-gray-800 text-white py-8">
+<footer class="bg-gray-800 text-white pt-8 pb-24">
     <div class="container mx-auto px-4">
         <div class="grid md:grid-cols-3 gap-8">
             <div>
@@ -51,11 +51,15 @@
             <div>
                 <h4 class="font-semibold mb-4">Контакты</h4>
                 <ul class="space-y-2 text-gray-400">
-                    <li>📞 +375 (29) 191-63-11</li>
-                    <li>📱 Viber / Telegram</li>
-                    <li>📍 ул. Я. Коласа 37, МЦ "Айсберг"</li>
-                    <li>🚇 м. Академия наук</li>
-                    <li>⏰ Ежедневно <?= e(openingHoursText()) ?></li>
+                    <li>+375 (29) 191-63-11</li>
+                    <li>
+                        <a href="viber://chat?number=%2B375291916311" class="text-gray-300 underline hover:text-white transition">Viber</a>
+                        <span aria-hidden="true"> / </span>
+                        <a href="https://t.me/psychoanalitik_by" target="_blank" rel="noopener" class="text-gray-300 underline hover:text-white transition">Telegram</a>
+                    </li>
+                    <li>ул. Якуба Коласа, 37, МЦ «Айсберг»</li>
+                    <li>м. Академия наук</li>
+                    <li>Ежедневно <?= e(openingHoursText()) ?></li>
                 </ul>
             </div>
         </div>

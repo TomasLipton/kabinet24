@@ -7,9 +7,6 @@
             document.querySelectorAll('.pricing-group, .group-capacity').forEach(el => el.classList.toggle('hidden', !group));
             document.querySelectorAll('.pricing-individual').forEach(el => el.classList.toggle('hidden', group));
             [[groupTab, group], [individualTab, !group]].forEach(([tab, active]) => {
-                tab.classList.toggle('bg-slate-800', active);
-                tab.classList.toggle('text-white', active);
-                tab.classList.toggle('text-gray-600', !active);
                 tab.setAttribute('aria-pressed', String(active));
             });
         };
@@ -40,6 +37,16 @@
             history.replaceState(null, '', anchor.getAttribute('href'));
         });
     });
+
+    const chatButton = document.getElementById('home-chat');
+    if (chatButton) {
+        const showChatButton = () => {
+            chatButton.hidden = typeof window.jivo_api?.open !== 'function';
+        };
+        window.jivo_onLoadCallback = showChatButton;
+        showChatButton();
+        chatButton.addEventListener('click', () => window.jivo_api?.open());
+    }
 
     if (document.querySelector('.glightbox')) {
         const initializeGallery = () => {

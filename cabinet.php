@@ -315,14 +315,23 @@ foreach (['group', 'individual'] as $pricingType) {
                         Записаться онлайн
                     </a>
                     <div class="flex flex-col sm:flex-row gap-3">
-                        <a href="tel:+375291916311" class="flex-1 bg-slate-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-700 transition text-center">
-                            📞 Позвонить
+                        <a href="tel:+375291916311" class="flex-1 inline-flex items-center justify-center gap-2 bg-slate-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-700 transition text-center">
+                            <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M7 3H5a2 2 0 0 0-2 2c0 9 7 16 16 16a2 2 0 0 0 2-2v-2l-5-2-2 2a12 12 0 0 1-7-7l2-2Z"/>
+                            </svg>
+                            Позвонить
                         </a>
                         <a href="https://t.me/psychoanalitik_by" target="_blank" rel="noopener" class="flex-1 bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition text-center">
                             Написать в Telegram
                         </a>
                     </div>
-                    <p class="text-sm text-gray-500 text-center">⏰ Работаем ежедневно <?= e(openingHoursText()) ?></p>
+                    <p class="flex items-center justify-center gap-1.5 text-sm text-gray-500 text-center">
+                        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9" stroke-width="1.75"/>
+                            <path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"/>
+                        </svg>
+                        <span>Работаем ежедневно <?= e(openingHoursText()) ?></span>
+                    </p>
                 </div>
             </div>
         </article>
