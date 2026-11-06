@@ -38,14 +38,19 @@
         });
     });
 
-    const chatButton = document.getElementById('home-chat');
-    if (chatButton) {
-        const showChatButton = () => {
-            chatButton.hidden = typeof window.jivo_api?.open !== 'function';
+    const floatingChat = document.getElementById('floating-chat');
+    if (floatingChat) {
+        const chatButtons = document.querySelectorAll('[data-jivo-open]');
+        const showChatButtons = () => {
+            const ready = typeof window.jivo_api?.open === 'function';
+            document.body.classList.toggle('custom-chat-ready', ready);
+            chatButtons.forEach(button => { button.hidden = !ready; });
         };
-        window.jivo_onLoadCallback = showChatButton;
-        showChatButton();
-        chatButton.addEventListener('click', () => window.jivo_api?.open());
+        window.jivo_onLoadCallback = showChatButtons;
+        window.jivo_onOpen = () => { floatingChat.hidden = true; };
+        window.jivo_onClose = showChatButtons;
+        chatButtons.forEach(button => button.addEventListener('click', () => window.jivo_api?.open()));
+        showChatButtons();
     }
 
     if (document.querySelector('.glightbox')) {

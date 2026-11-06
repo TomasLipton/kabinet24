@@ -38,6 +38,22 @@ section[id] { scroll-margin-top: 5rem; }
 }
 .home-booking[hidden] { display: none; }
 .home-booking:hover { background: #eaf2ff; }
+.floating-chat {
+  position: fixed;
+  left: calc(1rem + env(safe-area-inset-left));
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+  z-index: 40;
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #30364d;
+  color: #fff;
+  box-shadow: 0 3px 12px #14234d40;
+}
+.floating-chat[hidden] { display: none; }
+.floating-chat:hover { background: #1e253a; }
 .floating-booking {
   position: fixed;
   right: calc(1rem + env(safe-area-inset-right));
@@ -128,9 +144,9 @@ section[id] { scroll-margin-top: 5rem; }
 .discount-details .discount-less, .discount-details[open] .discount-more { display: none; }
 .discount-details[open] .discount-less { display: inline; }
 
-/* Replace the default booking launcher and use the in-page chat button on the homepage. */
-body > .yButton,
-.home-page :is(#jvLabelWrap, #jivo_chat_widget) { display: none !important; }
+/* Use the site's booking button in place of the default launcher. */
+body > .yButton { display: none !important; }
+.custom-chat-ready :is(#jvLabelWrap, #jivo_chat_widget) { display: none !important; }
 
 @media (max-width: 359px) {
   .home-header > nav { padding-inline: 1rem; }

@@ -187,21 +187,23 @@ $cabinets = loadCabinets();
             <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Почему Кабинет24?</h2>
 
             <!-- Key Stats -->
-            <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
-                <div class="text-center p-8 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border border-blue-200 shadow-sm hover:shadow-md transition">
-                    <div class="text-4xl md:text-3xl lg:text-5xl font-bold text-blue-900 mb-2"><?= count($cabinets) ?></div>
+            <div class="grid md:grid-cols-3 gap-4 md:gap-6 max-w-4xl mx-auto mb-8">
+                <div class="flex flex-col justify-center text-center p-5 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border border-blue-200 shadow-sm hover:shadow-md transition">
+                    <div class="text-3xl lg:text-4xl font-bold text-blue-900 mb-2"><?= count($cabinets) ?></div>
                     <div class="text-blue-700 font-semibold">Кабинетов и залов</div>
                     <div class="text-sm text-blue-600 mt-1">от <?= e(min(array_column($cabinets, 'size'))) ?> до <?= e(max(array_column($cabinets, 'size'))) ?> м²</div>
                 </div>
-                <div class="text-center p-8 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
-                    <div class="text-4xl md:text-3xl lg:text-5xl font-bold text-slate-900 mb-2">от 14 BYN</div>
+                <div class="flex flex-col justify-center text-center p-5 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="whitespace-nowrap text-3xl lg:text-4xl font-bold text-slate-900 mb-2">от 14 BYN</div>
                     <div class="text-slate-700 font-semibold">Стоимость аренды</div>
                     <div class="text-sm text-slate-600 mt-1">за час</div>
                 </div>
-                <div class="text-center p-8 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl border border-emerald-200 shadow-sm hover:shadow-md transition">
-                    <div class="text-3xl md:text-xl lg:text-3xl font-bold text-emerald-900 mb-2">Спецтарифы</div>
-                    <div class="text-emerald-700 font-semibold">Скидки</div>
-                    <div class="text-sm text-emerald-600 mt-1">при долгосрочной аренде</div>
+                <div class="flex flex-col justify-center text-center p-5 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl border border-emerald-200 shadow-sm hover:shadow-md transition">
+                    <div class="text-2xl font-bold text-emerald-900 mb-2">Спецтарифы</div>
+                    <ul class="space-y-2 text-sm text-emerald-800">
+                        <li><span class="font-semibold">«Счастливый час»</span><br>Будни, 11:00–16:00</li>
+                        <li class="font-semibold">При аренде более 10 ч в неделю</li>
+                    </ul>
                 </div>
             </div>
 
@@ -216,10 +218,7 @@ $cabinets = loadCabinets();
                         </svg>
                     </div>
                     <h3 class="text-lg font-semibold mb-2 text-gray-800">Система скидок</h3>
-                    <ul class="list-disc pl-4 text-sm text-gray-600 space-y-1">
-                        <li>Спецтарифы при аренде более 10 часов в неделю</li>
-                        <li>«Счастливый час» по будням с 11:00 до 16:00</li>
-                    </ul>
+                    <p class="text-sm text-gray-600">Условия акции и правила применения скидок.</p>
                     <details class="discount-details mt-2">
                         <summary>
                             <span class="discount-more">Подробнее</span><span class="discount-less">Свернуть</span>
@@ -580,7 +579,7 @@ $cabinets = loadCabinets();
             </div>
 
             <div class="text-center">
-                <button id="home-chat" type="button" hidden class="home-booking">Написать в чат</button>
+                <button id="home-chat" type="button" hidden class="home-booking" data-jivo-open>Написать в чат</button>
                 <p class="mt-4 flex items-center justify-center gap-1.5 text-sm text-gray-500">
                     <svg class="home-icon" aria-hidden="true"><use href="#home-clock"/></svg>
                     <span>Работаем ежедневно <?= e(openingHoursText()) ?></span>
@@ -591,6 +590,13 @@ $cabinets = loadCabinets();
 
     <!-- Footer -->
     <?php include __DIR__ . '/templates/footer.php'; ?>
+
+    <button id="floating-chat" type="button" hidden class="floating-chat" data-jivo-open aria-label="Написать в чат">
+        <svg class="home-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2"/>
+            <path d="m4 7 8 6 8-6"/>
+        </svg>
+    </button>
 
 <?php include __DIR__ . '/templates/footer-scripts.php'; ?>
 </body>
